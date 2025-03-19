@@ -1,6 +1,7 @@
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import ImageSlider from '@/components/ImageSlider'
+import VideoSection from '@/components/VideoSection'
 
 export default function Home() {
   return (
@@ -10,33 +11,7 @@ export default function Home() {
       {/* Основной контент */}
       <main className="flex-grow">
         {/* Главная секция */}
-        <section
-          id="home"
-          className="pt-16 min-h-screen flex items-center justify-center bg-gray-50"
-        >
-          <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Добро пожаловать
-            </h1>
-            <p className="text-xl md:text-2xl mb-8">
-              Мы рады видеть вас на нашем сайте
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="#contact"
-                className="px-8 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition"
-              >
-                Связаться с нами
-              </a>
-              <a
-                href="/services"
-                className="px-8 py-3 border border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition"
-              >
-                Наши услуги
-              </a>
-            </div>
-          </div>
-        </section>
+        <VideoSection />
 
         {/* Секция О нас */}
         <section id="about" className="py-20 bg-white">
@@ -47,12 +22,12 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
                 <p className="text-lg mb-4">
-                  Мы - команда профессионалов, стремящихся к совершенству в
-                  каждом проекте.
+                  Строим с душой, работаем на результат.
                 </p>
                 <p className="text-lg">
-                  Наш опыт и преданность делу позволяют нам создавать уникальные
-                  решения для наших клиентов.
+                  Мы — ваш надежный партнер в строительстве. Наш путь — это годы
+                  опыта, преданность делу и стремление к высокому качеству. Мы
+                  строим не только здания, но и репутацию.
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-4">

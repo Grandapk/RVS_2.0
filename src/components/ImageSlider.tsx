@@ -7,21 +7,22 @@ import 'swiper/css/pagination'
 import Image from 'next/image'
 import { useState } from 'react'
 
-const images = [
-  '/images/slide1.jpg',
-  '/images/slide2.jpg',
-  '/images/slide3.jpg',
-  '/images/slide4.jpg',
-]
+const images = ['/slide1.webp', '/slide2.webp', '/slide3.webp', '/slide4.webp']
 
 export default function ImageSlider() {
   const [error, setError] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   return (
     <div className="relative w-full h-[400px]">
       {error && (
-        <div className="absolute top-0 left-0 right-0 bg-red-100 text-red-700 p-2 text-center">
+        <div className="absolute top-0 left-0 right-0 bg-red-100 text-red-700 p-2 text-center z-50">
           {error}
+        </div>
+      )}
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 z-40">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
         </div>
       )}
       <Swiper
@@ -45,12 +46,16 @@ export default function ImageSlider() {
                 src={image}
                 alt={`Slide ${index + 1}`}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover rounded-lg"
+                onLoad={() => setIsLoading(false)}
                 onError={(e) => {
                   console.error(`Error loading image: ${image}`)
                   setError(`Ошибка загрузки изображения ${index + 1}`)
+                  setIsLoading(false)
                 }}
                 priority={index === 0}
+                quality={90}
               />
             </div>
           </SwiperSlide>
