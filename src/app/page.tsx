@@ -1,49 +1,11 @@
-import Image from 'next/image'
+import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
+import ImageSlider from '@/components/ImageSlider'
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Навигация */}
-      <nav className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center h-16">
-            <div className="text-xl font-bold">Логотип</div>
-            <div className="hidden md:flex space-x-8">
-              <a href="#home" className="hover:text-blue-600">
-                Главная
-              </a>
-              <a href="#about" className="hover:text-blue-600">
-                О нас
-              </a>
-              <a href="#services" className="hover:text-blue-600">
-                Услуги
-              </a>
-              <a href="#portfolio" className="hover:text-blue-600">
-                Портфолио
-              </a>
-              <a href="#contact" className="hover:text-blue-600">
-                Контакты
-              </a>
-            </div>
-            {/* Мобильное меню */}
-            <button className="md:hidden">
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Основной контент */}
       <main className="flex-grow">
@@ -67,10 +29,10 @@ export default function Home() {
                 Связаться с нами
               </a>
               <a
-                href="#about"
+                href="/services"
                 className="px-8 py-3 border border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition"
               >
-                О нас
+                Наши услуги
               </a>
             </div>
           </div>
@@ -93,32 +55,17 @@ export default function Home() {
                   решения для наших клиентов.
                 </p>
               </div>
-              <div className="bg-gray-200 h-64 rounded-lg"></div>
-            </div>
-          </div>
-        </section>
-
-        {/* Секция Услуги */}
-        <section id="services" className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-              Наши услуги
-            </h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="bg-white p-6 rounded-lg shadow-md">
-                  <h3 className="text-xl font-bold mb-4">Услуга {i}</h3>
-                  <p className="text-gray-600">
-                    Описание услуги и её преимущества для клиента.
-                  </p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="col-span-2">
+                  <ImageSlider />
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </section>
 
         {/* Секция Портфолио */}
-        <section id="portfolio" className="py-20 bg-white">
+        <section id="portfolio" className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
               Портфолио
@@ -132,7 +79,7 @@ export default function Home() {
         </section>
 
         {/* Секция Контакты */}
-        <section id="contact" className="py-20 bg-gray-50">
+        <section id="contact" className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
               Контакты
@@ -173,41 +120,7 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Футер */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-xl font-bold mb-4">О нас</h3>
-              <p className="text-gray-400">
-                Краткое описание компании и её миссии.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold mb-4">Контакты</h3>
-              <p className="text-gray-400">Email: info@example.com</p>
-              <p className="text-gray-400">Телефон: +7 (999) 123-45-67</p>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold mb-4">Социальные сети</h3>
-              <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white">
-                  VK
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white">
-                  Telegram
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white">
-                  WhatsApp
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Все права защищены</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }
