@@ -194,7 +194,7 @@ export default function Navigation() {
                 href="/contact"
                 className="text-gray-900 font-semibold hover:text-gray-700 transition-colors duration-300"
               >
-                Контакты
+                Связаться
               </Link>
             </div>
           </div>
@@ -366,7 +366,7 @@ export default function Navigation() {
                 href="/contact"
                 className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-yellow-50 rounded-lg transition-colors duration-300"
               >
-                Контакты
+                Связаться
               </Link>
             </div>
           </div>

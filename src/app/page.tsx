@@ -1,9 +1,23 @@
+'use client'
+
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import ImageSlider from '@/components/ImageSlider'
 import VideoSection from '@/components/VideoSection'
+import { useState, useEffect } from 'react'
 
 export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const slides = ['/portfolio-1.webp', '/portfolio-2.webp', '/portfolio-3.webp']
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, 5000) // Меняем слайд каждые 5 секунд
+
+    return () => clearInterval(timer)
+  }, [])
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
@@ -148,6 +162,94 @@ export default function Home() {
                   <button className="text-left px-5 py-1.5 bg-[#1B2A3B] text-white rounded-full hover:bg-blue-800 transition text-sm">
                     Узнать больше
                   </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Секция Наши работы */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center gap-4 mb-16">
+              <h2 className="text-4xl font-bold text-gray-900">Наши работы</h2>
+              <div className="flex-grow h-1 bg-yellow-400"></div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 items-start">
+              {/* Левая колонка со статистикой */}
+              <div className="space-y-8">
+                <div className="flex gap-24">
+                  <div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-6xl font-bold text-gray-900">
+                        50
+                      </span>
+                      <span className="text-4xl font-bold text-yellow-400">
+                        +
+                      </span>
+                    </div>
+                    <div className="text-gray-600">
+                      <p className="text-xl">
+                        Реализованных
+                        <br />
+                        объектов
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-6xl font-bold text-gray-900">
+                        99
+                      </span>
+                      <span className="text-4xl font-bold text-gray-900">
+                        %
+                      </span>
+                    </div>
+                    <div className="text-gray-600">
+                      <p className="text-xl">
+                        Довольных
+                        <br />
+                        заказчиков
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <p className="text-gray-600 text-lg mt-8">
+                  Наши услуги охватывают все ключевые аспекты строительства,
+                  начиная от подготовки строительной площадки и земляных работ
+                  до возведения зданий и сооружений.
+                </p>
+              </div>
+
+              {/* Правая колонка с фото */}
+              <div className="relative">
+                <div className="aspect-[4/3] rounded-2xl overflow-hidden relative">
+                  {slides.map((slide, index) => (
+                    <img
+                      key={slide}
+                      src={slide}
+                      alt={`Наши работы ${index + 1}`}
+                      className={`w-full h-full object-cover absolute inset-0 rounded-2xl transition-opacity duration-1000 ${
+                        currentSlide === index ? 'opacity-100' : 'opacity-0'
+                      }`}
+                    />
+                  ))}
+                </div>
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
+                  <div className="flex gap-2">
+                    {slides.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentSlide(index)}
+                        className={`w-2 h-2 rounded-full bg-white transition-opacity duration-300 ${
+                          currentSlide === index ? 'opacity-100' : 'opacity-60'
+                        }`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
