@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RVS - Real Value Solutions",
-  description: "RVS - Real Value Solutions",
+  title: "RVS",
+  description: "RVS",
 };
 
 export default function RootLayout({
