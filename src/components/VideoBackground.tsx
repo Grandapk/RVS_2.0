@@ -10,9 +10,8 @@ export default function VideoBackground() {
         playsInline
         className="absolute w-full h-full object-cover"
       >
-        <source src="/background-video.mov" type="video/quicktime" />
+        <source src="/background-video.webm" type="video/webm" />
       </video>
-      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
     </div>
   )
 }
