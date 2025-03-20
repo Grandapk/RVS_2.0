@@ -14,7 +14,7 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Контакты</h3>
             <p className="text-gray-400">Email: info@example.com</p>
-            <p className="text-gray-400">Телефон: +7 (999) 123-45-67</p>
+            <p className="text-gray-400">Телефон: +372 53 320 419</p>
           </div>
           <div>
             <h3 className="text-xl font-bold mb-4">Социальные сети</h3>

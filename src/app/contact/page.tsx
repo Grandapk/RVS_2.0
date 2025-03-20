@@ -81,7 +81,7 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <h3 className="text-gray-900 font-semibold mb-2">Телефон</h3>
-                  <p className="text-gray-600">+7 (XXX) XXX-XX-XX</p>
+                  <p className="text-gray-600">+372 53 320 419</p>
                 </div>
 
                 <div className="bg-white/95 backdrop-blur-lg rounded-2xl p-6 transform hover:scale-105 transition-all duration-300 hover:bg-white group shadow-lg">
@@ -127,9 +127,7 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <h3 className="text-gray-900 font-semibold mb-2">Адрес</h3>
-                  <p className="text-gray-600">
-                    г. Москва, ул. Примерная, д. 1
-                  </p>
+                  <p className="text-gray-600">Tammiku, Jõhvi, Estonia</p>
                 </div>
               </div>
             </div>
