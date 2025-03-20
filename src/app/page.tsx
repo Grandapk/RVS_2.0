@@ -16,9 +16,6 @@ export default function Home() {
         {/* Секция О нас */}
         <section id="about" className="py-20 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-              О нас
-            </h2>
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-2">
@@ -27,26 +24,28 @@ export default function Home() {
               </div>
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-3xl font-bold mb-4">
+                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 text-gray-900">
                     Строим с душой,
                     <br />
                     работаем на результат
                   </h3>
-                  <p className="text-lg text-gray-600">
+                  <p className="text-xl sm:text-2xl text-gray-500">
                     Мы — ваш надежный партнер в строительстве. Наш путь — это
                     годы опыта, преданность делу и стремление к высокому
                     качеству. Мы строим не только здания, но и репутацию.
                   </p>
                 </div>
-                <div className="grid grid-cols-3 gap-6 mt-8">
+                <div className="grid grid-cols-3 gap-6 mt-12">
                   <div className="text-center">
                     <div className="flex items-baseline justify-center">
-                      <span className="text-4xl font-bold">10</span>
-                      <span className="text-2xl font-bold text-yellow-500 ml-1">
+                      <span className="text-5xl font-bold text-gray-900">
+                        10
+                      </span>
+                      <span className="text-3xl font-bold text-yellow-500 ml-1">
                         +
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600 mt-2">
+                    <p className="text-base text-gray-500 mt-2">
                       Лет опыта
                       <br />
                       на рынке
@@ -54,12 +53,14 @@ export default function Home() {
                   </div>
                   <div className="text-center">
                     <div className="flex items-baseline justify-center">
-                      <span className="text-4xl font-bold">50</span>
-                      <span className="text-2xl font-bold text-yellow-500 ml-1">
+                      <span className="text-5xl font-bold text-gray-900">
+                        50
+                      </span>
+                      <span className="text-3xl font-bold text-yellow-500 ml-1">
                         +
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600 mt-2">
+                    <p className="text-base text-gray-500 mt-2">
                       Успешных
                       <br />
                       проектов
@@ -67,15 +68,86 @@ export default function Home() {
                   </div>
                   <div className="text-center">
                     <div className="flex items-baseline justify-center">
-                      <span className="text-4xl font-bold">99</span>
-                      <span className="text-2xl font-bold ml-1">%</span>
+                      <span className="text-5xl font-bold text-gray-900">
+                        99
+                      </span>
+                      <span className="text-3xl font-bold text-gray-900 ml-1">
+                        %
+                      </span>
                     </div>
-                    <p className="text-sm text-gray-600 mt-2">
+                    <p className="text-base text-gray-500 mt-2">
                       Счастливых
                       <br />
                       клиентов
                     </p>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Секция Наши услуги */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center gap-4 mb-20">
+              <h2 className="text-4xl font-bold text-yellow-400">
+                Наши услуги
+              </h2>
+              <div className="flex-grow h-1 bg-blue-900"></div>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* Карточка 1 */}
+              <div className="flex flex-col h-full">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  Общестроительные работы
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  Наши услуги охватывают все ключевые аспекты строительства,
+                  начиная от подготовки строительной площадки и земляных работ
+                  до возведения зданий и сооружений.
+                </p>
+                <div className="mt-auto">
+                  <button className="text-left px-5 py-1.5 bg-[#1B2A3B] text-white rounded-full hover:bg-blue-800 transition text-sm">
+                    Узнать больше
+                  </button>
+                </div>
+              </div>
+
+              {/* Карточка 2 */}
+              <div className="flex flex-col h-full">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  Аренда строй-
+                  <br />
+                  техники
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  Мы предоставляем в аренду надежную строительную технику
+                  которая регулярно обслуживается для выполнения различных видов
+                  работ.
+                </p>
+                <div className="mt-auto">
+                  <button className="text-left px-5 py-1.5 bg-[#1B2A3B] text-white rounded-full hover:bg-blue-800 transition text-sm">
+                    Узнать больше
+                  </button>
+                </div>
+              </div>
+
+              {/* Карточка 3 */}
+              <div className="flex flex-col h-full">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  Доставка материала и вывоз мусора
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  Наши услуги охватывают все ключевые аспекты строительства, от
+                  подготовки строительной площадки и земляных работ до
+                  возведения зданий и сооружений.
+                </p>
+                <div className="mt-auto">
+                  <button className="text-left px-5 py-1.5 bg-[#1B2A3B] text-white rounded-full hover:bg-blue-800 transition text-sm">
+                    Узнать больше
+                  </button>
                 </div>
               </div>
             </div>
@@ -108,7 +180,7 @@ export default function Home() {
                   <label className="block text-sm font-medium mb-2">Имя</label>
                   <input
                     type="text"
-                    className="w-full px-4 py-2 border rounded-lg"
+                    className="max-w-md mx-auto px-4 py-2 border rounded-lg"
                   />
                 </div>
                 <div>
