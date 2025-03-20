@@ -25,12 +25,12 @@ export default function Navigation() {
   }, [])
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-gradient-to-r from-yellow-400 to-yellow-500 backdrop-blur-md shadow-lg z-50">
+    <nav className="fixed top-0 left-0 right-0 bg-grey/30 from-yellow-400 to-yellow-500 backdrop-blur-md shadow-lg z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="relative w-48 h-12">
             <Image
-              src="/logo.webp"
+              src="/15.png"
               alt="Логотип"
               fill
               sizes="(max-width: 768px) 120px, 192px"
@@ -45,7 +45,7 @@ export default function Navigation() {
               onMouseLeave={handleServicesMouseLeave}
             >
               <div className="py-2">
-                <button className="text-gray-900 font-semibold hover:text-gray-700 transition-colors duration-300 flex items-center">
+                <button className="text-white font-semibold hover:text-gray-200 transition-colors duration-300 flex items-center">
                   Услуги
                   <svg
                     className={`ml-1 h-4 w-4 transform transition-transform duration-300 ${
@@ -176,7 +176,7 @@ export default function Navigation() {
             <div className="py-2">
               <Link
                 href="/#portfolio"
-                className="text-gray-900 font-semibold hover:text-gray-700 transition-colors duration-300"
+                className="text-white font-semibold hover:text-gray-200 transition-colors duration-300"
               >
                 Портфолио
               </Link>
@@ -184,7 +184,7 @@ export default function Navigation() {
             <div className="py-2">
               <Link
                 href="/#about"
-                className="text-gray-900 font-semibold hover:text-gray-700 transition-colors duration-300"
+                className="text-white font-semibold hover:text-gray-200 transition-colors duration-300"
               >
                 О нас
               </Link>
@@ -192,7 +192,7 @@ export default function Navigation() {
             <div className="py-2">
               <Link
                 href="/contact"
-                className="text-gray-900 font-semibold hover:text-gray-700 transition-colors duration-300"
+                className="text-white font-semibold hover:text-gray-200 transition-colors duration-300"
               >
                 Связаться
               </Link>
@@ -200,7 +200,7 @@ export default function Navigation() {
           </div>
           {/* Мобильное меню */}
           <button
-            className="md:hidden text-gray-900 font-semibold hover:text-gray-700 transition-colors duration-300"
+            className="md:hidden text-white font-semibold hover:text-gray-200 transition-colors duration-300"
             onClick={handleMobileMenuToggle}
           >
             <svg
