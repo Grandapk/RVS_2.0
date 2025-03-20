@@ -14,25 +14,25 @@ export default function VideoSection() {
     >
       <VideoBackground />
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-2xl">
-          <h1 className="text-4xl md:text-5xl font-bold mb-1 text-left text-white">
+        <div className="max-w-4xl">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-2 text-left text-white">
             Строим с качеством
           </h1>
-          <p className="text-4xl md:text-5xl font-bold mb-3 text-left text-yellow-500">
+          <p className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-left text-yellow-400">
             Работаем с доверием
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 mt-8 items-center sm:items-start">
             <a
-              href="#contact"
-              className="px-8 py-3 bg-yellow-400 font-bold text-blue-900 rounded-full hover:bg-gray-800 hover:text-white hover:border-gray-800 border-2 border-yellow-400 transition-colors duration-300"
+              href="#portfolio"
+              className="inline-block px-8 py-4 bg-yellow-400 font-bold text-lg text-gray-900 rounded-full hover:bg-yellow-500 transition-colors duration-300 w-auto"
             >
               НАШИ РАБОТЫ
             </a>
             <a
-              href="/services"
-              className="px-8 py-3 border-2 border-green-950 font-bold text-green-950 rounded-full hover:bg-blue-50 hover:border-green-800 transition-colors duration-300"
+              href="#reviews"
+              className="inline-block px-8 py-4 bg-transparent border-2 border-white font-bold text-lg text-white rounded-full hover:bg-white/10 transition-colors duration-300 w-auto"
             >
-              НАШИ УСЛУГИ
+              ОТЗЫВЫ
             </a>
           </div>
         </div>

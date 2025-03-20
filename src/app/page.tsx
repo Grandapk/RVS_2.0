@@ -20,19 +20,62 @@ export default function Home() {
               О нас
             </h2>
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <p className="text-lg mb-4">
-                  Строим с душой, работаем на результат.
-                </p>
-                <p className="text-lg">
-                  Мы — ваш надежный партнер в строительстве. Наш путь — это годы
-                  опыта, преданность делу и стремление к высокому качеству. Мы
-                  строим не только здания, но и репутацию.
-                </p>
-              </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-2">
                   <ImageSlider />
+                </div>
+              </div>
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-3xl font-bold mb-4">
+                    Строим с душой,
+                    <br />
+                    работаем на результат
+                  </h3>
+                  <p className="text-lg text-gray-600">
+                    Мы — ваш надежный партнер в строительстве. Наш путь — это
+                    годы опыта, преданность делу и стремление к высокому
+                    качеству. Мы строим не только здания, но и репутацию.
+                  </p>
+                </div>
+                <div className="grid grid-cols-3 gap-6 mt-8">
+                  <div className="text-center">
+                    <div className="flex items-baseline justify-center">
+                      <span className="text-4xl font-bold">10</span>
+                      <span className="text-2xl font-bold text-yellow-500 ml-1">
+                        +
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600 mt-2">
+                      Лет опыта
+                      <br />
+                      на рынке
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <div className="flex items-baseline justify-center">
+                      <span className="text-4xl font-bold">50</span>
+                      <span className="text-2xl font-bold text-yellow-500 ml-1">
+                        +
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600 mt-2">
+                      Успешных
+                      <br />
+                      проектов
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <div className="flex items-baseline justify-center">
+                      <span className="text-4xl font-bold">99</span>
+                      <span className="text-2xl font-bold ml-1">%</span>
+                    </div>
+                    <p className="text-sm text-gray-600 mt-2">
+                      Счастливых
+                      <br />
+                      клиентов
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
