@@ -3,44 +3,31 @@
 import { useState, useEffect } from 'react'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { motion, AnimatePresence } from 'framer-motion'
+import ImageSlider from '@/components/ImageSlider'
 
 export default function ConstructionServices() {
   const [isVisible, setIsVisible] = useState(false)
-  const [currentSlide, setCurrentSlide] = useState(0)
   const router = useRouter()
 
   const slides = [
     {
-      image: '/images/constructions/construction1.webp',
+      src: '/images/constructions/construction1.webp',
       alt: 'Строительство 1',
     },
     {
-      image: '/images/constructions/construction2.webp',
+      src: '/images/constructions/construction2.webp',
       alt: 'Строительство 2',
     },
     {
-      image: '/images/constructions/construction3.webp',
+      src: '/images/constructions/construction3.webp',
       alt: 'Строительство 3',
     },
   ]
 
   useEffect(() => {
     setIsVisible(true)
-    if (currentSlide >= slides.length) {
-      setCurrentSlide(0)
-    }
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, 5000)
-    return () => clearInterval(timer)
   }, [])
-
-  const getCurrentSlide = () => {
-    return slides[currentSlide % slides.length]
-  }
 
   const handleConsultation = () => {
     router.push('/contact')
@@ -205,39 +192,12 @@ export default function ConstructionServices() {
                 </ul>
               </div>
               <div className="relative h-[400px] md:h-[500px]">
-                <div className="rounded-[60px] overflow-hidden w-full h-full relative">
-                  <AnimatePresence initial={false}>
-                    <motion.div
-                      key={currentSlide}
-                      initial={{ opacity: 0, x: 300 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -300 }}
-                      transition={{ duration: 0.5 }}
-                      className="absolute inset-0"
-                    >
-                      <Image
-                        src={getCurrentSlide().image}
-                        alt={getCurrentSlide().alt}
-                        fill
-                        className="object-cover"
-                        priority
-                      />
-                    </motion.div>
-                  </AnimatePresence>
-                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                    {slides.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setCurrentSlide(index)}
-                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                          currentSlide === index
-                            ? 'bg-white w-6'
-                            : 'bg-white/50'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
+                <ImageSlider
+                  images={slides}
+                  height="h-full"
+                  cornerRadius="rounded-[60px]"
+                  paginationColor="white"
+                />
               </div>
             </div>
           </div>

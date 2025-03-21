@@ -40,7 +40,29 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-2">
-                  <ImageSlider />
+                  <ImageSlider
+                    images={[
+                      {
+                        src: '/slides/1/1.webp',
+                        alt: 'Наши работы 1',
+                      },
+                      {
+                        src: '/slides/1/2.webp',
+                        alt: 'Наши работы 2',
+                      },
+                      {
+                        src: '/slides/1/3.webp',
+                        alt: 'Наши работы 3',
+                      },
+                      {
+                        src: '/slides/1/4.webp',
+                        alt: 'Наши работы 4',
+                      },
+                    ]}
+                    height="h-[400px]"
+                    cornerRadius="rounded-[60px]"
+                    paginationColor="white"
+                  />
                 </div>
               </div>
               <div className="space-y-8">
