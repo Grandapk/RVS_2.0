@@ -16,13 +16,15 @@ interface ImageSliderProps {
   height?: string
   cornerRadius?: string
   paginationColor?: string
+  className?: string
 }
 
 export default function ImageSlider({
   images = [],
   height = 'h-[400px]',
-  cornerRadius = 'rounded-[60px]',
+  cornerRadius = 'rounded-[30px]',
   paginationColor = 'white',
+  className = '',
 }: ImageSliderProps) {
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -30,7 +32,7 @@ export default function ImageSlider({
   if (!images || images.length === 0) {
     return (
       <div
-        className={`relative w-full ${height} ${cornerRadius} bg-gray-100 flex items-center justify-center`}
+        className={`relative w-full ${height} ${cornerRadius} bg-gray-100 flex items-center justify-center ${className}`}
       >
         <div className="text-gray-400">Нет изображений</div>
       </div>
@@ -38,7 +40,7 @@ export default function ImageSlider({
   }
 
   return (
-    <div className={`relative w-full ${height}`}>
+    <div className={`relative w-full ${height} ${className}`}>
       {error && (
         <div className="absolute top-0 left-0 right-0 bg-red-100 text-red-700 p-2 text-center z-50">
           {error}

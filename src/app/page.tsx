@@ -14,19 +14,28 @@ import { useRouter } from 'next/navigation'
 export default function Home() {
   const router = useRouter()
   const [currentSlide, setCurrentSlide] = useState(0)
-  const slides = [
-    '/images/portfolio/portfolio-1.webp',
-    '/images/portfolio/portfolio-2.webp',
-    '/images/portfolio/portfolio-3.webp',
+  const portfolioSlides = [
+    {
+      src: '/images/portfolio/portfolio-1.webp',
+      alt: 'Наши работы 1',
+    },
+    {
+      src: '/images/portfolio/portfolio-2.webp',
+      alt: 'Наши работы 2',
+    },
+    {
+      src: '/images/portfolio/portfolio-3.webp',
+      alt: 'Наши работы 3',
+    },
   ]
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length)
+      setCurrentSlide((prev) => (prev + 1) % portfolioSlides.length)
     }, 5000) // Меняем слайд каждые 5 секунд
 
     return () => clearInterval(timer)
-  }, [slides.length])
+  }, [portfolioSlides.length])
 
   const handleServiceClick = (path: string) => {
     router.push(path)
@@ -282,40 +291,14 @@ export default function Home() {
               </div>
 
               {/* Правая колонка с фото */}
-              <div className="relative">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden relative">
-                  {slides.map((slide, index) => (
-                    <div
-                      key={slide}
-                      className={`w-full h-full absolute inset-0 transition-opacity duration-1000 ${
-                        currentSlide === index ? 'opacity-100' : 'opacity-0'
-                      }`}
-                    >
-                      <Image
-                        src={slide}
-                        alt={`Наши работы ${index + 1}`}
-                        fill
-                        className="object-cover rounded-2xl"
-                        priority={index === 0}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        quality={90}
-                      />
-                    </div>
-                  ))}
-                </div>
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10">
-                  <div className="flex gap-2">
-                    {slides.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setCurrentSlide(index)}
-                        className={`w-2 h-2 rounded-full bg-white transition-opacity duration-300 ${
-                          currentSlide === index ? 'opacity-100' : 'opacity-60'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
+              <div className="relative w-full">
+                <ImageSlider
+                  images={portfolioSlides}
+                  height="h-[400px]"
+                  cornerRadius="rounded-[30px]"
+                  paginationColor="white"
+                  className="w-full max-w-[800px] mx-auto"
+                />
               </div>
             </div>
           </div>
