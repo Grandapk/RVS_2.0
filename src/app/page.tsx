@@ -5,6 +5,7 @@ import Footer from '@/components/Footer'
 import ImageSlider from '@/components/ImageSlider'
 import VideoSection from '@/components/VideoSection'
 import ReviewsSection from '@/components/ReviewsSection'
+import FAQSection from '@/components/FAQSection'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
@@ -272,6 +273,9 @@ export default function Home() {
 
         {/* Секция отзывов */}
         <ReviewsSection />
+
+        {/* Секция FAQ */}
+        <FAQSection />
       </main>
 
       <Footer />

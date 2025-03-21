@@ -7,22 +7,16 @@ const reviews = [
   {
     id: 1,
     text: 'Отличная команда профессионалов! Выполнили ремонт нашего офиса точно в срок. Особенно порадовало внимание к деталям и чистота во время работ.',
-    author: 'Андрей Михайлов',
-    position: 'Директор IT-компании',
     rating: 5,
   },
   {
     id: 2,
     text: 'Заказывали строительство частного дома. Ребята сработали на высшем уровне - от проектирования до сдачи объекта. Всё чётко, прозрачно и качественно.',
-    author: 'Елена Васильева',
-    position: 'Владелец дома',
     rating: 5,
   },
   {
     id: 3,
     text: 'Арендовали у компании технику для земляных работ. Техника новая, в отличном состоянии. Операторы - настоящие профессионалы. Рекомендую!',
-    author: 'Сергей Петров',
-    position: 'Прораб строительной компании',
     rating: 5,
   },
 ]
@@ -42,12 +36,15 @@ export default function ReviewsSection() {
   }, [isAutoplay])
 
   return (
-    <section className="py-20 bg-gray-900 relative overflow-hidden">
+    <section className="py-20 relative overflow-hidden bg-yellow-500">
       {/* Animated background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[length:20px_20px]"></div>
+        {/* Сетка точек */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px]"></div>
+
+        {/* Волнистый паттерн */}
         <motion.div
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 opacity-10"
           animate={{
             backgroundPosition: ['0px 0px', '100px 100px'],
           }}
@@ -58,16 +55,22 @@ export default function ReviewsSection() {
           }}
           style={{
             backgroundImage:
-              'linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%, transparent)',
+              'linear-gradient(45deg, rgba(255,255,255,0.2) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, transparent 75%, transparent)',
             backgroundSize: '100px 100px',
           }}
         />
+
+        {/* Градиентные круги */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-white/5 rounded-full blur-[100px] mix-blend-overlay"></div>
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-white/5 rounded-full blur-[100px] mix-blend-overlay"></div>
+        </div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex items-center gap-4 mb-16">
           <h2 className="text-4xl font-bold text-white">Отзывы</h2>
-          <div className="flex-grow h-1 bg-yellow-400"></div>
+          <div className="flex-grow h-1 bg-white/30"></div>
         </div>
 
         <div className="max-w-4xl mx-auto">
@@ -78,11 +81,11 @@ export default function ReviewsSection() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 relative"
+              className="bg-black/20 backdrop-blur-sm rounded-2xl p-8 relative border border-white/20"
             >
               {/* Декоративные элементы */}
-              <div className="absolute -top-4 -left-4 w-8 h-8 bg-yellow-400 rounded-full" />
-              <div className="absolute -bottom-4 -right-4 w-8 h-8 bg-yellow-400 rounded-full" />
+              <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-br from-white to-white/50 rounded-full opacity-30"></div>
+              <div className="absolute -bottom-4 -right-4 w-8 h-8 bg-gradient-to-br from-white to-white/50 rounded-full opacity-30"></div>
 
               <div className="flex flex-col items-center text-center">
                 <div className="flex gap-1 mb-6">
@@ -92,7 +95,7 @@ export default function ReviewsSection() {
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ delay: i * 0.1 }}
-                      className="w-6 h-6 text-yellow-400"
+                      className="w-6 h-6 text-white/80"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -105,23 +108,10 @@ export default function ReviewsSection() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
-                  className="text-xl text-gray-300 italic mb-8"
+                  className="text-xl text-white italic mb-8"
                 >
                   "{reviews[currentReview].text}"
                 </motion.p>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  <p className="text-lg font-semibold text-white">
-                    {reviews[currentReview].author}
-                  </p>
-                  <p className="text-sm text-gray-400">
-                    {reviews[currentReview].position}
-                  </p>
-                </motion.div>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -137,8 +127,8 @@ export default function ReviewsSection() {
                 }}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   currentReview === index
-                    ? 'bg-yellow-400 w-6'
-                    : 'bg-gray-600 hover:bg-gray-500'
+                    ? 'bg-white/80 w-6'
+                    : 'bg-black/20 hover:bg-white/40'
                 }`}
               />
             ))}
