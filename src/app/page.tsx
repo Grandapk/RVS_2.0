@@ -152,8 +152,12 @@ export default function Home() {
                   до возведения зданий и сооружений.
                 </p>
                 <div className="mt-auto">
-                  <button className="text-left px-5 py-1.5 bg-[#1B2A3B] text-white rounded-full hover:bg-blue-800 transition text-sm">
-                    Узнать больше
+                  <button className="group relative px-6 py-2.5 bg-[#1B2A3B] text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden">
+                    <span className="relative z-10 text-sm font-medium">
+                      УЗНАТЬ БОЛЬШЕ
+                    </span>
+                    <div className="absolute inset-0 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
                   </button>
                 </div>
               </div>
@@ -171,8 +175,12 @@ export default function Home() {
                   работ.
                 </p>
                 <div className="mt-auto">
-                  <button className="text-left px-5 py-1.5 bg-[#1B2A3B] text-white rounded-full hover:bg-blue-800 transition text-sm">
-                    Узнать больше
+                  <button className="group relative px-6 py-2.5 bg-[#1B2A3B] text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden">
+                    <span className="relative z-10 text-sm font-medium">
+                      УЗНАТЬ БОЛЬШЕ
+                    </span>
+                    <div className="absolute inset-0 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
                   </button>
                 </div>
               </div>
@@ -188,8 +196,12 @@ export default function Home() {
                   возведения зданий и сооружений.
                 </p>
                 <div className="mt-auto">
-                  <button className="text-left px-5 py-1.5 bg-[#1B2A3B] text-white rounded-full hover:bg-blue-800 transition text-sm">
-                    Узнать больше
+                  <button className="group relative px-6 py-2.5 bg-[#1B2A3B] text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden">
+                    <span className="relative z-10 text-sm font-medium">
+                      УЗНАТЬ БОЛЬШЕ
+                    </span>
+                    <div className="absolute inset-0 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
                   </button>
                 </div>
               </div>
