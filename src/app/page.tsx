@@ -283,7 +283,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <p className="text-lg text-gray-600 mt-8">
+                <p className="text-lg text-gray-600 mt-8 max-w-[400px]">
                   Наши услуги охватывают все ключевые аспекты строительства,
                   начиная от подготовки строительной площадки и земляных работ
                   до возведения зданий и сооружений.
