@@ -60,7 +60,7 @@ export default function Home() {
                       },
                     ]}
                     height="h-[400px]"
-                    cornerRadius="rounded-[60px]"
+                    cornerRadius="rounded-[20px]"
                     paginationColor="white"
                   />
                 </div>

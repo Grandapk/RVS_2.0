@@ -65,7 +65,7 @@ export default function ImageSlider({
           pagination={{
             clickable: true,
             bulletActiveClass: `!bg-yellow-400`,
-            bulletClass: `swiper-pagination-bullet !bg-white hover:!bg-yellow-400 transition-colors duration-300 !w-8 !h-2 !rounded-none`,
+            bulletClass: `swiper-pagination-bullet !bg-white hover:!bg-yellow-400 transition-colors duration-300 !w-8 !h-2 !rounded-lg`,
           }}
           className="w-full h-full"
         >
