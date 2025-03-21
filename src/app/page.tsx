@@ -8,8 +8,11 @@ import ReviewsSection from '@/components/ReviewsSection'
 import FAQSection from '@/components/FAQSection'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 export default function Home() {
+  const router = useRouter()
   const [currentSlide, setCurrentSlide] = useState(0)
   const slides = [
     '/images/portfolio/portfolio-1.webp',
@@ -24,6 +27,10 @@ export default function Home() {
 
     return () => clearInterval(timer)
   }, [slides.length])
+
+  const handleServiceClick = (path: string) => {
+    router.push(path)
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -152,7 +159,10 @@ export default function Home() {
                   до возведения зданий и сооружений.
                 </p>
                 <div className="mt-auto">
-                  <button className="group relative px-6 py-2.5 bg-[#1B2A3B] text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden">
+                  <button
+                    onClick={() => handleServiceClick('/services/construction')}
+                    className="group relative px-6 py-2.5 bg-[#1B2A3B] text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden"
+                  >
                     <span className="relative z-10 text-sm font-medium">
                       УЗНАТЬ БОЛЬШЕ
                     </span>
@@ -175,7 +185,10 @@ export default function Home() {
                   работ.
                 </p>
                 <div className="mt-auto">
-                  <button className="group relative px-6 py-2.5 bg-[#1B2A3B] text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden">
+                  <button
+                    onClick={() => handleServiceClick('/services/equipment')}
+                    className="group relative px-6 py-2.5 bg-[#1B2A3B] text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden"
+                  >
                     <span className="relative z-10 text-sm font-medium">
                       УЗНАТЬ БОЛЬШЕ
                     </span>
@@ -196,7 +209,10 @@ export default function Home() {
                   возведения зданий и сооружений.
                 </p>
                 <div className="mt-auto">
-                  <button className="group relative px-6 py-2.5 bg-[#1B2A3B] text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden">
+                  <button
+                    onClick={() => handleServiceClick('/services/delivery')}
+                    className="group relative px-6 py-2.5 bg-[#1B2A3B] text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden"
+                  >
                     <span className="relative z-10 text-sm font-medium">
                       УЗНАТЬ БОЛЬШЕ
                     </span>
