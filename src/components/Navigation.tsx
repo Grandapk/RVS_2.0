@@ -30,7 +30,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="relative w-48 h-12">
             <Image
-              src="/15.png"
+              src="/images/logo/main-logo.png"
               alt="Логотип"
               fill
               sizes="(max-width: 768px) 120px, 192px"

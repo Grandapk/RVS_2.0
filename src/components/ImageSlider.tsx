@@ -7,7 +7,12 @@ import 'swiper/css/pagination'
 import Image from 'next/image'
 import { useState } from 'react'
 
-const images = ['/slide1.webp', '/slide2.webp', '/slide3.webp', '/slide4.webp']
+const images = [
+  '/images/slides/slide1.webp',
+  '/images/slides/slide2.webp',
+  '/images/slides/slide3.webp',
+  '/images/slides/slide4.webp',
+]
 
 export default function ImageSlider() {
   const [error, setError] = useState<string | null>(null)

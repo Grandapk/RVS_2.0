@@ -5,10 +5,15 @@ import Footer from '@/components/Footer'
 import ImageSlider from '@/components/ImageSlider'
 import VideoSection from '@/components/VideoSection'
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const slides = ['/portfolio-1.webp', '/portfolio-2.webp', '/portfolio-3.webp']
+  const slides = [
+    '/images/portfolio/portfolio-1.webp',
+    '/images/portfolio/portfolio-2.webp',
+    '/images/portfolio/portfolio-3.webp',
+  ]
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -16,7 +21,7 @@ export default function Home() {
     }, 5000) // Меняем слайд каждые 5 секунд
 
     return () => clearInterval(timer)
-  }, [])
+  }, [slides.length])
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -228,17 +233,25 @@ export default function Home() {
               <div className="relative">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden relative">
                   {slides.map((slide, index) => (
-                    <img
+                    <div
                       key={slide}
-                      src={slide}
-                      alt={`Наши работы ${index + 1}`}
-                      className={`w-full h-full object-cover absolute inset-0 rounded-2xl transition-opacity duration-1000 ${
+                      className={`w-full h-full absolute inset-0 transition-opacity duration-1000 ${
                         currentSlide === index ? 'opacity-100' : 'opacity-0'
                       }`}
-                    />
+                    >
+                      <Image
+                        src={slide}
+                        alt={`Наши работы ${index + 1}`}
+                        fill
+                        className="object-cover rounded-2xl"
+                        priority={index === 0}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        quality={90}
+                      />
+                    </div>
                   ))}
                 </div>
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10">
                   <div className="flex gap-2">
                     {slides.map((_, index) => (
                       <button
@@ -252,61 +265,6 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Секция Портфолио */}
-        <section id="portfolio" className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-              Портфолио
-            </h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="bg-gray-200 h-64 rounded-lg"></div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Секция Контакты */}
-        <section id="contact" className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-              Контакты
-            </h2>
-            <div className="max-w-2xl mx-auto">
-              <form className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium mb-2">Имя</label>
-                  <input
-                    type="text"
-                    className="max-w-md mx-auto px-4 py-2 border rounded-lg"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    className="w-full px-4 py-2 border rounded-lg"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">
-                    Сообщение
-                  </label>
-                  <textarea className="w-full px-4 py-2 border rounded-lg h-32"></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="w-full px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-                >
-                  Отправить
-                </button>
-              </form>
             </div>
           </div>
         </section>
