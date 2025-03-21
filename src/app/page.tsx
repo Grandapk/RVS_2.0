@@ -115,7 +115,7 @@ export default function Home() {
               <h2 className="text-4xl font-bold text-yellow-400">
                 Наши услуги
               </h2>
-              <div className="flex-grow h-1 bg-yellow-400"></div>
+              <div className="flex-grow h-1 bg-[#1B2A3B]"></div>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
