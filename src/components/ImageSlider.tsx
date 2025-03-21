@@ -22,9 +22,9 @@ interface ImageSliderProps {
 export default function ImageSlider({
   images = [],
   height = 'h-[400px]',
-  cornerRadius = 'rounded-[30px]',
+  cornerRadius = 'rounded-[20px]',
   paginationColor = 'white',
-  className = '',
+  className = 'shadow-[0_10px_25px_rgba(0,0,0,0.7)] rounded-[20px]',
 }: ImageSliderProps) {
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -32,7 +32,7 @@ export default function ImageSlider({
   if (!images || images.length === 0) {
     return (
       <div
-        className={`relative w-full ${height} ${cornerRadius} bg-gray-100 flex items-center justify-center ${className}`}
+        className={`relative w-full ${height} ${cornerRadius} bg-gray-100 flex items-center justify-center`}
       >
         <div className="text-gray-400">Нет изображений</div>
       </div>

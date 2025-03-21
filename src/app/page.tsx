@@ -76,7 +76,6 @@ export default function Home() {
                       },
                     ]}
                     height="h-[400px]"
-                    cornerRadius="rounded-[20px]"
                     paginationColor="white"
                   />
                 </div>
@@ -295,9 +294,8 @@ export default function Home() {
                 <ImageSlider
                   images={portfolioSlides}
                   height="h-[400px]"
-                  cornerRadius="rounded-[30px]"
+                  className="w-full max-w-100 xl:max-w-[800px] mx-auto"
                   paginationColor="white"
-                  className="w-full max-w-[800px] mx-auto"
                 />
               </div>
             </div>
