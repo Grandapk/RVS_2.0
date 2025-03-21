@@ -161,9 +161,9 @@ export default function Home() {
                 <div className="mt-auto">
                   <button
                     onClick={() => handleServiceClick('/services/construction')}
-                    className="group relative px-6 py-2.5 bg-[#1B2A3B] text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden"
+                    className="group relative px-6 py-2.5 bg-[#1B2A3B] text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105"
                   >
-                    <span className="relative z-10 text-sm font-medium">
+                    <span className="relative z-10 text-sm font-medium group-hover:text-gray-900 transition-colors duration-300">
                       УЗНАТЬ БОЛЬШЕ
                     </span>
                     <div className="absolute inset-0 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
@@ -187,9 +187,9 @@ export default function Home() {
                 <div className="mt-auto">
                   <button
                     onClick={() => handleServiceClick('/services/equipment')}
-                    className="group relative px-6 py-2.5 bg-[#1B2A3B] text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden"
+                    className="group relative px-6 py-2.5 bg-[#1B2A3B] text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105"
                   >
-                    <span className="relative z-10 text-sm font-medium">
+                    <span className="relative z-10 text-sm font-medium group-hover:text-gray-900 transition-colors duration-300">
                       УЗНАТЬ БОЛЬШЕ
                     </span>
                     <div className="absolute inset-0 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
@@ -211,9 +211,9 @@ export default function Home() {
                 <div className="mt-auto">
                   <button
                     onClick={() => handleServiceClick('/services/delivery')}
-                    className="group relative px-6 py-2.5 bg-[#1B2A3B] text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden"
+                    className="group relative px-6 py-2.5 bg-[#1B2A3B] text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105"
                   >
-                    <span className="relative z-10 text-sm font-medium">
+                    <span className="relative z-10 text-sm font-medium group-hover:text-gray-900 transition-colors duration-300">
                       УЗНАТЬ БОЛЬШЕ
                     </span>
                     <div className="absolute inset-0 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
