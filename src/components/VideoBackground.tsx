@@ -3,7 +3,7 @@
 export default function VideoBackground() {
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden">
-      <div className="absolute inset-0 bg-black/50 z-10"></div>
+      <div className="absolute inset-0 bg-black/20 z-10"></div>
       <video
         autoPlay
         loop
