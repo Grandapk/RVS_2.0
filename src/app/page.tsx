@@ -4,6 +4,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import ImageSlider from '@/components/ImageSlider'
 import VideoSection from '@/components/VideoSection'
+import ReviewsSection from '@/components/ReviewsSection'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
@@ -43,12 +44,12 @@ export default function Home() {
               </div>
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 text-gray-900">
+                  <h3 className="text-4xl font-bold mb-6 text-gray-900">
                     Строим с душой,
                     <br />
                     работаем на результат
                   </h3>
-                  <p className="text-xl sm:text-2xl text-gray-500">
+                  <p className="text-lg text-gray-500">
                     Мы — ваш надежный партнер в строительстве. Наш путь — это
                     годы опыта, преданность делу и стремление к высокому
                     качеству. Мы строим не только здания, но и репутацию.
@@ -90,7 +91,7 @@ export default function Home() {
                       <span className="text-5xl font-bold text-gray-900">
                         99
                       </span>
-                      <span className="text-3xl font-bold text-gray-900 ml-1">
+                      <span className="text-3xl font-bold text-yellow-400 ml-1">
                         %
                       </span>
                     </div>
@@ -113,7 +114,7 @@ export default function Home() {
               <h2 className="text-4xl font-bold text-yellow-400">
                 Наши услуги
               </h2>
-              <div className="flex-grow h-1 bg-blue-900"></div>
+              <div className="flex-grow h-1 bg-yellow-400"></div>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -122,7 +123,7 @@ export default function Home() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
                   Общестроительные работы
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-lg text-gray-600 mb-4">
                   Наши услуги охватывают все ключевые аспекты строительства,
                   начиная от подготовки строительной площадки и земляных работ
                   до возведения зданий и сооружений.
@@ -141,7 +142,7 @@ export default function Home() {
                   <br />
                   техники
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-lg text-gray-600 mb-4">
                   Мы предоставляем в аренду надежную строительную технику
                   которая регулярно обслуживается для выполнения различных видов
                   работ.
@@ -158,7 +159,7 @@ export default function Home() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
                   Доставка материала и вывоз мусора
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-lg text-gray-600 mb-4">
                   Наши услуги охватывают все ключевые аспекты строительства, от
                   подготовки строительной площадки и земляных работ до
                   возведения зданий и сооружений.
@@ -177,8 +178,8 @@ export default function Home() {
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="flex items-center gap-4 mb-16">
-              <h2 className="text-4xl font-bold text-gray-900">Наши работы</h2>
               <div className="flex-grow h-1 bg-yellow-400"></div>
+              <h2 className="text-4xl font-bold text-gray-900">Наши работы</h2>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 items-start">
@@ -187,15 +188,15 @@ export default function Home() {
                 <div className="flex gap-24">
                   <div>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-6xl font-bold text-gray-900">
+                      <span className="text-5xl font-bold text-gray-900">
                         50
                       </span>
-                      <span className="text-4xl font-bold text-yellow-400">
+                      <span className="text-3xl font-bold text-yellow-400">
                         +
                       </span>
                     </div>
                     <div className="text-gray-600">
-                      <p className="text-xl">
+                      <p className="text-lg">
                         Реализованных
                         <br />
                         объектов
@@ -205,15 +206,15 @@ export default function Home() {
 
                   <div>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-6xl font-bold text-gray-900">
+                      <span className="text-5xl font-bold text-gray-900">
                         99
                       </span>
-                      <span className="text-4xl font-bold text-gray-900">
+                      <span className="text-3xl font-bold text-yellow-400">
                         %
                       </span>
                     </div>
                     <div className="text-gray-600">
-                      <p className="text-xl">
+                      <p className="text-lg">
                         Довольных
                         <br />
                         заказчиков
@@ -222,7 +223,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <p className="text-gray-600 text-lg mt-8">
+                <p className="text-lg text-gray-600 mt-8">
                   Наши услуги охватывают все ключевые аспекты строительства,
                   начиная от подготовки строительной площадки и земляных работ
                   до возведения зданий и сооружений.
@@ -268,6 +269,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Секция отзывов */}
+        <ReviewsSection />
       </main>
 
       <Footer />
