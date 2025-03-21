@@ -5,14 +5,42 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function ConstructionServices() {
   const [isVisible, setIsVisible] = useState(false)
+  const [currentSlide, setCurrentSlide] = useState(0)
   const router = useRouter()
+
+  const slides = [
+    {
+      image: '/images/constructions/construction1.webp',
+      alt: 'Строительство 1',
+    },
+    {
+      image: '/images/constructions/construction2.webp',
+      alt: 'Строительство 2',
+    },
+    {
+      image: '/images/constructions/construction3.webp',
+      alt: 'Строительство 3',
+    },
+  ]
 
   useEffect(() => {
     setIsVisible(true)
+    if (currentSlide >= slides.length) {
+      setCurrentSlide(0)
+    }
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, 5000)
+    return () => clearInterval(timer)
   }, [])
+
+  const getCurrentSlide = () => {
+    return slides[currentSlide % slides.length]
+  }
 
   const handleConsultation = () => {
     router.push('/contact')
@@ -32,7 +60,7 @@ export default function ConstructionServices() {
           >
             <source src="/videos/construction-bg.webm" type="video/webm" />
           </video>
-          <div className="absolute inset-0 bg-black/50"></div>
+          <div className="absolute inset-0 bg-black/20"></div>
 
           <div className="container mx-auto px-4 relative z-10">
             <div
@@ -146,6 +174,70 @@ export default function ConstructionServices() {
                   Наши специалисты имеют многолетний опыт работы и регулярно
                   повышают квалификацию
                 </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-yellow-400 py-24 relative overflow-hidden">
+          <div className="container mx-auto px-4 relative">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="space-y-8">
+                <h2 className="text-4xl md:text-5xl font-bold text-white">
+                  СТРОИТЕЛЬСТВО И РЕМОНТ
+                </h2>
+                <ul className="space-y-4 text-xl text-white">
+                  <li className="flex items-center space-x-2">
+                    <span>•</span>
+                    <span>Объектов различного назначения</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <span>•</span>
+                    <span>Профильных и черепичных крыш</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <span>•</span>
+                    <span>
+                      Домов, квартир, офисов и других жилых и производственных
+                      объектов
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <div className="relative h-[400px] md:h-[500px]">
+                <div className="rounded-[60px] overflow-hidden w-full h-full relative">
+                  <AnimatePresence initial={false}>
+                    <motion.div
+                      key={currentSlide}
+                      initial={{ opacity: 0, x: 300 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -300 }}
+                      transition={{ duration: 0.5 }}
+                      className="absolute inset-0"
+                    >
+                      <Image
+                        src={getCurrentSlide().image}
+                        alt={getCurrentSlide().alt}
+                        fill
+                        className="object-cover"
+                        priority
+                      />
+                    </motion.div>
+                  </AnimatePresence>
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                    {slides.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentSlide(index)}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          currentSlide === index
+                            ? 'bg-white w-6'
+                            : 'bg-white/50'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
