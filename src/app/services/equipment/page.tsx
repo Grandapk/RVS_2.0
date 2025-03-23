@@ -168,7 +168,8 @@ export default function EquipmentPage() {
               },
               {
                 title: 'Гибкие условия',
-                description: 'Удобные условия аренды и оплаты',
+                description:
+                  'Удобные условия аренды и прозрачное ценообразование',
                 icon: (
                   <svg
                     className="w-12 h-12 text-yellow-500"
@@ -180,7 +181,7 @@ export default function EquipmentPage() {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
-                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
                     />
                   </svg>
                 ),
@@ -190,17 +191,14 @@ export default function EquipmentPage() {
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{
-                  duration: 0.8,
-                  delay: index * 0.2,
-                  type: 'spring',
-                  stiffness: 100,
-                }}
-                className="text-center p-6"
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                className="bg-white rounded-2xl p-8 shadow-lg transform transition-all duration-500 hover:scale-[1.02] hover:shadow-xl"
               >
-                <div className="flex justify-center mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <div className="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mb-6">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   {feature.title}
                 </h3>
                 <p className="text-gray-600">{feature.description}</p>

@@ -24,7 +24,7 @@ export default function ImageSlider({
   height = 'h-[400px]',
   cornerRadius = 'rounded-[20px]',
   paginationColor = 'white',
-  className = 'shadow-[0_10px_25px_rgba(0,0,0,0.7)] rounded-[20px]',
+  className = 'rounded-[20px]',
 }: ImageSliderProps) {
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -67,7 +67,7 @@ export default function ImageSlider({
           pagination={{
             clickable: true,
             bulletActiveClass: `!bg-yellow-400`,
-            bulletClass: `swiper-pagination-bullet !bg-white hover:!bg-yellow-400 transition-colors duration-300 !w-8 !h-2 !rounded-lg`,
+            bulletClass: `swiper-pagination-bullet !bg-white hover:!bg-yellow-400 transition-colors duration-300 !w-3 !h-3 !rounded-full`,
           }}
           className="w-full h-full"
         >
@@ -108,7 +108,7 @@ export default function ImageSlider({
         }
         .swiper-pagination-bullet-active {
           opacity: 1;
-          width: 32px !important;
+          transform: scale(1.2);
         }
       `}</style>
     </div>
