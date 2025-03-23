@@ -5,6 +5,17 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'
+
+const containerStyle = {
+  width: '100%',
+  height: '100%',
+}
+
+const center = {
+  lat: 59.333022, // Координаты Йыхви
+  lng: 27.361908,
+}
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -20,8 +31,10 @@ export default function ContactPage() {
     'idle' | 'success' | 'error'
   >('idle')
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
+    setIsMounted(true)
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }
@@ -58,26 +71,15 @@ export default function ContactPage() {
       <Navigation isTransparent={!isScrolled} />
 
       <main className="flex-grow">
-        {/* Hero Section */}
-        <section className="relative min-h-[500px] flex items-center justify-center bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 overflow-hidden">
-          {/* Animated Background */}
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px]"></div>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 2 }}
-              className="absolute inset-0 bg-gradient-to-r from-yellow-300/20 via-transparent to-yellow-300/20"
-            ></motion.div>
-          </div>
-
-          {/* Content */}
-          <div className="container mx-auto px-4 relative z-10">
+        {/* Combined Section */}
+        <section className="relative min-h-[800px] bg-gradient-to-b from-yellow-400 to-white">
+          {/* Hero Content */}
+          <div className="container mx-auto px-4 pt-32">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-center"
+              className="text-center mb-24"
             >
               <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
                 Свяжитесь с нами
@@ -175,161 +177,190 @@ export default function ContactPage() {
                 </motion.div>
               </div>
             </motion.div>
-          </div>
 
-          {/* Gradient Overlay for smooth transition */}
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
-        </section>
-
-        {/* Form Section */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
+            {/* Form and Map Grid */}
+            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto pb-24">
+              {/* Map Section */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
-                className="bg-white rounded-2xl p-8 shadow-xl"
+                className="h-[400px] md:h-full relative overflow-hidden rounded-2xl shadow-xl"
               >
-                <h2 className="text-3xl font-bold text-gray-900 mb-8">
-                  Оставьте заявку
-                </h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Ваше имя
-                      </label>
-                      <input
-                        type="text"
-                        value={formData.name}
-                        onChange={(e) =>
-                          setFormData({ ...formData, name: e.target.value })
-                        }
-                        className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all text-gray-900 placeholder-gray-500"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Телефон
-                      </label>
-                      <input
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) =>
-                          setFormData({ ...formData, phone: e.target.value })
-                        }
-                        className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all text-gray-900 placeholder-gray-500"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
-                      className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all text-gray-900 placeholder-gray-500"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Интересующая услуга
-                    </label>
-                    <select
-                      value={formData.service}
-                      onChange={(e) =>
-                        setFormData({ ...formData, service: e.target.value })
-                      }
-                      className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all text-gray-900 placeholder-gray-500"
-                    >
-                      <option value="construction">Строительные работы</option>
-                      <option value="equipment">Аренда техники</option>
-                      <option value="delivery">Доставка материалов</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Сообщение
-                    </label>
-                    <textarea
-                      value={formData.message}
-                      onChange={(e) =>
-                        setFormData({ ...formData, message: e.target.value })
-                      }
-                      rows={4}
-                      className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all text-gray-900 placeholder-gray-500 resize-none"
-                      required
-                    />
-                  </div>
-
-                  <motion.button
-                    type="submit"
-                    className="w-full bg-yellow-400 text-gray-900 font-semibold py-4 px-6 rounded-lg hover:bg-yellow-500 transition-all"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    disabled={isSubmitting}
+                {isMounted && (
+                  <LoadScript
+                    googleMapsApiKey={
+                      process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''
+                    }
+                    loadingElement={<div>Loading...</div>}
                   >
-                    {isSubmitting ? (
-                      <span className="flex items-center justify-center">
-                        <svg
-                          className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-900"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <circle
-                            className="opacity-25"
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                          ></circle>
-                          <path
-                            className="opacity-75"
-                            fill="currentColor"
-                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                          ></path>
-                        </svg>
-                        Отправка...
-                      </span>
-                    ) : (
-                      'Отправить сообщение'
-                    )}
-                  </motion.button>
-
-                  {submitStatus === 'success' && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="bg-green-50 text-green-800 rounded-lg p-4 mt-4"
+                    <GoogleMap
+                      mapContainerStyle={containerStyle}
+                      center={center}
+                      zoom={15}
+                      options={{
+                        mapTypeId: 'satellite',
+                        styles: [
+                          {
+                            featureType: 'all',
+                            elementType: 'geometry',
+                            stylers: [{ color: '#f5f5f5' }],
+                          },
+                          {
+                            featureType: 'water',
+                            elementType: 'geometry',
+                            stylers: [{ color: '#e9e9e9' }],
+                          },
+                        ],
+                      }}
                     >
-                      Сообщение успешно отправлено! Мы свяжемся с вами в
-                      ближайшее время.
-                    </motion.div>
-                  )}
-                </form>
+                      <Marker position={center} />
+                    </GoogleMap>
+                  </LoadScript>
+                )}
               </motion.div>
-            </div>
-          </div>
-        </section>
 
-        {/* Map Section */}
-        <section className="bg-gray-100">
-          <div className="w-full h-[400px] relative overflow-hidden rounded-t-3xl">
-            <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-              <span className="text-gray-500">Здесь будет карта</span>
+              {/* Form Section */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+                className="bg-white rounded-2xl p-8 shadow-[0_20px_50px_rgba(0,0,0,0.1)] h-full flex flex-col border border-gray-100 relative z-20"
+              >
+                <div className="flex-grow">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-8">
+                    Оставьте заявку
+                  </h2>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Ваше имя
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.name}
+                          onChange={(e) =>
+                            setFormData({ ...formData, name: e.target.value })
+                          }
+                          className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all text-gray-900 placeholder-gray-500"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Телефон
+                        </label>
+                        <input
+                          type="tel"
+                          value={formData.phone}
+                          onChange={(e) =>
+                            setFormData({ ...formData, phone: e.target.value })
+                          }
+                          className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all text-gray-900 placeholder-gray-500"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) =>
+                          setFormData({ ...formData, email: e.target.value })
+                        }
+                        className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all text-gray-900 placeholder-gray-500"
+                        required
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Интересующая услуга
+                      </label>
+                      <select
+                        value={formData.service}
+                        onChange={(e) =>
+                          setFormData({ ...formData, service: e.target.value })
+                        }
+                        className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all text-gray-900 placeholder-gray-500"
+                      >
+                        <option value="construction">
+                          Строительные работы
+                        </option>
+                        <option value="equipment">Аренда техники</option>
+                        <option value="delivery">Доставка материалов</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Сообщение
+                      </label>
+                      <textarea
+                        value={formData.message}
+                        onChange={(e) =>
+                          setFormData({ ...formData, message: e.target.value })
+                        }
+                        rows={4}
+                        className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all text-gray-900 placeholder-gray-500 resize-none"
+                        required
+                      />
+                    </div>
+
+                    <motion.button
+                      type="submit"
+                      className="w-full bg-yellow-400 text-gray-900 font-semibold py-4 px-6 rounded-lg hover:bg-yellow-500 transition-all"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <span className="flex items-center justify-center">
+                          <svg
+                            className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-900"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            ></circle>
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
+                          </svg>
+                          Отправка...
+                        </span>
+                      ) : (
+                        'Отправить сообщение'
+                      )}
+                    </motion.button>
+
+                    {submitStatus === 'success' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="bg-green-50 text-green-800 rounded-lg p-4 mt-4"
+                      >
+                        Сообщение успешно отправлено! Мы свяжемся с вами в
+                        ближайшее время.
+                      </motion.div>
+                    )}
+                  </form>
+                </div>
+              </motion.div>
             </div>
           </div>
         </section>

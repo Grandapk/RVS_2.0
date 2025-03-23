@@ -2,7 +2,8 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
+import { motion } from 'framer-motion'
 
 interface NavigationProps {
   isTransparent?: boolean
@@ -11,6 +12,25 @@ interface NavigationProps {
 export default function Navigation({ isTransparent = false }: NavigationProps) {
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [lastScrollY, setLastScrollY] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+
+      if (currentScrollY > 150) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
+      }
+
+      setLastScrollY(currentScrollY)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [lastScrollY])
 
   const handleServicesMouseEnter = useCallback(() => {
     setIsServicesOpen(true)
@@ -29,9 +49,12 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
   }, [])
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        isTransparent ? 'bg-transparent backdrop-blur-md' : 'bg-gray-500'
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled ? 'bg-gray-500 shadow-lg' : 'bg-transparent backdrop-blur-sm'
       }`}
     >
       <div className="container mx-auto px-4">
@@ -54,7 +77,7 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
             >
               <div className="py-2">
                 <button
-                  className={`font-semibold transition-colors duration-300 flex items-center ${
+                  className={`font-semibold transition-colors duration-500 flex items-center ${
                     isTransparent
                       ? 'text-white hover:text-gray-200'
                       : 'text-white hover:text-gray-200'
@@ -62,7 +85,7 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
                 >
                   Услуги
                   <svg
-                    className={`ml-1 h-4 w-4 transform transition-transform duration-300 ${
+                    className={`ml-1 h-4 w-4 transform transition-transform duration-500 ${
                       isServicesOpen ? 'rotate-180' : ''
                     }`}
                     fill="none"
@@ -79,7 +102,7 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
                 </button>
               </div>
               <div
-                className={`absolute top-full left-1/2 -translate-x-1/2 w-72 transform transition-all duration-300 ${
+                className={`absolute top-full left-1/2 -translate-x-1/2 w-72 transform transition-all duration-500 ${
                   isServicesOpen
                     ? 'opacity-100 translate-y-0'
                     : 'opacity-0 -translate-y-2 pointer-events-none'
@@ -89,7 +112,7 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
                   <div className="bg-white rounded-xl shadow-xl border border-yellow-200 overflow-hidden">
                     <Link
                       href="/services/construction"
-                      className="block hover:bg-yellow-50 transition-colors duration-300"
+                      className="block hover:bg-yellow-50 transition-colors duration-500"
                     >
                       <div className="px-6 py-4">
                         <div className="flex items-center space-x-3">
@@ -121,7 +144,7 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
                     </Link>
                     <Link
                       href="/services/equipment"
-                      className="block hover:bg-yellow-50 transition-colors duration-300"
+                      className="block hover:bg-yellow-50 transition-colors duration-500"
                     >
                       <div className="px-6 py-4 border-t border-gray-100">
                         <div className="flex items-center space-x-3">
@@ -153,7 +176,7 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
                     </Link>
                     <Link
                       href="/services/delivery"
-                      className="block hover:bg-yellow-50 transition-colors duration-300"
+                      className="block hover:bg-yellow-50 transition-colors duration-500"
                     >
                       <div className="px-6 py-4 border-t border-gray-100">
                         <div className="flex items-center space-x-3">
@@ -190,7 +213,7 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
             <div className="py-2">
               <Link
                 href="/#portfolio"
-                className={`font-semibold transition-colors duration-300 ${
+                className={`font-semibold transition-colors duration-500 ${
                   isTransparent
                     ? 'text-white hover:text-gray-200'
                     : 'text-white hover:text-gray-200'
@@ -202,7 +225,7 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
             <div className="py-2">
               <Link
                 href="/#about"
-                className={`font-semibold transition-colors duration-300 ${
+                className={`font-semibold transition-colors duration-500 ${
                   isTransparent
                     ? 'text-white hover:text-gray-200'
                     : 'text-white hover:text-gray-200'
@@ -214,7 +237,7 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
             <div className="py-2">
               <Link
                 href="/contact"
-                className={`font-semibold transition-colors duration-300 ${
+                className={`font-semibold transition-colors duration-500 ${
                   isTransparent
                     ? 'text-white hover:text-gray-200'
                     : 'text-white hover:text-gray-200'
@@ -226,7 +249,7 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
           </div>
           {/* Мобильное меню */}
           <button
-            className="md:hidden text-white font-semibold hover:text-gray-200 transition-colors duration-300"
+            className="md:hidden text-white font-semibold hover:text-gray-200 transition-colors duration-500"
             onClick={handleMobileMenuToggle}
           >
             <svg
@@ -260,11 +283,11 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
               <div className="relative">
                 <button
                   onClick={handleServicesToggle}
-                  className="w-full text-left px-4 py-3 text-base font-medium text-gray-900 hover:bg-yellow-50 rounded-lg transition-colors duration-300 flex justify-between items-center"
+                  className="w-full text-left px-4 py-3 text-base font-medium text-gray-900 hover:bg-yellow-50 rounded-lg transition-colors duration-500 flex justify-between items-center"
                 >
                   <span>Услуги</span>
                   <svg
-                    className={`h-4 w-4 transform transition-transform duration-300 ${
+                    className={`h-4 w-4 transform transition-transform duration-500 ${
                       isServicesOpen ? 'rotate-180' : ''
                     }`}
                     fill="none"
@@ -280,14 +303,14 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
                   </svg>
                 </button>
                 <div
-                  className={`transition-all duration-300 overflow-hidden ${
+                  className={`transition-all duration-500 overflow-hidden ${
                     isServicesOpen ? 'max-h-96' : 'max-h-0'
                   }`}
                 >
                   <div className="px-4 py-2 space-y-2">
                     <Link
                       href="/services/construction"
-                      className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-yellow-50 rounded-lg transition-colors duration-300"
+                      className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-yellow-50 rounded-lg transition-colors duration-500"
                     >
                       <div className="flex items-center space-x-3">
                         <div className="p-2 bg-yellow-100 rounded-lg">
@@ -317,7 +340,7 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
                     </Link>
                     <Link
                       href="/services/equipment"
-                      className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-yellow-50 rounded-lg transition-colors duration-300"
+                      className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-yellow-50 rounded-lg transition-colors duration-500"
                     >
                       <div className="flex items-center space-x-3">
                         <div className="p-2 bg-yellow-100 rounded-lg">
@@ -345,7 +368,7 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
                     </Link>
                     <Link
                       href="/services/delivery"
-                      className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-yellow-50 rounded-lg transition-colors duration-300"
+                      className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-yellow-50 rounded-lg transition-colors duration-500"
                     >
                       <div className="flex items-center space-x-3">
                         <div className="p-2 bg-yellow-100 rounded-lg">
@@ -378,19 +401,19 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
               </div>
               <Link
                 href="/#portfolio"
-                className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-yellow-50 rounded-lg transition-colors duration-300"
+                className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-yellow-50 rounded-lg transition-colors duration-500"
               >
                 Портфолио
               </Link>
               <Link
                 href="/#about"
-                className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-yellow-50 rounded-lg transition-colors duration-300"
+                className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-yellow-50 rounded-lg transition-colors duration-500"
               >
                 О нас
               </Link>
               <Link
                 href="/contact"
-                className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-yellow-50 rounded-lg transition-colors duration-300"
+                className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-yellow-50 rounded-lg transition-colors duration-500"
               >
                 Связаться
               </Link>
@@ -398,6 +421,6 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
           </div>
         )}
       </div>
-    </nav>
+    </motion.nav>
   )
 }
