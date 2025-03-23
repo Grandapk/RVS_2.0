@@ -97,7 +97,7 @@ export default function FAQSection() {
                   onClick={() =>
                     setOpenIndex(openIndex === index ? null : index)
                   }
-                  className="w-full px-6 py-4 flex items-center justify-between text-left cursor-pointer hover:bg-gray-700/30 transition-colors duration-300"
+                  className="w-full px-6 py-4 flex items-center justify-between text-left"
                 >
                   <span className="text-lg font-medium text-white">
                     {item.question}
@@ -150,7 +150,7 @@ export default function FAQSection() {
           >
             <Link href="/contact">
               <motion.button
-                className="px-8 py-4 bg-gradient-to-r from-[#FFA800] via-[#FFB800] to-[#FFC700] rounded-full text-gray-900 font-bold text-lg shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                className="px-8 py-4 bg-gradient-to-r from-[#FFA800] via-[#FFB800] to-[#FFC700] rounded-full text-gray-900 font-bold text-lg shadow-lg hover:shadow-xl transition-shadow"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 17 }}

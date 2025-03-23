@@ -14,6 +14,21 @@ import { useRouter } from 'next/navigation'
 export default function Home() {
   const router = useRouter()
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [isTransparentNav, setIsTransparentNav] = useState(true)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const videoSection = document.getElementById('home')
+      if (videoSection) {
+        const rect = videoSection.getBoundingClientRect()
+        setIsTransparentNav(rect.bottom > 0)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   const portfolioSlides = [
     {
       src: '/images/portfolio/portfolio-1.webp',
@@ -43,7 +58,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navigation />
+      <Navigation isTransparent={isTransparentNav} />
 
       {/* Основной контент */}
       <main className="flex-grow">

@@ -4,7 +4,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useCallback } from 'react'
 
-export default function Navigation() {
+interface NavigationProps {
+  isTransparent?: boolean
+}
+
+export default function Navigation({ isTransparent = false }: NavigationProps) {
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -25,7 +29,11 @@ export default function Navigation() {
   }, [])
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-grey/30 from-yellow-400 to-yellow-500 backdrop-blur-md shadow-lg z-50">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+        isTransparent ? 'bg-transparent backdrop-blur-md' : 'bg-gray-900'
+      }`}
+    >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="relative w-48 h-12">
