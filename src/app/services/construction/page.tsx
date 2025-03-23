@@ -9,6 +9,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import ReviewsSection from '@/components/ReviewsSection'
+import FAQSection from '@/components/FAQSection'
 
 export default function ConstructionServices() {
   const [isVisible, setIsVisible] = useState(false)
@@ -186,7 +187,23 @@ export default function ConstructionServices() {
           </div>
         </section>
 
-        <ReviewsSection />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.8 }}
+        >
+          <ReviewsSection />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.8 }}
+        >
+          <FAQSection />
+        </motion.div>
       </main>
       <Footer />
     </div>
