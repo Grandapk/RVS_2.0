@@ -58,7 +58,12 @@ export default function Footer() {
             </div>
             <div className="text-gray-400">
               <p>Роман Шахалевич</p>
-              <p>+372 53 320 419</p>
+              <a
+                href="tel:+37253320419"
+                className="hover:text-white transition-colors"
+              >
+                +372 53 320 419
+              </a>
             </div>
             {/* Социальные сети */}
             <div className="flex space-x-4">

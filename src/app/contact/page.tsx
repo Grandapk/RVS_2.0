@@ -1,6 +1,8 @@
 'use client'
 
+import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
@@ -10,62 +12,88 @@ export default function ContactPage() {
     email: '',
     phone: '',
     message: '',
+    service: 'construction',
   })
 
-  const [isVisible, setIsVisible] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<
+    'idle' | 'success' | 'error'
+  >('idle')
+  const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
-    setIsVisible(true)
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Здесь будет логика отправки формы
-    console.log('Form submitted:', formData)
-  }
+    setIsSubmitting(true)
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
+    // Здесь будет логика отправки формы
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+
+    setIsSubmitting(false)
+    setSubmitStatus('success')
+
+    // Сброс формы
+    setTimeout(() => {
+      setSubmitStatus('idle')
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+        service: 'construction',
+      })
+    }, 3000)
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navigation />
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      <Navigation isTransparent={!isScrolled} />
 
       <main className="flex-grow">
-        <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600">
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,0,0,0.1)_1px,transparent_1px)] bg-[length:20px_20px]"></div>
-            <div className="absolute inset-0 rotate-45 bg-[radial-gradient(circle_at_50%_50%,rgba(0,0,0,0.1)_1px,transparent_1px)] bg-[length:20px_20px]"></div>
+        {/* Hero Section */}
+        <section className="relative min-h-[500px] flex items-center justify-center bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 overflow-hidden">
+          {/* Animated Background */}
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px]"></div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 2 }}
+              className="absolute inset-0 bg-gradient-to-r from-yellow-300/20 via-transparent to-yellow-300/20"
+            ></motion.div>
           </div>
 
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-30">
-            <div className="absolute inset-0 rounded-full bg-white blur-3xl animate-pulse"></div>
-            <div className="absolute inset-0 rounded-full bg-yellow-300 blur-3xl animate-pulse delay-700"></div>
-          </div>
-
-          <div className="container mx-auto px-4 relative z-10 pt-20 md:pt-0">
-            <div
-              className={`text-center transform transition-all duration-1000 ${
-                isVisible
-                  ? 'translate-y-0 opacity-100'
-                  : 'translate-y-10 opacity-0'
-              }`}
+          {/* Content */}
+          <div className="container mx-auto px-4 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center"
             >
-              <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight drop-shadow-sm">
+              <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
                 Свяжитесь с нами
               </h1>
-              <p className="text-xl md:text-2xl text-gray-800 max-w-2xl mx-auto mb-12 leading-relaxed drop-shadow-sm">
-                Мы всегда открыты для диалога и готовы ответить на все ваши
-                вопросы
+              <p className="text-xl text-gray-800 max-w-2xl mx-auto mb-12">
+                Мы готовы помочь реализовать ваши проекты. Оставьте заявку, и мы
+                свяжемся с вами в ближайшее время.
               </p>
 
-              <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
-                <div className="bg-white/95 backdrop-blur-lg rounded-2xl p-6 transform hover:scale-105 transition-all duration-300 hover:bg-white group shadow-lg">
-                  <div className="w-12 h-12 bg-yellow-400 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:rotate-12 transition-transform duration-300">
+              {/* Contact Cards */}
+              <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  className="bg-white/90 backdrop-blur-lg p-6 rounded-xl border border-yellow-200 shadow-lg"
+                >
+                  <div className="w-12 h-12 bg-yellow-400 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <svg
                       className="w-6 h-6 text-gray-900"
                       fill="none"
@@ -81,11 +109,19 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <h3 className="text-gray-900 font-semibold mb-2">Телефон</h3>
-                  <p className="text-gray-600">+372 53 320 419</p>
-                </div>
+                  <a
+                    href="tel:+37253320419"
+                    className="text-gray-600 hover:text-yellow-600 transition-colors"
+                  >
+                    +372 533 20 419
+                  </a>
+                </motion.div>
 
-                <div className="bg-white/95 backdrop-blur-lg rounded-2xl p-6 transform hover:scale-105 transition-all duration-300 hover:bg-white group shadow-lg">
-                  <div className="w-12 h-12 bg-yellow-400 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:rotate-12 transition-transform duration-300">
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  className="bg-white/90 backdrop-blur-lg p-6 rounded-xl border border-yellow-200 shadow-lg"
+                >
+                  <div className="w-12 h-12 bg-yellow-400 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <svg
                       className="w-6 h-6 text-gray-900"
                       fill="none"
@@ -101,11 +137,19 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <h3 className="text-gray-900 font-semibold mb-2">Email</h3>
-                  <p className="text-gray-600">info@example.com</p>
-                </div>
+                  <a
+                    href="mailto:info@rvs.ee"
+                    className="text-gray-600 hover:text-yellow-600 transition-colors"
+                  >
+                    info@rvs.ee
+                  </a>
+                </motion.div>
 
-                <div className="bg-white/95 backdrop-blur-lg rounded-2xl p-6 transform hover:scale-105 transition-all duration-300 hover:bg-white group shadow-lg">
-                  <div className="w-12 h-12 bg-yellow-400 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:rotate-12 transition-transform duration-300">
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  className="bg-white/90 backdrop-blur-lg p-6 rounded-xl border border-yellow-200 shadow-lg"
+                >
+                  <div className="w-12 h-12 bg-yellow-400 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <svg
                       className="w-6 h-6 text-gray-900"
                       fill="none"
@@ -127,105 +171,163 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <h3 className="text-gray-900 font-semibold mb-2">Адрес</h3>
-                  <p className="text-gray-600">Tammiku, Jõhvi, Estonia</p>
-                </div>
+                  <p className="text-gray-600">Tammi, Estonia</p>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
-          <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-b from-transparent via-transparent to-white"></div>
+          {/* Gradient Overlay for smooth transition */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
         </section>
 
+        {/* Form Section */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <div className="bg-gray-50 rounded-2xl p-8 shadow-lg">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                  Напишите нам
+            <div className="max-w-3xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="bg-white rounded-2xl p-8 shadow-xl"
+              >
+                <h2 className="text-3xl font-bold text-gray-900 mb-8">
+                  Оставьте заявку
                 </h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Ваше имя
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-colors duration-300"
-                      required
-                    />
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Ваше имя
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.name}
+                        onChange={(e) =>
+                          setFormData({ ...formData, name: e.target.value })
+                        }
+                        className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all text-gray-900 placeholder-gray-500"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Телефон
+                      </label>
+                      <input
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) =>
+                          setFormData({ ...formData, phone: e.target.value })
+                        }
+                        className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all text-gray-900 placeholder-gray-500"
+                        required
+                      />
+                    </div>
                   </div>
+
                   <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
                       Email
                     </label>
                     <input
                       type="email"
-                      id="email"
-                      name="email"
                       value={formData.email}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-colors duration-300"
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
+                      className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all text-gray-900 placeholder-gray-500"
                       required
                     />
                   </div>
+
                   <div>
-                    <label
-                      htmlFor="phone"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Телефон
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Интересующая услуга
                     </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-colors duration-300"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                    <select
+                      value={formData.service}
+                      onChange={(e) =>
+                        setFormData({ ...formData, service: e.target.value })
+                      }
+                      className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all text-gray-900 placeholder-gray-500"
                     >
+                      <option value="construction">Строительные работы</option>
+                      <option value="equipment">Аренда техники</option>
+                      <option value="delivery">Доставка материалов</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
                       Сообщение
                     </label>
                     <textarea
-                      id="message"
-                      name="message"
                       value={formData.message}
-                      onChange={handleChange}
+                      onChange={(e) =>
+                        setFormData({ ...formData, message: e.target.value })
+                      }
                       rows={4}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-colors duration-300 resize-none"
+                      className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all text-gray-900 placeholder-gray-500 resize-none"
                       required
-                    ></textarea>
+                    />
                   </div>
-                  <button
+
+                  <motion.button
                     type="submit"
-                    className="w-full bg-yellow-400 text-gray-900 font-semibold py-4 px-6 rounded-lg hover:bg-yellow-500 transition-colors duration-300 shadow-lg hover:shadow-xl"
+                    className="w-full bg-yellow-400 text-gray-900 font-semibold py-4 px-6 rounded-lg hover:bg-yellow-500 transition-all"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    disabled={isSubmitting}
                   >
-                    Отправить сообщение
-                  </button>
+                    {isSubmitting ? (
+                      <span className="flex items-center justify-center">
+                        <svg
+                          className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-900"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          ></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          ></path>
+                        </svg>
+                        Отправка...
+                      </span>
+                    ) : (
+                      'Отправить сообщение'
+                    )}
+                  </motion.button>
+
+                  {submitStatus === 'success' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="bg-green-50 text-green-800 rounded-lg p-4 mt-4"
+                    >
+                      Сообщение успешно отправлено! Мы свяжемся с вами в
+                      ближайшее время.
+                    </motion.div>
+                  )}
                 </form>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
 
-        <section className="h-[400px] bg-gray-100">
-          <div className="w-full h-full">
+        {/* Map Section */}
+        <section className="bg-gray-100">
+          <div className="w-full h-[400px] relative overflow-hidden rounded-t-3xl">
             <div className="w-full h-full bg-gray-200 flex items-center justify-center">
               <span className="text-gray-500">Здесь будет карта</span>
             </div>
