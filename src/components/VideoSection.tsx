@@ -1,12 +1,15 @@
 'use client'
 
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/navigation'
 
 const VideoBackground = dynamic(() => import('./VideoBackground'), {
   ssr: false,
 })
 
 export default function VideoSection() {
+  const router = useRouter()
+
   return (
     <section
       id="home"
@@ -22,18 +25,26 @@ export default function VideoSection() {
             Работаем с доверием
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mt-8 items-center sm:items-start">
-            <a
-              href="#portfolio"
-              className="inline-block px-8 py-4 bg-yellow-400 font-bold text-lg text-gray-900 rounded-full hover:bg-yellow-500 transition-colors duration-300 w-auto"
+            <button
+              onClick={() => router.push('/portfolio')}
+              className="group relative px-8 py-3 bg-yellow-400 text-gray-900 rounded-full hover:bg-[#1B2A3B] transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105"
             >
-              НАШИ РАБОТЫ
-            </a>
-            <a
-              href="#reviews"
-              className="inline-block px-8 py-4 bg-transparent border-2 border-white font-bold text-lg text-white rounded-full hover:bg-white/10 transition-colors duration-300 w-auto"
+              <span className="relative z-10 text-xl font-bold group-hover:text-white transition-colors duration-300">
+                НАШИ РАБОТЫ
+              </span>
+              <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+              <div className="absolute inset-0 bg-yellow-400 transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
+            </button>
+            <button
+              onClick={() => router.push('/#reviews')}
+              className="group relative px-8 py-3 bg-transparent border-2 border-white text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105"
             >
-              ОТЗЫВЫ
-            </a>
+              <span className="relative z-10 text-xl font-bold group-hover:text-gray-900 transition-colors duration-300">
+                ОТЗЫВЫ
+              </span>
+              <div className="absolute inset-0 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+              <div className="absolute inset-0 bg-transparent transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
+            </button>
           </div>
         </div>
       </div>

@@ -5,10 +5,14 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { useRouter } from 'next/navigation'
 import ImageSlider from '@/components/ImageSlider'
+import Image from 'next/image'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 export default function ConstructionServices() {
   const [isVisible, setIsVisible] = useState(false)
   const router = useRouter()
+  const [isScrolled, setIsScrolled] = useState(false)
 
   const slides = [
     {
@@ -29,13 +33,22 @@ export default function ConstructionServices() {
     setIsVisible(true)
   }, [])
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   const handleConsultation = () => {
     router.push('/contact')
   }
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navigation />
+      <Navigation isTransparent={!isScrolled} />
       <main className="flex-grow">
         <section className="relative h-screen flex items-center justify-center overflow-hidden">
           <video
@@ -62,16 +75,24 @@ export default function ConstructionServices() {
               </h1>
               <div className="flex flex-col sm:flex-row gap-4 justify-start">
                 <button
-                  onClick={handleConsultation}
-                  className="bg-yellow-400 border-2 border-yellow-400 text-gray-900 font-semibold py-4 px-8 rounded-full hover:bg-yellow-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-lg"
+                  onClick={() => router.push('/services/construction#contact')}
+                  className="group relative px-8 py-3 bg-yellow-400 text-gray-900 rounded-full hover:bg-[#1B2A3B] transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105"
                 >
-                  ЗАКАЗАТЬ КОНСУЛЬТАЦИЮ
+                  <span className="relative z-10 text-xl font-bold group-hover:text-white transition-colors duration-300">
+                    ЗАКАЗАТЬ КОНСУЛЬТАЦИЮ
+                  </span>
+                  <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                  <div className="absolute inset-0 bg-yellow-400 transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
                 </button>
                 <button
-                  onClick={() => router.push('/portfolio')}
-                  className="bg-transparent border-2 border-yellow-400 text-yellow-400 font-semibold py-4 px-8 rounded-full hover:bg-yellow-400/10 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-lg"
+                  onClick={() => router.push('/services/construction#reviews')}
+                  className="group relative px-8 py-3 bg-transparent border-2 border-white text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105"
                 >
-                  ОТЗЫВЫ
+                  <span className="relative z-10 text-xl font-bold group-hover:text-gray-900 transition-colors duration-300">
+                    ОТЗЫВЫ
+                  </span>
+                  <div className="absolute inset-0 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                  <div className="absolute inset-0 bg-transparent transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
                 </button>
               </div>
             </div>

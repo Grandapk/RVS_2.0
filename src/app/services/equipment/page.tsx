@@ -5,7 +5,8 @@ import Image from 'next/image'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import ReviewsSection from '@/components/ReviewsSection'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 const equipment = [
   {
@@ -38,10 +39,22 @@ export default function EquipmentPage() {
   const [selectedEquipment, setSelectedEquipment] = useState<number | null>(
     null
   )
+  const [isScrolled, setIsScrolled] = useState(false)
+  const router = useRouter()
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY
+      setIsScrolled(scrollPosition > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navigation isTransparent={false} />
+      <Navigation isTransparent={!isScrolled} />
 
       {/* Hero Section */}
       <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
@@ -70,6 +83,28 @@ export default function EquipmentPage() {
               Надежная техника для любых строительных работ. Гибкие условия
               аренды и профессиональные операторы.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-start">
+              <button
+                onClick={() => router.push('/services/equipment#contact')}
+                className="group relative px-6 py-2.5 bg-[#1B2A3B] text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105"
+              >
+                <span className="relative z-10 text-lg font-medium group-hover:text-gray-900 transition-colors duration-300">
+                  ЗАКАЗАТЬ КОНСУЛЬТАЦИЮ
+                </span>
+                <div className="absolute inset-0 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
+              </button>
+              <button
+                onClick={() => router.push('/services/equipment#reviews')}
+                className="group relative px-6 py-2.5 bg-[#1B2A3B] text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105"
+              >
+                <span className="relative z-10 text-lg font-medium group-hover:text-gray-900 transition-colors duration-300">
+                  ОТЗЫВЫ
+                </span>
+                <div className="absolute inset-0 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
+              </button>
+            </div>
           </motion.div>
         </div>
       </section>

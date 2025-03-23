@@ -31,7 +31,7 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        isTransparent ? 'bg-transparent backdrop-blur-md' : 'bg-gray-900'
+        isTransparent ? 'bg-transparent backdrop-blur-md' : 'bg-gray-500'
       }`}
     >
       <div className="container mx-auto px-4">
@@ -53,7 +53,13 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
               onMouseLeave={handleServicesMouseLeave}
             >
               <div className="py-2">
-                <button className="text-white font-semibold hover:text-gray-200 transition-colors duration-300 flex items-center">
+                <button
+                  className={`font-semibold transition-colors duration-300 flex items-center ${
+                    isTransparent
+                      ? 'text-white hover:text-gray-200'
+                      : 'text-white hover:text-gray-200'
+                  }`}
+                >
                   Услуги
                   <svg
                     className={`ml-1 h-4 w-4 transform transition-transform duration-300 ${
@@ -184,7 +190,11 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
             <div className="py-2">
               <Link
                 href="/#portfolio"
-                className="text-white font-semibold hover:text-gray-200 transition-colors duration-300"
+                className={`font-semibold transition-colors duration-300 ${
+                  isTransparent
+                    ? 'text-white hover:text-gray-200'
+                    : 'text-white hover:text-gray-200'
+                }`}
               >
                 Портфолио
               </Link>
@@ -192,7 +202,11 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
             <div className="py-2">
               <Link
                 href="/#about"
-                className="text-white font-semibold hover:text-gray-200 transition-colors duration-300"
+                className={`font-semibold transition-colors duration-300 ${
+                  isTransparent
+                    ? 'text-white hover:text-gray-200'
+                    : 'text-white hover:text-gray-200'
+                }`}
               >
                 О нас
               </Link>
@@ -200,7 +214,11 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
             <div className="py-2">
               <Link
                 href="/contact"
-                className="text-white font-semibold hover:text-gray-200 transition-colors duration-300"
+                className={`font-semibold transition-colors duration-300 ${
+                  isTransparent
+                    ? 'text-white hover:text-gray-200'
+                    : 'text-white hover:text-gray-200'
+                }`}
               >
                 Связаться
               </Link>
