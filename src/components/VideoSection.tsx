@@ -24,12 +24,12 @@ export default function VideoSection() {
           <p className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-left text-yellow-400">
             Работаем с доверием
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 mt-8 items-center sm:items-start">
+          <div className="flex flex-col sm:flex-row gap-4 mt-8">
             <button
               onClick={() => router.push('/portfolio')}
-              className="group relative px-8 py-3 bg-yellow-400 text-gray-900 rounded-full hover:bg-[#1B2A3B] transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105"
+              className="group relative px-6 sm:px-8 py-3 bg-yellow-400 text-gray-900 rounded-full hover:bg-[#1B2A3B] transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105 w-fit"
             >
-              <span className="relative z-10 text-xl font-bold group-hover:text-white transition-colors duration-300">
+              <span className="relative z-10 text-lg sm:text-xl font-bold group-hover:text-white transition-colors duration-300 whitespace-nowrap">
                 НАШИ РАБОТЫ
               </span>
               <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
@@ -37,9 +37,9 @@ export default function VideoSection() {
             </button>
             <button
               onClick={() => router.push('/#reviews')}
-              className="group relative px-8 py-3 bg-transparent border-2 border-white text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105"
+              className="group relative px-6 sm:px-8 py-3 bg-transparent border-2 border-white text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105 w-fit"
             >
-              <span className="relative z-10 text-xl font-bold group-hover:text-gray-900 transition-colors duration-300">
+              <span className="relative z-10 text-lg sm:text-xl font-bold group-hover:text-gray-900 transition-colors duration-300 whitespace-nowrap">
                 ОТЗЫВЫ
               </span>
               <div className="absolute inset-0 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>

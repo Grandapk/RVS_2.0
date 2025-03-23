@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import ReviewsSection from '@/components/ReviewsSection'
+import FAQSection from '@/components/FAQSection'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
@@ -74,109 +75,34 @@ export default function EquipmentPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="max-w-4xl"
           >
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-2 text-left text-white">
               Аренда строительной техники
             </h1>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto">
-              Надежная техника для любых строительных работ. Гибкие условия
-              аренды и профессиональные операторы.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 mt-8">
               <button
                 onClick={() => router.push('/services/equipment#contact')}
-                className="group relative px-6 py-2.5 bg-[#1B2A3B] text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105"
+                className="group relative px-6 sm:px-8 py-3 bg-yellow-400 text-gray-900 rounded-full hover:bg-[#1B2A3B] transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105 w-fit"
               >
-                <span className="relative z-10 text-lg font-medium group-hover:text-gray-900 transition-colors duration-300">
+                <span className="relative z-10 text-lg sm:text-xl font-bold group-hover:text-white transition-colors duration-300 whitespace-nowrap">
                   ЗАКАЗАТЬ КОНСУЛЬТАЦИЮ
                 </span>
-                <div className="absolute inset-0 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
+                <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                <div className="absolute inset-0 bg-yellow-400 transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
               </button>
               <button
                 onClick={() => router.push('/services/equipment#reviews')}
-                className="group relative px-6 py-2.5 bg-[#1B2A3B] text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105"
+                className="group relative px-6 sm:px-8 py-3 bg-transparent border-2 border-white text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105 w-fit"
               >
-                <span className="relative z-10 text-lg font-medium group-hover:text-gray-900 transition-colors duration-300">
+                <span className="relative z-10 text-lg sm:text-xl font-bold group-hover:text-gray-900 transition-colors duration-300 whitespace-nowrap">
                   ОТЗЫВЫ
                 </span>
                 <div className="absolute inset-0 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
+                <div className="absolute inset-0 bg-transparent transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
               </button>
             </div>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Equipment Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Наша техника
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Мы предлагаем широкий выбор строительной техники для различных
-              задач
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            {equipment.map((item, index) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{
-                  duration: 0.8,
-                  delay: index * 0.3,
-                  type: 'spring',
-                  stiffness: 100,
-                }}
-                whileHover={{
-                  scale: 1.02,
-                  transition: { duration: 0.3 },
-                }}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-              >
-                <div className="relative w-full aspect-[16/9]">
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-8">
-                  <h3 className="text-3xl font-bold text-gray-900 mb-4">
-                    {item.name}
-                  </h3>
-                  <p className="text-lg text-gray-600 mb-6 min-h-[4.5rem]">
-                    {item.description}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <div className="text-2xl font-bold text-yellow-500">
-                      {item.price}
-                    </div>
-                    <button
-                      onClick={() => setSelectedEquipment(item.id)}
-                      className="px-8 py-3 bg-gray-900 text-white rounded-full hover:bg-yellow-500 transition-colors duration-300 text-lg"
-                    >
-                      Заказать
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -284,6 +210,77 @@ export default function EquipmentPage() {
         </div>
       </section>
 
+      {/* Equipment Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Наша техника
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Мы предлагаем широкий выбор строительной техники для различных
+              задач
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {equipment.map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true, margin: '-100px' }}
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.3,
+                  type: 'spring',
+                  stiffness: 100,
+                }}
+                whileHover={{
+                  scale: 1.02,
+                  transition: { duration: 0.3 },
+                }}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              >
+                <div className="relative w-full aspect-[16/9]">
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-8">
+                  <h3 className="text-3xl font-bold text-gray-900 mb-4">
+                    {item.name}
+                  </h3>
+                  <p className="text-lg text-gray-600 mb-6 min-h-[4.5rem]">
+                    {item.description}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <div className="text-2xl font-bold text-yellow-500">
+                      {item.price}
+                    </div>
+                    <button
+                      onClick={() => setSelectedEquipment(item.id)}
+                      className="px-8 py-3 bg-gray-900 text-white rounded-full hover:bg-yellow-500 transition-colors duration-300 text-lg"
+                    >
+                      Заказать
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -291,6 +288,15 @@ export default function EquipmentPage() {
         transition={{ duration: 0.8 }}
       >
         <ReviewsSection />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-100px' }}
+        transition={{ duration: 0.8 }}
+      >
+        <FAQSection />
       </motion.div>
 
       <Footer />

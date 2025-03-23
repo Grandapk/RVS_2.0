@@ -8,6 +8,7 @@ import ImageSlider from '@/components/ImageSlider'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import ReviewsSection from '@/components/ReviewsSection'
 
 export default function ConstructionServices() {
   const [isVisible, setIsVisible] = useState(false)
@@ -51,34 +52,32 @@ export default function ConstructionServices() {
       <Navigation isTransparent={!isScrolled} />
       <main className="flex-grow">
         <section className="relative h-screen flex items-center justify-center overflow-hidden">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
+          <Image
+            src="/images/constructions/construction-hero-bg.webp"
+            alt="Строительные работы"
+            fill
             className="absolute inset-0 w-full h-full object-cover"
-          >
-            <source src="/videos/construction-bg.webm" type="video/webm" />
-          </video>
+            priority
+          />
           <div className="absolute inset-0 bg-black/20"></div>
 
           <div className="container mx-auto px-4 relative z-10">
-            <div
-              className={`transform transition-all duration-1000 max-w-2xl ${
-                isVisible
-                  ? 'translate-y-0 opacity-100'
-                  : 'translate-y-10 opacity-0'
-              }`}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-100px' }}
+              transition={{ duration: 0.8 }}
+              className="max-w-4xl"
             >
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight drop-shadow-lg text-left">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-8 tracking-tight drop-shadow-lg text-left">
                 Общестроительные работы
               </h1>
-              <div className="flex flex-col sm:flex-row gap-4 justify-start">
+              <div className="flex flex-col sm:flex-row gap-4 justify-start w-full sm:w-auto">
                 <button
-                  onClick={() => router.push('/services/construction#contact')}
-                  className="group relative px-8 py-3 bg-yellow-400 text-gray-900 rounded-full hover:bg-[#1B2A3B] transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105"
+                  onClick={handleConsultation}
+                  className="group relative px-6 sm:px-8 py-3 bg-yellow-400 text-gray-900 rounded-full hover:bg-[#1B2A3B] transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105 w-fit"
                 >
-                  <span className="relative z-10 text-xl font-bold group-hover:text-white transition-colors duration-300">
+                  <span className="relative z-10 text-lg sm:text-xl font-bold group-hover:text-white transition-colors duration-300 whitespace-nowrap">
                     ЗАКАЗАТЬ КОНСУЛЬТАЦИЮ
                   </span>
                   <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
@@ -86,16 +85,16 @@ export default function ConstructionServices() {
                 </button>
                 <button
                   onClick={() => router.push('/services/construction#reviews')}
-                  className="group relative px-8 py-3 bg-transparent border-2 border-white text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105"
+                  className="group relative px-6 sm:px-8 py-3 bg-transparent border-2 border-white text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105 w-fit"
                 >
-                  <span className="relative z-10 text-xl font-bold group-hover:text-gray-900 transition-colors duration-300">
+                  <span className="relative z-10 text-lg sm:text-xl font-bold group-hover:text-gray-900 transition-colors duration-300 whitespace-nowrap">
                     ОТЗЫВЫ
                   </span>
                   <div className="absolute inset-0 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                   <div className="absolute inset-0 bg-transparent transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
                 </button>
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -187,42 +186,7 @@ export default function ConstructionServices() {
           </div>
         </section>
 
-        <section className="bg-yellow-400 py-24 relative overflow-hidden">
-          <div className="container mx-auto px-4 relative">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-8">
-                <h2 className="text-4xl md:text-5xl font-bold text-white">
-                  СТРОИТЕЛЬСТВО И РЕМОНТ
-                </h2>
-                <ul className="space-y-4 text-xl text-white">
-                  <li className="flex items-center space-x-2">
-                    <span>•</span>
-                    <span>Объектов различного назначения</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <span>•</span>
-                    <span>Профильных и черепичных крыш</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <span>•</span>
-                    <span>
-                      Домов, квартир, офисов и других жилых и производственных
-                      объектов
-                    </span>
-                  </li>
-                </ul>
-              </div>
-              <div className="relative h-[400px] md:h-[500px]">
-                <ImageSlider
-                  images={slides}
-                  height="h-full"
-                  cornerRadius="rounded-[60px]"
-                  paginationColor="white"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+        <ReviewsSection />
       </main>
       <Footer />
     </div>

@@ -36,12 +36,12 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className="relative w-48 h-12">
+          <Link href="/" className="relative w-56 h-14">
             <Image
               src="/images/logo/main-logo.png"
               alt="Логотип"
               fill
-              sizes="(max-width: 768px) 120px, 192px"
+              sizes="(max-width: 768px) 144px, 224px"
               className="object-contain"
               priority
             />
