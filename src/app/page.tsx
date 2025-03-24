@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { motion } from 'framer-motion'
 
 export default function Home() {
   const router = useRouter()
@@ -66,10 +67,23 @@ export default function Home() {
         <VideoSection />
 
         {/* Секция О нас */}
-        <section id="about" className="py-20 bg-white">
+        <motion.section
+          id="about"
+          className="py-20 bg-white"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.8 }}
+        >
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="grid grid-cols-2 gap-4">
+              <motion.div
+                className="grid grid-cols-2 gap-4"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
                 <div className="col-span-2">
                   <ImageSlider
                     images={[
@@ -94,85 +108,60 @@ export default function Home() {
                     paginationColor="white"
                   />
                 </div>
-              </div>
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-4xl font-bold mb-6 text-gray-900">
-                    Строим с душой,
-                    <br />
-                    работаем на результат
-                  </h3>
-                  <p className="text-lg text-gray-500">
-                    Мы — ваш надежный партнер в строительстве. Наш путь — это
-                    годы опыта, преданность делу и стремление к высокому
-                    качеству. Мы строим не только здания, но и репутацию.
-                  </p>
-                </div>
-                <div className="grid grid-cols-3 gap-6 mt-12">
-                  <div className="text-center">
-                    <div className="flex items-baseline justify-center">
-                      <span className="text-5xl font-bold text-gray-900">
-                        10
-                      </span>
-                      <span className="text-3xl font-bold text-yellow-500 ml-1">
-                        +
-                      </span>
-                    </div>
-                    <p className="text-base text-gray-500 mt-2">
-                      Лет опыта
-                      <br />
-                      на рынке
-                    </p>
-                  </div>
-                  <div className="text-center">
-                    <div className="flex items-baseline justify-center">
-                      <span className="text-5xl font-bold text-gray-900">
-                        50
-                      </span>
-                      <span className="text-3xl font-bold text-yellow-500 ml-1">
-                        +
-                      </span>
-                    </div>
-                    <p className="text-base text-gray-500 mt-2">
-                      Успешных
-                      <br />
-                      проектов
-                    </p>
-                  </div>
-                  <div className="text-center">
-                    <div className="flex items-baseline justify-center">
-                      <span className="text-5xl font-bold text-gray-900">
-                        99
-                      </span>
-                      <span className="text-3xl font-bold text-yellow-400 ml-1">
-                        %
-                      </span>
-                    </div>
-                    <p className="text-base text-gray-500 mt-2">
-                      Счастливых
-                      <br />
-                      клиентов
-                    </p>
-                  </div>
-                </div>
-              </div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                <h2 className="text-4xl font-bold text-gray-900 mb-6">О нас</h2>
+                <p className="text-lg text-gray-600 mb-6">
+                  Мы предоставляем полный спектр строительных услуг, начиная от
+                  проектирования и заканчивая отделкой помещений. Наша команда
+                  профессионалов гарантирует высокое качество работ и соблюдение
+                  всех сроков.
+                </p>
+                <p className="text-lg text-gray-600">
+                  Мы используем современные технологии и материалы, чтобы
+                  обеспечить долговечность и надежность наших проектов.
+                </p>
+              </motion.div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Секция Наши услуги */}
-        <section className="py-20 bg-white">
+        <motion.section
+          className="py-20 bg-white"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.8 }}
+        >
           <div className="container mx-auto px-4">
-            <div className="flex items-center gap-4 mb-20">
+            <motion.div
+              className="flex items-center gap-4 mb-20"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
               <h2 className="text-4xl font-bold text-yellow-400">
                 Наши услуги
               </h2>
               <div className="flex-grow h-1 bg-[#1B2A3B]"></div>
-            </div>
+            </motion.div>
 
             <div className="grid md:grid-cols-3 gap-8">
               {/* Карточка 1 */}
-              <div className="flex flex-col h-full">
+              <motion.div
+                className="flex flex-col h-full"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
                   Общестроительные работы
                 </h3>
@@ -193,19 +182,23 @@ export default function Home() {
                     <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
                   </button>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Карточка 2 */}
-              <div className="flex flex-col h-full">
+              <motion.div
+                className="flex flex-col h-full"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  Аренда строй-
-                  <br />
-                  техники
+                  Аренда техники
                 </h3>
                 <p className="text-lg text-gray-600 mb-4">
-                  Мы предоставляем в аренду надежную строительную технику
-                  которая регулярно обслуживается для выполнения различных видов
-                  работ.
+                  Мы предлагаем широкий выбор строительной техники для различных
+                  задач, включая экскаваторы, бульдозеры, краны и другие
+                  специализированные машины.
                 </p>
                 <div className="mt-auto">
                   <button
@@ -219,10 +212,16 @@ export default function Home() {
                     <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
                   </button>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Карточка 3 */}
-              <div className="flex flex-col h-full">
+              <motion.div
+                className="flex flex-col h-full"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
                   Доставка материала и вывоз мусора
                 </h3>
@@ -243,24 +242,47 @@ export default function Home() {
                     <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
                   </button>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Секция Наши работы */}
-        <section className="py-20 bg-white">
+        <motion.section
+          className="py-20 bg-white"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.8 }}
+        >
           <div className="container mx-auto px-4">
-            <div className="flex items-center gap-4 mb-16">
+            <motion.div
+              className="flex items-center gap-4 mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
               <div className="flex-grow h-1 bg-yellow-400"></div>
               <h2 className="text-4xl font-bold text-gray-900">Наши работы</h2>
-            </div>
+            </motion.div>
 
             <div className="grid md:grid-cols-2 gap-8 items-start">
               {/* Левая колонка со статистикой */}
-              <div className="space-y-8">
+              <motion.div
+                className="space-y-8"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
                 <div className="flex gap-24">
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                  >
                     <div className="flex items-baseline gap-2">
                       <span className="text-5xl font-bold text-gray-900">
                         50
@@ -276,9 +298,14 @@ export default function Home() {
                         объектов
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                  >
                     <div className="flex items-baseline gap-2">
                       <span className="text-5xl font-bold text-gray-900">
                         99
@@ -294,34 +321,60 @@ export default function Home() {
                         заказчиков
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
 
-                <p className="text-lg text-gray-600 mt-8 max-w-[400px]">
+                <motion.p
+                  className="text-lg text-gray-600 mt-8 max-w-[400px]"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                >
                   Наши услуги охватывают все ключевые аспекты строительства,
                   начиная от подготовки строительной площадки и земляных работ
                   до возведения зданий и сооружений.
-                </p>
-              </div>
+                </motion.p>
+              </motion.div>
 
               {/* Правая колонка с фото */}
-              <div className="relative w-full">
+              <motion.div
+                className="relative w-full"
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
                 <ImageSlider
                   images={portfolioSlides}
                   height="h-[400px]"
                   className="w-full max-w-100 xl:max-w-[800px] mx-auto"
                   paginationColor="white"
                 />
-              </div>
+              </motion.div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Секция отзывов */}
-        <ReviewsSection />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.8 }}
+        >
+          <ReviewsSection />
+        </motion.div>
 
         {/* Секция FAQ */}
-        <FAQSection />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.8 }}
+        >
+          <FAQSection />
+        </motion.div>
       </main>
 
       <Footer />

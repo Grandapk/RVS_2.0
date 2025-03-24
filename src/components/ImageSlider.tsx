@@ -112,26 +112,27 @@ export default function ImageSlider({
               }
             : false
         }
-        className="w-full h-full"
+        className={`w-full h-full ${cornerRadius}`}
       >
         {images.map((image, index) => (
-          <SwiperSlide key={index} className="w-full h-full">
-            <div className="relative w-full h-full">
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                sizes={sizes}
-                className="object-cover"
-                onLoad={() => handleImageLoad(image.src)}
-                onError={(e) => {
-                  console.error(`Error loading image: ${image.src}`)
-                  setError(`Ошибка загрузки изображения ${index + 1}`)
-                }}
-                priority={index === 0}
-                quality={90}
-              />
-            </div>
+          <SwiperSlide key={index} className={`${cornerRadius}`}>
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              className={`object-cover ${cornerRadius}`}
+              sizes={sizes}
+              priority={index === 0}
+              onLoad={() => {
+                if (index === 0) setIsLoading(false)
+                handleImageLoad(image.src)
+              }}
+              onError={(e) => {
+                console.error(`Error loading image: ${image.src}`)
+                setError(`Ошибка загрузки изображения ${index + 1}`)
+                setIsLoading(false)
+              }}
+            />
           </SwiperSlide>
         ))}
       </Swiper>
