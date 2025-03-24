@@ -178,7 +178,7 @@ export default function DeliveryPage() {
                         {feature}
                       </motion.li>
                     ))}
-                  </ul>
+            </ul>
                 </div>
               </motion.div>
             ))}

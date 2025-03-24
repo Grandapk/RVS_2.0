@@ -14,7 +14,7 @@ const equipment = [
     id: 1,
     name: 'Трактор',
     description: 'Мощный трактор для земляных работ и транспортировки грузов',
-    image: '/images/equipment/tractor.webp',
+    image: '/images/equipment/traktor.png',
     specs: {
       power: '150 л.с.',
       weight: '4.5 т',
@@ -26,7 +26,7 @@ const equipment = [
     id: 2,
     name: 'Грузовик',
     description: 'Грузовой автомобиль для перевозки строительных материалов',
-    image: '/images/equipment/truck.webp',
+    image: '/images/equipment/truck.png',
     specs: {
       power: '200 л.с.',
       weight: '8 т',

@@ -187,6 +187,45 @@ export default function ConstructionServices() {
           </div>
         </section>
 
+        {/* Секция Строительство и Ремонт */}
+        <section className="py-16 bg-yellow-400 relative overflow-hidden">
+          <div className="container mx-auto px-4">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              {/* Текстовый контент */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="text-gray-900"
+              >
+                <h2 className="text-4xl font-bold mb-8">
+                  СТРОИТЕЛЬСТВО И РЕМОНТ
+                </h2>
+                <ul className="space-y-4 text-xl">
+                  <li>• Объектов различного назначения</li>
+                  <li>• Профильных и черепичных крыш</li>
+                  <li>
+                    • Домов, квартир, офисов и других жилых и производственных
+                    объектов
+                  </li>
+                </ul>
+              </motion.div>
+
+              {/* Слайдер */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="relative rounded-2xl overflow-hidden"
+              >
+                <ImageSlider images={slides} />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'
+import dynamic from 'next/dynamic'
 
 const containerStyle = {
   width: '100%',
@@ -16,6 +16,12 @@ const center = {
   lat: 59.333022, // Координаты Йыхви
   lng: 27.361908,
 }
+
+// Динамический импорт компонента карты
+const Map = dynamic(() => import('@/components/Map'), {
+  ssr: false,
+  loading: () => <div>Loading map...</div>,
+})
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -173,7 +179,9 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <h3 className="text-gray-900 font-semibold mb-2">Адрес</h3>
-                  <p className="text-gray-600">Tammi, Estonia</p>
+                  <p className="text-gray-600">
+                    Pihlaka, Tammiku, Estonia 41542
+                  </p>
                 </motion.div>
               </div>
             </motion.div>
@@ -187,37 +195,7 @@ export default function ContactPage() {
                 transition={{ delay: 0.2 }}
                 className="h-[400px] md:h-full relative overflow-hidden rounded-2xl shadow-xl"
               >
-                {isMounted && (
-                  <LoadScript
-                    googleMapsApiKey={
-                      process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''
-                    }
-                    loadingElement={<div>Loading...</div>}
-                  >
-                    <GoogleMap
-                      mapContainerStyle={containerStyle}
-                      center={center}
-                      zoom={15}
-                      options={{
-                        mapTypeId: 'satellite',
-                        styles: [
-                          {
-                            featureType: 'all',
-                            elementType: 'geometry',
-                            stylers: [{ color: '#f5f5f5' }],
-                          },
-                          {
-                            featureType: 'water',
-                            elementType: 'geometry',
-                            stylers: [{ color: '#e9e9e9' }],
-                          },
-                        ],
-                      }}
-                    >
-                      <Marker position={center} />
-                    </GoogleMap>
-                  </LoadScript>
-                )}
+                <Map center={center} />
               </motion.div>
 
               {/* Form Section */}
