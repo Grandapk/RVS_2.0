@@ -232,7 +232,7 @@ export default function Home() {
                 </p>
                 <div className="mt-auto">
                   <button
-                    onClick={() => handleServiceClick('/services/delivery')}
+                    onClick={() => router.push('/services/equipment#delivery')}
                     className="group relative px-6 py-2.5 bg-[#1B2A3B] text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105"
                   >
                     <span className="relative z-10 text-sm font-medium group-hover:text-gray-900 transition-colors duration-300">

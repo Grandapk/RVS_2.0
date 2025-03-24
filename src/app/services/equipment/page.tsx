@@ -174,14 +174,11 @@ export default function EquipmentPage() {
               className="max-w-4xl"
             >
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-2 text-left text-white">
-                Строительная техника
+                Аренда строительной техники
               </h1>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl text-left text-white opacity-90">
-                Аренда - Доставка - Вывоз
-              </h2>
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
                 <button
-                  onClick={() => router.push('/services/equipment#contact')}
+                  onClick={() => router.push('/contact')}
                   className="group relative px-6 sm:px-8 py-3 bg-yellow-400 text-gray-900 rounded-full hover:bg-[#1B2A3B] transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105 w-fit"
                 >
                   <span className="relative z-10 text-lg sm:text-xl font-bold group-hover:text-white transition-colors duration-300 whitespace-nowrap">
@@ -374,6 +371,10 @@ export default function EquipmentPage() {
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="font-bold">•</span>
+                      Доставка материала
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="font-bold">•</span>
                       Вывоз мусора
                     </li>
                   </ul>
@@ -530,6 +531,48 @@ export default function EquipmentPage() {
           </div>
         </motion.section>
 
+        {/* Materials Delivery Section */}
+        <motion.section
+          id="delivery"
+          className="py-20 bg-white"
+          {...animationConfig}
+        >
+          <div className="container mx-auto px-4">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <motion.div
+                variants={rightVariants}
+                className="bg-[#1B2A3B] rounded-2xl overflow-hidden relative aspect-[16/9] w-full order-2 md:order-1"
+              >
+                <Image
+                  src="/images/equipment/delivery.webp"
+                  alt="Перевозка стройматериалов"
+                  fill
+                  className="object-cover"
+                />
+              </motion.div>
+
+              <motion.div
+                variants={leftVariants}
+                className="flex flex-col items-start text-left order-1 md:order-2"
+              >
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                  Быстрая доставка и качественные материалы – Свяжитесь с нами!
+                </h2>
+                <button
+                  onClick={() => router.push('/contact')}
+                  className="group relative px-8 py-3 bg-yellow-400 text-gray-900 rounded-full hover:bg-[#1B2A3B] transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105 w-fit self-start"
+                >
+                  <span className="relative z-10 text-xl font-bold group-hover:text-white transition-colors duration-300">
+                    ОФОРМИТЬ ДОСТАВКУ
+                  </span>
+                  <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                  <div className="absolute inset-0 bg-yellow-400 transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
+                </button>
+              </motion.div>
+            </div>
+          </div>
+        </motion.section>
+
         {/* How We Work Section */}
         <motion.section className="py-20 bg-white" {...animationConfig}>
           <div className="container mx-auto px-4">
@@ -605,7 +648,7 @@ export default function EquipmentPage() {
                     </svg>
                   ),
                   title: 'Доставка',
-                  description: 'Доставим технику точно в срок',
+                  description: 'Доставим материалы точно в срок',
                 },
                 {
                   icon: (
