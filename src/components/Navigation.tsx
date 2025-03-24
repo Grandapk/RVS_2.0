@@ -174,38 +174,6 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
                         </div>
                       </div>
                     </Link>
-                    <Link
-                      href="/services/delivery"
-                      className="block hover:bg-yellow-50 transition-colors duration-500"
-                    >
-                      <div className="px-6 py-4 border-t border-gray-100">
-                        <div className="flex items-center space-x-3">
-                          <div className="p-2 bg-yellow-100 rounded-lg">
-                            <svg
-                              className="w-6 h-6 text-yellow-600"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
-                              />
-                            </svg>
-                          </div>
-                          <div>
-                            <div className="font-semibold text-gray-900">
-                              ДОСТАВКА МАТЕРИАЛА
-                            </div>
-                            <div className="text-sm text-gray-600">
-                              Доставим ваш материал в любую точку
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
                   </div>
                 </div>
               </div>
@@ -362,36 +330,6 @@ export default function Navigation({ isTransparent = false }: NavigationProps) {
                           <div className="font-semibold">АРЕНДА ТЕХНИКИ</div>
                           <div className="text-sm text-gray-600">
                             Арендуй строительную технику
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                    <Link
-                      href="/services/delivery"
-                      className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-yellow-50 rounded-lg transition-colors duration-500"
-                    >
-                      <div className="flex items-center space-x-3">
-                        <div className="p-2 bg-yellow-100 rounded-lg">
-                          <svg
-                            className="w-5 h-5 text-yellow-600"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
-                            />
-                          </svg>
-                        </div>
-                        <div>
-                          <div className="font-semibold">
-                            ДОСТАВКА МАТЕРИАЛА
-                          </div>
-                          <div className="text-sm text-gray-600">
-                            Доставим ваш материал в любую точку
                           </div>
                         </div>
                       </div>
