@@ -22,11 +22,13 @@ export default function Home() {
       const videoSection = document.getElementById('home')
       if (videoSection) {
         const rect = videoSection.getBoundingClientRect()
-        setIsTransparentNav(rect.bottom > 0)
+        const threshold = window.innerHeight * 0.5 // 50% от высоты экрана
+        setIsTransparentNav(rect.bottom > threshold)
       }
     }
 
-    window.addEventListener('scroll', handleScroll)
+    handleScroll() // Вызываем сразу при монтировании
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -59,10 +61,13 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navigation isTransparent={isTransparentNav} />
+      <Navigation
+        isTransparent={isTransparentNav}
+        className="bg-black/50 backdrop-blur-sm"
+      />
 
       {/* Основной контент */}
-      <main className="flex-grow">
+      <main className="flex-grow relative">
         {/* Главная секция */}
         <VideoSection />
 
