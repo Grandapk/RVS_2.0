@@ -31,6 +31,21 @@ export default function ConstructionServices() {
     },
   ]
 
+  const roofSlides = [
+    {
+      src: '/images/constructions/1.png',
+      alt: 'Крыша 1',
+    },
+    {
+      src: '/images/constructions/2.png',
+      alt: 'Крыша 2',
+    },
+    {
+      src: '/images/constructions/3.png',
+      alt: 'Крыша 3',
+    },
+  ]
+
   useEffect(() => {
     setIsVisible(true)
   }, [])
@@ -223,6 +238,200 @@ export default function ConstructionServices() {
                 <ImageSlider images={slides} />
               </motion.div>
             </div>
+          </div>
+        </section>
+
+        {/* Секция с карточками услуг */}
+        <section className="py-16 bg-white relative overflow-hidden">
+          <div className="container mx-auto px-4">
+            <div className="grid lg:grid-cols-2 gap-8 mb-8">
+              {/* Карточка ФУНДАМЕНТЫ */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                whileHover={{ scale: 1.02 }}
+                className="bg-white p-8 rounded-2xl border-2 border-yellow-400 hover:border-yellow-500 transition-colors group"
+              >
+                <h3 className="text-3xl font-bold text-gray-900 mb-6">
+                  ФУНДАМЕНТЫ
+                </h3>
+                <ul className="space-y-4 text-lg text-gray-700">
+                  <motion.li
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 }}
+                    className="flex items-center group-hover:text-gray-900"
+                  >
+                    • монолитные
+                  </motion.li>
+                  <motion.li
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="flex items-center group-hover:text-gray-900"
+                  >
+                    • блочные
+                  </motion.li>
+                  <motion.li
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="flex items-center group-hover:text-gray-900"
+                  >
+                    • из фибо-блоков
+                  </motion.li>
+                  <motion.li
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="flex items-center group-hover:text-gray-900"
+                  >
+                    • утепление фундаментов
+                  </motion.li>
+                  <motion.li
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5 }}
+                    className="flex items-center group-hover:text-gray-900"
+                  >
+                    • гидроизоляция фундаментов
+                  </motion.li>
+                </ul>
+              </motion.div>
+
+              {/* Карточка ФАСАДЫ И СТЕНЫ */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                whileHover={{ scale: 1.02 }}
+                className="bg-white p-8 rounded-2xl border-2 border-yellow-400 hover:border-yellow-500 transition-colors group"
+              >
+                <h3 className="text-3xl font-bold text-gray-900 mb-6">
+                  ФАСАДЫ И СТЕНЫ
+                </h3>
+                <ul className="space-y-4 text-lg text-gray-700">
+                  <motion.li
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 }}
+                    className="flex items-center group-hover:text-gray-900"
+                  >
+                    • каменные и деревокаркасные
+                  </motion.li>
+                  <motion.li
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="flex items-center group-hover:text-gray-900"
+                  >
+                    • утепление и штукатурка
+                  </motion.li>
+                  <motion.li
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="flex items-center group-hover:text-gray-900"
+                  >
+                    • вагонка
+                  </motion.li>
+                  <motion.li
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="flex items-center group-hover:text-gray-900"
+                  >
+                    • металлопрофиль
+                  </motion.li>
+                  <motion.li
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5 }}
+                    className="flex items-center group-hover:text-gray-900"
+                  >
+                    • фасадные плиты
+                  </motion.li>
+                  <motion.li
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.6 }}
+                    className="flex items-center group-hover:text-gray-900"
+                  >
+                    • ремонт старых стен
+                  </motion.li>
+                </ul>
+              </motion.div>
+            </div>
+
+            {/* Карточка КРОВЕЛЬНЫЕ РАБОТЫ с маленьким слайдером */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              whileHover={{ scale: 1.01 }}
+              className="bg-white p-8 rounded-2xl border-2 border-yellow-400 hover:border-yellow-500 transition-colors group"
+            >
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h3 className="text-3xl font-bold text-gray-900 mb-6">
+                    КРОВЕЛЬНЫЕ РАБОТЫ / КРЫШИ
+                  </h3>
+                  <ul className="space-y-4 text-lg text-gray-700">
+                    <motion.li
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 }}
+                      className="flex items-center group-hover:text-gray-900"
+                    >
+                      • установка стропил
+                    </motion.li>
+                    <motion.li
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.2 }}
+                      className="flex items-center group-hover:text-gray-900"
+                    >
+                      • установка мансардных окон
+                    </motion.li>
+                    <motion.li
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.3 }}
+                      className="flex items-center group-hover:text-gray-900"
+                    >
+                      • устройство профильных и черепичных крыш
+                    </motion.li>
+                    <motion.li
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.4 }}
+                      className="flex items-center group-hover:text-gray-900"
+                    >
+                      • установка ветровых ящиков
+                    </motion.li>
+                    <motion.li
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.5 }}
+                      className="flex items-center group-hover:text-gray-900"
+                    >
+                      • монтаж водосливных систем
+                    </motion.li>
+                  </ul>
+                </div>
+                <div className="h-[300px]">
+                  <ImageSlider
+                    images={roofSlides}
+                    height="h-[300px]"
+                    cornerRadius="rounded-xl"
+                  />
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
