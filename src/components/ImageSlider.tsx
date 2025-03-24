@@ -1,35 +1,57 @@
 'use client'
 
+import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination, EffectFade } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/effect-fade'
-import Image from 'next/image'
-import { useState } from 'react'
 
 interface ImageSliderProps {
-  images: {
+  images: Array<{
     src: string
     alt: string
-  }[]
+  }>
   height?: string
   cornerRadius?: string
   paginationColor?: string
   className?: string
   showDots?: boolean
+  sizes?: string
 }
 
 export default function ImageSlider({
   images = [],
-  height = 'h-[250px] sm:h-[300px] md:h-[400px]',
-  cornerRadius = 'rounded-[10px] sm:rounded-[20px]',
+  height = 'h-[400px]',
+  cornerRadius = 'rounded-2xl',
   paginationColor = 'white',
   className = '',
-  showDots = false,
+  showDots = true,
+  sizes = '(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw',
 }: ImageSliderProps) {
+  const [isClient, setIsClient] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(true)
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set())
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  useEffect(() => {
+    if (loadedImages.size === images.length) {
+      setIsLoading(false)
+    }
+  }, [loadedImages, images.length])
+
+  const handleImageLoad = (src: string) => {
+    setLoadedImages((prev) => {
+      const newSet = new Set(prev)
+      newSet.add(src)
+      return newSet
+    })
+  }
 
   if (!images || images.length === 0) {
     return (
@@ -43,8 +65,22 @@ export default function ImageSlider({
     )
   }
 
+  if (!isClient) {
+    return (
+      <div
+        className={`relative w-full ${height} ${cornerRadius} ${className} bg-gray-100`}
+      >
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="animate-spin rounded-full h-8 w-8 sm:h-12 sm:w-12 border-b-2 border-yellow-400"></div>
+        </div>
+      </div>
+    )
+  }
+
   return (
-    <div className={`relative w-full ${height} ${cornerRadius} ${className}`}>
+    <div
+      className={`relative w-full ${height} ${cornerRadius} ${className} overflow-hidden`}
+    >
       {error && (
         <div className="absolute top-0 left-0 right-0 bg-red-100 text-red-700 p-1 sm:p-2 text-sm sm:text-base text-center z-[60]">
           {error}
@@ -85,13 +121,12 @@ export default function ImageSlider({
                 src={image.src}
                 alt={image.alt}
                 fill
-                sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                sizes={sizes}
                 className="object-cover"
-                onLoad={() => setIsLoading(false)}
+                onLoad={() => handleImageLoad(image.src)}
                 onError={(e) => {
                   console.error(`Error loading image: ${image.src}`)
                   setError(`Ошибка загрузки изображения ${index + 1}`)
-                  setIsLoading(false)
                 }}
                 priority={index === 0}
                 quality={90}
@@ -107,70 +142,67 @@ export default function ImageSlider({
           width: 100% !important;
           height: 100% !important;
           min-height: 200px !important;
-          z-index: 1 !important;
         }
         .swiper-wrapper {
-          position: relative !important;
           width: 100% !important;
           height: 100% !important;
-          z-index: 1 !important;
-          display: flex !important;
-          box-sizing: content-box !important;
         }
         .swiper-slide {
-          position: relative !important;
           width: 100% !important;
           height: 100% !important;
-          flex-shrink: 0 !important;
-          transition-property: transform !important;
+          position: relative !important;
         }
         .swiper-pagination {
           position: absolute !important;
-          text-align: center !important;
-          transition: 300ms opacity !important;
-          transform: translate3d(0, 0, 0) !important;
-          z-index: 50 !important;
-          bottom: 8px !important;
+          bottom: 20px !important;
           left: 0 !important;
           right: 0 !important;
           display: flex !important;
           justify-content: center !important;
           align-items: center !important;
-          gap: 4px !important;
-          padding: 0 !important;
+          gap: 8px !important;
+          z-index: 10 !important;
+          padding: 4px 12px !important;
           margin: 0 !important;
+          background: rgba(0, 0, 0, 0.3) !important;
+          border-radius: 20px !important;
+          width: fit-content !important;
+          left: 50% !important;
+          transform: translateX(-50%) !important;
+          backdrop-filter: blur(4px) !important;
+          height: 32px !important;
+        }
+        .last-slider .swiper-pagination {
+          bottom: 45px !important;
+        }
+        @media (max-width: 768px) {
+          .first-slider .swiper-pagination {
+            bottom: 45px !important;
+          }
         }
         .swiper-pagination-bullet {
-          width: 6px !important;
-          height: 6px !important;
-          display: inline-block !important;
-          background-color: rgba(156, 163, 175, 0.9) !important;
-          opacity: 1 !important;
-          margin: 0 !important;
+          width: 10px !important;
+          height: 10px !important;
+          background: rgba(255, 255, 255, 0.5) !important;
           border-radius: 50% !important;
-          transition: all 0.3s ease !important;
           cursor: pointer !important;
-          border: 1px solid transparent !important;
-        }
-        @media (min-width: 640px) {
-          .swiper-pagination {
-            bottom: 16px !important;
-            gap: 6px !important;
-          }
-          .swiper-pagination-bullet {
-            width: 8px !important;
-            height: 8px !important;
-            border-width: 2px !important;
-          }
+          padding: 0 !important;
+          margin: 0 !important;
+          border: none !important;
+          transition: all 0.3s ease !important;
+          opacity: 1 !important;
         }
         .swiper-pagination-bullet:hover {
-          background-color: rgba(250, 204, 21, 0.9) !important;
+          background: rgba(250, 204, 21, 0.7) !important;
           transform: scale(1.1) !important;
         }
         .swiper-pagination-bullet-active {
-          background-color: #facc15 !important;
+          background: #facc15 !important;
           transform: scale(1.2) !important;
-          border-color: rgba(255, 255, 255, 0.3) !important;
+        }
+        .swiper-pagination-bullet-active:hover {
+          cursor: default !important;
+          transform: scale(1.2) !important;
         }
       `}</style>
     </div>

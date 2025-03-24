@@ -125,7 +125,7 @@ export default function ReviewsSection() {
                   setCurrentReview(index)
                   setIsAutoplay(false)
                 }}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`w-3 h-3 rounded-full transition-all duration-300 cursor-pointer ${
                   currentReview === index
                     ? 'bg-white/80 w-6'
                     : 'bg-black/20 hover:bg-white/40'

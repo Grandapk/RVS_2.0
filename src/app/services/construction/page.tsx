@@ -254,6 +254,7 @@ export default function ConstructionServices() {
                   images={slides}
                   showDots={true}
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  className="first-slider"
                 />
               </motion.div>
             </div>
@@ -450,6 +451,7 @@ export default function ConstructionServices() {
                     cornerRadius="rounded-xl"
                     showDots={true}
                     sizes="(max-width: 768px) 100vw, 50vw"
+                    className="roof-slider"
                   />
                 </div>
               </div>
@@ -526,24 +528,23 @@ export default function ConstructionServices() {
         {/* Секция ВНУТРЕННЯЯ ОТДЕЛКА */}
         <section className="py-16 bg-white relative overflow-hidden">
           <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-2 gap-12 items-stretch">
               {/* Слайдер */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9]"
+                className="relative w-full h-full min-h-[400px]"
               >
-                <div className="absolute inset-0">
-                  <ImageSlider
-                    images={interiorSlides}
-                    height="h-full"
-                    cornerRadius="rounded-2xl"
-                    showDots={true}
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
+                <ImageSlider
+                  images={interiorSlides}
+                  height="h-full"
+                  cornerRadius="rounded-2xl"
+                  showDots={true}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="last-slider"
+                />
               </motion.div>
 
               {/* Текстовый контент */}
@@ -552,7 +553,7 @@ export default function ConstructionServices() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="flex flex-col"
+                className="flex flex-col min-h-[400px]"
               >
                 <div className="flex items-center gap-4 mb-4 sm:mb-8">
                   <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
