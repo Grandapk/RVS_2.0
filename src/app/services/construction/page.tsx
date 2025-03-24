@@ -46,6 +46,21 @@ export default function ConstructionServices() {
     },
   ]
 
+  const interiorSlides = [
+    {
+      src: '/images/constructions/in1.webp',
+      alt: 'Внутренняя отделка 1',
+    },
+    {
+      src: '/images/constructions/in2.webp',
+      alt: 'Внутренняя отделка 2',
+    },
+    {
+      src: '/images/constructions/in3.webp',
+      alt: 'Внутренняя отделка 3',
+    },
+  ]
+
   useEffect(() => {
     setIsVisible(true)
   }, [])
@@ -235,7 +250,11 @@ export default function ConstructionServices() {
                 transition={{ duration: 0.8 }}
                 className="relative rounded-2xl overflow-hidden"
               >
-                <ImageSlider images={slides} />
+                <ImageSlider
+                  images={slides}
+                  showDots={true}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </motion.div>
             </div>
           </div>
@@ -252,9 +271,9 @@ export default function ConstructionServices() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
                 whileHover={{ scale: 1.02 }}
-                className="bg-white p-8 rounded-2xl border-2 border-yellow-400 hover:border-yellow-500 transition-colors group"
+                className="bg-white p-8 rounded-2xl border-2 border-yellow-400 hover:border-yellow-500 transition-colors group min-h-[400px] flex flex-col"
               >
-                <h3 className="text-3xl font-bold text-gray-900 mb-6">
+                <h3 className="text-3xl font-bold text-gray-900 mb-6 shrink-0">
                   ФУНДАМЕНТЫ
                 </h3>
                 <ul className="space-y-4 text-lg text-gray-700">
@@ -308,9 +327,9 @@ export default function ConstructionServices() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 whileHover={{ scale: 1.02 }}
-                className="bg-white p-8 rounded-2xl border-2 border-yellow-400 hover:border-yellow-500 transition-colors group"
+                className="bg-white p-8 rounded-2xl border-2 border-yellow-400 hover:border-yellow-500 transition-colors group min-h-[400px] flex flex-col"
               >
-                <h3 className="text-3xl font-bold text-gray-900 mb-6">
+                <h3 className="text-3xl font-bold text-gray-900 mb-6 shrink-0">
                   ФАСАДЫ И СТЕНЫ
                 </h3>
                 <ul className="space-y-4 text-lg text-gray-700">
@@ -373,14 +392,15 @@ export default function ConstructionServices() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
               whileHover={{ scale: 1.01 }}
-              className="bg-white p-8 rounded-2xl border-2 border-yellow-400 hover:border-yellow-500 transition-colors group"
+              className="bg-white p-4 sm:p-8 rounded-2xl border-2 border-yellow-400 hover:border-yellow-500 transition-colors group"
             >
-              <div className="grid lg:grid-cols-2 gap-8 items-center">
-                <div>
-                  <h3 className="text-3xl font-bold text-gray-900 mb-6">
-                    КРОВЕЛЬНЫЕ РАБОТЫ / КРЫШИ
+              <div className="grid lg:grid-cols-2 gap-4 sm:gap-8">
+                <div className="flex flex-col">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-4 sm:mb-6 break-words hyphens-auto">
+                    КРОВЕЛЬНЫЕ РАБОТЫ{' '}
+                    <span className="whitespace-nowrap">/ КРЫШИ</span>
                   </h3>
-                  <ul className="space-y-4 text-lg text-gray-700">
+                  <ul className="space-y-2 sm:space-y-4 text-base sm:text-lg text-gray-700">
                     <motion.li
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
@@ -401,7 +421,7 @@ export default function ConstructionServices() {
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 }}
-                      className="flex items-center group-hover:text-gray-900"
+                      className="flex items-center group-hover:text-gray-900 break-words"
                     >
                       • устройство профильных и черепичных крыш
                     </motion.li>
@@ -423,15 +443,150 @@ export default function ConstructionServices() {
                     </motion.li>
                   </ul>
                 </div>
-                <div className="h-[300px]">
+                <div className="h-[200px] sm:h-[300px] mt-4 sm:mt-0">
                   <ImageSlider
                     images={roofSlides}
-                    height="h-[300px]"
+                    height="h-[200px] sm:h-[300px]"
                     cornerRadius="rounded-xl"
+                    showDots={true}
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
               </div>
             </motion.div>
+          </div>
+        </section>
+
+        {/* Секция ДОРОГИ И ПАРКОВКИ */}
+        <section className="py-16 bg-[#1B2A3B] relative overflow-hidden">
+          <div className="container mx-auto px-4">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Текстовый контент */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="text-white"
+              >
+                <h2 className="text-4xl font-bold mb-8">ДОРОГИ И ПАРКОВКИ</h2>
+                <ul className="space-y-4 text-xl">
+                  {[
+                    'асфальтное покрытие',
+                    'шоссейных дорог',
+                    'парковки',
+                    'лесные дороги',
+                    'тротуарная плитка',
+                    'устранение ям',
+                    'площади',
+                    'реконструкция дворов',
+                    'расширение территории',
+                  ].map((item, index) => (
+                    <motion.li
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className="flex items-center space-x-2"
+                    >
+                      <span className="text-yellow-400">•</span>
+                      <span>{item}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+
+              {/* Изображение */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="relative h-[500px]"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.4 }}
+                  className="relative h-full rounded-3xl overflow-hidden"
+                >
+                  <Image
+                    src="/images/equipment/road.webp"
+                    alt="Дороги и парковки"
+                    fill
+                    className="object-cover transition-transform duration-700"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1B2A3B] to-transparent opacity-50"></div>
+                </motion.div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Секция ВНУТРЕННЯЯ ОТДЕЛКА */}
+        <section className="py-16 bg-white relative overflow-hidden">
+          <div className="container mx-auto px-4">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Слайдер */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9]"
+              >
+                <div className="absolute inset-0">
+                  <ImageSlider
+                    images={interiorSlides}
+                    height="h-full"
+                    cornerRadius="rounded-2xl"
+                    showDots={true}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Текстовый контент */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="flex flex-col"
+              >
+                <div className="flex items-center gap-4 mb-4 sm:mb-8">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
+                    ВНУТРЕННЯЯ
+                  </h2>
+                  <div className="h-[2px] bg-[#1B2A3B] flex-grow"></div>
+                </div>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6 sm:mb-8">
+                  ОТДЕЛКА
+                </h2>
+                <ul className="space-y-3 sm:space-y-4 text-base sm:text-lg md:text-xl text-gray-700">
+                  {[
+                    'демонтажные работы',
+                    'межкомнатных перегородки и потолки',
+                    'двери, окна, подоконники',
+                    'штукатурные и малярные работы',
+                    'укладка любого полового покрытия',
+                    'установка сантехоборудования',
+                    'строительство саун',
+                  ].map((item, index) => (
+                    <motion.li
+                      key={index}
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className="flex items-center space-x-2"
+                    >
+                      <span className="text-yellow-400">•</span>
+                      <span>{item}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+            </div>
           </div>
         </section>
 
