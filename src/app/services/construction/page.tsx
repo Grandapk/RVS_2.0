@@ -488,7 +488,7 @@ export default function ConstructionServices() {
           </div>
         </section>
 
-        {/* Секция ДОРОГИ И ПАРКОВКИ */}
+        {/* Секция Строительная техника */}
         <section className="py-16 bg-[#1B2A3B] relative overflow-hidden">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -500,8 +500,13 @@ export default function ConstructionServices() {
                 transition={{ duration: 0.8 }}
                 className="text-white"
               >
-                <h2 className="text-4xl font-bold mb-8">ДОРОГИ И ПАРКОВКИ</h2>
-                <ul className="space-y-4 text-xl">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="h-[2px] w-16 bg-white self-center"></div>
+                  <h2 className="text-4xl font-bold leading-none">
+                    ДОРОГИ И ПАРКОВКИ
+                  </h2>
+                </div>
+                <ul className="space-y-4 text-xl pl-20">
                   {[
                     'асфальтное покрытие',
                     'шоссейных дорог',
@@ -544,6 +549,7 @@ export default function ConstructionServices() {
                     src="/images/equipment/road.webp"
                     alt="Дороги и парковки"
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover transition-transform duration-700"
                     priority
                   />
