@@ -18,11 +18,12 @@ export default function AboutPage() {
         {/* Hero Section */}
         <section className="py-32 bg-white">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col items-center justify-center text-center">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
+                className="text-left"
               >
                 <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
                   Наша история
@@ -30,6 +31,21 @@ export default function AboutPage() {
                 <p className="text-xl text-gray-600">
                   У каждой компании есть своя история — и наша не исключение.
                 </p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                className="relative h-[600px] rounded-2xl"
+              >
+                <Image
+                  src="/images/about/about.webp"
+                  alt="О нас"
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority
+                />
               </motion.div>
             </div>
           </div>

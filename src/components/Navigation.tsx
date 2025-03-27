@@ -186,10 +186,10 @@ export default function Navigation({
                             </div>
                             <div>
                               <div className="font-semibold text-gray-900">
-                                АРЕНДА ТЕХНИКИ
+                                АРЕНДА И ДОСТАВКА
                               </div>
                               <div className="text-sm text-gray-600">
-                                Арендуй строительную технику
+                                Аренда спецтехники и доставка материалов
                               </div>
                             </div>
                           </div>

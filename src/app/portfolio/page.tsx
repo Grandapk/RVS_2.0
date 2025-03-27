@@ -5,6 +5,8 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import ReviewsSection from '@/components/ReviewsSection'
+import FAQSection from '@/components/FAQSection'
 
 // Данные о проектах
 const projects = [
@@ -50,28 +52,10 @@ export default function PortfolioPage() {
     <div className="min-h-screen flex flex-col">
       <Navigation className="bg-black/25 backdrop-blur-[2px]" />
       <main className="flex-grow">
-        {/* Hero Section */}
-        <section className="py-32 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col items-center justify-center text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                  Наши проекты
-                </h1>
-                <p className="text-xl text-gray-600">
-                  Каждый проект - это история успеха и доверия наших клиентов
-                </p>
-              </motion.div>
-            </div>
-          </div>
-        </section>
+
 
         {/* Projects Grid */}
-        <section className="py-20 bg-white">
+        <section className="pt-32 pb-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map((project) => (
@@ -168,6 +152,13 @@ export default function PortfolioPage() {
             </div>
           </div>
         )}
+
+        {/* Секция отзывов */}
+        <ReviewsSection />
+
+        {/* Секция FAQ */}
+        <FAQSection />
+
       </main>
       <Footer />
     </div>
