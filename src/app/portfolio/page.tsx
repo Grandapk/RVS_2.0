@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import ScrollToTopButton from '@/components/ScrollToTopButton'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import ReviewsSection from '@/components/ReviewsSection'
@@ -161,6 +162,7 @@ export default function PortfolioPage() {
 
       </main>
       <Footer />
+      <ScrollToTopButton />
     </div>
   )
 }

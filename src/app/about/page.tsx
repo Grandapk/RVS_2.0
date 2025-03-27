@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import ScrollToTopButton from '@/components/ScrollToTopButton'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import ReviewsSection from '@/components/ReviewsSection'
@@ -159,6 +160,7 @@ export default function AboutPage() {
 
       </main>
       <Footer />
+      <ScrollToTopButton />
     </div>
   )
 }

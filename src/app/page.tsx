@@ -2,6 +2,7 @@
 
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import ScrollToTopButton from '@/components/ScrollToTopButton'
 import ImageSlider from '@/components/ImageSlider'
 import VideoSection from '@/components/VideoSection'
 import ReviewsSection from '@/components/ReviewsSection'
@@ -290,6 +291,7 @@ export default function Home() {
       </main>
 
       <Footer />
+      <ScrollToTopButton />
     </div>
   )
 }
