@@ -36,7 +36,7 @@ export default function ReviewsSection() {
   }, [isAutoplay])
 
   return (
-    <section className="py-20 relative overflow-hidden bg-yellow-500">
+    <section id="reviews" className="py-20 relative overflow-hidden bg-yellow-500">
       {/* Animated background */}
       <div className="absolute inset-0">
         {/* Сетка точек */}

@@ -26,7 +26,7 @@ export default function VideoSection() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mt-8">
             <button
-              onClick={() => router.push('/portfolio')}
+              onClick={() => router.push('#works')}
               className="group relative px-6 sm:px-8 py-3 bg-yellow-400 text-gray-900 rounded-full hover:bg-[#1B2A3B] transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105 w-fit"
             >
               <span className="relative z-10 text-lg sm:text-xl font-bold group-hover:text-white transition-colors duration-300 whitespace-nowrap">
@@ -35,8 +35,8 @@ export default function VideoSection() {
               <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               <div className="absolute inset-0 bg-yellow-400 transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
             </button>
-            <button
-              onClick={() => router.push('/#reviews')}
+            <a
+              href="#reviews"
               className="group relative px-6 sm:px-8 py-3 bg-transparent border-2 border-white text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105 w-fit"
             >
               <span className="relative z-10 text-lg sm:text-xl font-bold group-hover:text-gray-900 transition-colors duration-300 whitespace-nowrap">
@@ -44,7 +44,7 @@ export default function VideoSection() {
               </span>
               <div className="absolute inset-0 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               <div className="absolute inset-0 bg-transparent transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
-            </button>
+            </a>
           </div>
         </div>
       </div>

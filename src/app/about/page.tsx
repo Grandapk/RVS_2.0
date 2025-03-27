@@ -5,6 +5,8 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import ReviewsSection from '@/components/ReviewsSection'
+import FAQSection from '@/components/FAQSection'
 
 export default function AboutPage() {
   const router = useRouter()
@@ -122,7 +124,7 @@ export default function AboutPage() {
                 </p>
                 <div className="pt-8">
                   <button
-                    onClick={() => router.push('/#contact')}
+                    onClick={() => router.push('/contact')}
                     className="inline-block bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-yellow-500 transition-colors duration-300"
                   >
                     СВЯЗАТЬСЯ
@@ -132,6 +134,13 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
+
+        {/* Секция отзывов */}
+        <ReviewsSection />
+
+        {/* Секция FAQ */}
+        <FAQSection />
+
       </main>
       <Footer />
     </div>

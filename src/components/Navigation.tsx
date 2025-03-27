@@ -201,7 +201,7 @@ export default function Navigation({
               </div>
               <div className="py-2">
                 <Link
-                  href="/#portfolio"
+                  href="/portfolio"
                   className={`font-semibold transition-colors duration-500 ${
                     isTransparent
                       ? 'text-white hover:text-gray-200'
@@ -225,7 +225,7 @@ export default function Navigation({
               </div>
               <div className="py-2">
                 <Link
-                  href="/#contact"
+                  href="/contact"
                   className={`font-semibold transition-colors duration-500 ${
                     isTransparent
                       ? 'text-white hover:text-gray-200'
@@ -384,11 +384,18 @@ export default function Navigation({
                       )}
                     </div>
                     <Link
-                      href="/#portfolio"
+                      href="/portfolio"
                       className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-yellow-50 rounded-lg transition-colors duration-500"
                       onClick={handleMobileMenuToggle}
                     >
                       Портфолио
+                    </Link>
+                    <Link
+                      href="/#reviews"
+                      className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-yellow-50 rounded-lg transition-colors duration-500"
+                      onClick={handleMobileMenuToggle}
+                    >
+                      Отзывы
                     </Link>
                     <Link
                       href="/about"
