@@ -9,6 +9,8 @@ import ReviewsSection from '@/components/ReviewsSection'
 import FAQSection from '@/components/FAQSection'
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useRouter } from 'next/navigation'
+import ScrollToTopButton from '@/components/ScrollToTopButton'
+import { useLanguage } from '@/context/LanguageContext'
 
 // Динамический импорт компонентов
 const ReviewsSectionComponent = dynamic(
@@ -115,6 +117,8 @@ export default function EquipmentPage() {
   const [isScrolled, setIsScrolled] = useState(false)
   const router = useRouter()
   const lastScrollY = useRef(0)
+  const { translations } = useLanguage()
+  const services = translations.ServicesPage?.equipment || {}
 
   // Оптимизированный обработчик скролла с throttle
   const handleScroll = useCallback(() => {
@@ -174,7 +178,7 @@ export default function EquipmentPage() {
               className="max-w-4xl"
             >
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-2 text-left text-white">
-                Аренда строительной техники
+                {services.title || 'Аренда строительной техники'}
               </h1>
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
                 <button
@@ -182,7 +186,7 @@ export default function EquipmentPage() {
                   className="group relative px-6 sm:px-8 py-3 bg-yellow-400 text-gray-900 rounded-full hover:bg-[#1B2A3B] transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105 w-fit"
                 >
                   <span className="relative z-10 text-lg sm:text-xl font-bold group-hover:text-white transition-colors duration-300 whitespace-nowrap">
-                    ЗАКАЗАТЬ КОНСУЛЬТАЦИЮ
+                    {services.cta || 'ЗАКАЗАТЬ КОНСУЛЬТАЦИЮ'}
                   </span>
                   <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                   <div className="absolute inset-0 bg-yellow-400 transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
@@ -699,6 +703,7 @@ export default function EquipmentPage() {
         </motion.div>
 
         <Footer />
+        <ScrollToTopButton />
       </div>
     </AnimatePresence>
   )

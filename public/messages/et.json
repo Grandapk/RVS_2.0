@@ -1,0 +1,136 @@
+{
+  "VideoSection": {
+    "title": "Videopresentatsioon",
+    "description": "Tutvu meie tööga videoformaadis",
+    "button": "Vaata videot"
+  },
+  "ReviewsSection": {
+    "title": "Meie klientide arvustused",
+    "subtitle": "Mida meist räägitakse",
+    "viewAll": "Loe kõiki arvustusi"
+  },
+  "FAQSection": {
+    "title": "Korduma kippuvad küsimused",
+    "subtitle": "Vastused küsimustele, mida meilt sageli küsitakse",
+    "viewAll": "Vaata kõiki küsimusi"
+  },
+  "HomePage": {
+    "title": "Tere tulemast meie veebisaidile!",
+    "about": {
+      "title": "Ehitame südamega, töötame tulemuse nimel",
+      "description": "Oleme teie usaldusväärne partner ehituses. Meie teekond on aastatepikkune kogemus, pühendumus ja püüdlus kõrge kvaliteedi poole. Ehitame mitte ainult hooneid, vaid ka mainet.",
+      "stats": {
+        "years": {
+          "value": "10+",
+          "label": "Aastat kogemust turul"
+        },
+        "projects": {
+          "value": "50+",
+          "label": "Edukaid projekte"
+        },
+        "clients": {
+          "value": "99%",
+          "label": "Rahulolevaid kliente"
+        }
+      }
+    },
+    "services": {
+      "title": "Meie teenused",
+      "construction": {
+        "title": "Üldehitustööd",
+        "description": "Meie teenused hõlmavad kõiki ehituse põhiaspekte, alates ehitusplatsi ettevalmistamisest ja mullatöödest kuni hoonete ja rajatiste ehitamiseni."
+      },
+      "equipment": {
+        "title": "Ehitustehnika rent",
+        "description": "Pakume rendile usaldusväärset ehitustehnikat, mida hooldatakse regulaarselt erinevate tööde teostamiseks."
+      },
+      "logistics": {
+        "title": "Materjalide tarnimine ja jäätmete äravedu",
+        "description": "Meie teenused hõlmavad kõiki ehituse põhiaspekte, alates ehitusplatsi ettevalmistamisest ja mullatöödest kuni hoonete ja rajatiste ehitamiseni."
+      },
+      "learnMore": "Loe rohkem"
+    },
+    "portfolio": {
+      "title": "Meie tööd",
+      "viewAll": "Vaata kõiki töid"
+    },
+    "cta": {
+      "title": "Valmis projekti alustama?",
+      "description": "Võtke meiega ühendust täna, et arutada oma projekti ja saada tasuta konsultatsiooni.",
+      "button": "Võta meiega ühendust"
+    }
+  },
+  "AboutPage": {
+    "title": "Meie lugu",
+    "subtitle": "Igal ettevõttel on oma lugu - ja meie ei ole erand.",
+    "founder": {
+      "name": "Roman Shahalevich",
+      "position": "Ettevõtte asutaja"
+    },
+    "history": {
+      "title": "Kuidas RVS sündis?",
+      "part1": "Minu nimi on Roman Shahalevich ja minu teekond ehitussektoris algas ammu enne seda, kui ma mõtlesin oma äri peale. Juba üliõpilasena veetsin palju aega oma isa abistades pereettevõttes. Kui keegi oleks mulle siis öelnud, et ühel päeval jätkan peretraditsiooni ja avan isegi oma ettevõtte, poleks ma ilmselt uskunud.",
+      "part2": "Kuid elu ise näitab meile õiget teed. Aastad tööd õlg õla kõrval isaga andsid mulle hindamatu kogemuse - nii teoreetilise kui praktilise. Õppisin mitte ainult tehnikat juhtima või protsesse haldama, vaid ka inimesi mõistma, keerulistes olukordades lahendusi leidma ja tagama, et kliendid oleksid alati tulemusega rahul.",
+      "part3": "Ajapikku tundsin, et olen valmis tegema otsustavat sammu - looma oma ettevõtte, mis põhineb väärtustel, mille olen isalt õppinud. Nii sündiski RVS - minu 'uhkus' ja võib öelda, et minu 'laps'.",
+      "part4": "Aastad töötamist erinevate klientidega - suurtest ettevõtetest eraisikuteni - on õpetanud mulle olulist tõde: edu selles äris pole ainult teenuste pakkumine või tehingute sõlmimine. See on eelkõige usalduslike ja pikaajaliste suhete loomine, mis põhinevad austusel ja aususel.",
+      "part5": "Mõned minu esimestest klientidest on aja jooksul saanud mitte ainult püsiklientideks, vaid ka usaldusväärseteks partneriteks, vahel isegi sõpradeks. Usun, et just see eristab RVS-i - ettevõtet, mis on ehitatud mitte ainult teadmiste ja kogemuste kindlale alusele, vaid ka siiraste suhete peale nendega, kelle jaoks me töötame.",
+      "part6": "RVS-is ei ehita me ainult hooneid - loome suhteid, mis taluvad aja proovile."
+    },
+    "contact": "VÕTA ÜHENDUST"
+  },
+  "ContactPage": {
+    "title": "Võta meiega ühendust",
+    "subtitle": "Oleme valmis vastama teie küsimustele",
+    "form": {
+      "name": "Teie nimi",
+      "email": "Email",
+      "phone": "Telefon",
+      "service": {
+        "label": "Valige teenus",
+        "construction": "Üldehitustööd",
+        "equipment": "Tehnika rent",
+        "logistics": "Materjalide tarnimine"
+      },
+      "message": "Sõnum",
+      "submit": "Saada",
+      "success": "Sõnum on edukalt saadetud!",
+      "error": "Tekkis viga. Palun proovige uuesti."
+    },
+    "contact": {
+      "title": "Kontaktinfo",
+      "address": "Aadress",
+      "phone": "Telefon",
+      "email": "Email"
+    }
+  },
+  "Navigation": {
+    "home": "Avaleht",
+    "about": "Meist",
+    "services": "Teenused",
+    "portfolio": "Tööd",
+    "contact": "Kontakt"
+  },
+  "Footer": {
+    "organizationNumber": "Ettevõtte registreerimisnumber",
+    "services": "Teenused",
+    "portfolio": "Meie tööd",
+    "reviews": "Arvustused",
+    "about": "Meist",
+    "address": "Eesti, Jõhvi",
+    "email": "info@example.com",
+    "contactName": "Roman Sahhalevits",
+    "copyright": "© 2025 RVS Grupp OÜ. Kõik õigused kaitstud",
+    "navigation": {
+      "title": "Navigatsioon"
+    },
+    "servicesSection": {
+      "title": "Teenused"
+    },
+    "contact": {
+      "title": "Kontakt",
+      "address": "Jõhvi, Eesti",
+      "phone": "+372 5555 5555",
+      "email": "info@rvs.ee"
+    }
+  }
+}

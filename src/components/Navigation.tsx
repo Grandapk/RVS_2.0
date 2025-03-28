@@ -3,7 +3,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useCallback, useEffect } from 'react'
+import { useLanguage } from '@/context/LanguageContext'
 import { motion } from 'framer-motion'
+import LanguageSwitcher from './LanguageSwitcher'
 
 interface NavigationProps {
   isTransparent?: boolean
@@ -14,6 +16,9 @@ export default function Navigation({
   isTransparent = false,
   className = '',
 }: NavigationProps) {
+  const { translations } = useLanguage();
+  const nav = translations.Navigation || {};
+  
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
@@ -89,7 +94,7 @@ export default function Navigation({
             </div>
 
             {/* Десктопное меню */}
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex space-x-8 items-center">
               <div
                 className="relative group"
                 onMouseEnter={handleServicesMouseEnter}
@@ -103,7 +108,7 @@ export default function Navigation({
                         : 'text-white hover:text-gray-200'
                     }`}
                   >
-                    Услуги
+                    {nav.services || 'Услуги'}
                     <svg
                       className={`ml-1 h-4 w-4 transform transition-transform duration-500 ${
                         isServicesOpen ? 'rotate-180' : ''
@@ -154,10 +159,10 @@ export default function Navigation({
                             </div>
                             <div>
                               <div className="font-semibold text-gray-900">
-                                СТРОИТЕЛЬНЫЕ РАБОТЫ
+                                {nav.constructionWorks || 'СТРОИТЕЛЬНЫЕ РАБОТЫ'}
                               </div>
                               <div className="text-sm text-gray-600">
-                                Любая работа под ваш запрос
+                                {nav.constructionDesc || 'Любая работа под ваш запрос'}
                               </div>
                             </div>
                           </div>
@@ -186,10 +191,10 @@ export default function Navigation({
                             </div>
                             <div>
                               <div className="font-semibold text-gray-900">
-                                АРЕНДА И ДОСТАВКА
+                                {nav.rentAndDelivery || 'АРЕНДА И ДОСТАВКА'}
                               </div>
                               <div className="text-sm text-gray-600">
-                                Аренда спецтехники и доставка материалов
+                                {nav.rentAndDeliveryDesc || 'Аренда спецтехники и доставка материалов'}
                               </div>
                             </div>
                           </div>
@@ -232,8 +237,13 @@ export default function Navigation({
                       : 'text-white hover:text-gray-200'
                   }`}
                 >
-                  Связаться
+                  {nav.contact || 'Связаться'}
                 </Link>
+              </div>
+              
+              {/* Переключатель языка */}
+              <div className="ml-4">
+                <LanguageSwitcher />
               </div>
             </div>
 
@@ -293,7 +303,7 @@ export default function Navigation({
                         onClick={() => setIsServicesOpen(!isServicesOpen)}
                         className="w-full text-left px-4 py-3 text-base font-medium text-gray-900 hover:bg-yellow-50 rounded-lg transition-colors duration-500 flex items-center justify-between"
                       >
-                        Услуги
+                        {nav.services || 'Услуги'}
                         <svg
                           className={`ml-1 h-4 w-4 transform transition-transform duration-500 ${
                             isServicesOpen ? 'rotate-180' : ''
@@ -338,10 +348,10 @@ export default function Navigation({
                               </div>
                               <div>
                                 <div className="font-semibold">
-                                  СТРОИТЕЛЬНЫЕ РАБОТЫ
+                                  {nav.constructionWorks || 'СТРОИТЕЛЬНЫЕ РАБОТЫ'}
                                 </div>
                                 <div className="text-sm text-gray-600">
-                                  Любая работа под ваш запрос
+                                  {nav.constructionDesc || 'Любая работа под ваш запрос'}
                                 </div>
                               </div>
                             </div>
@@ -372,10 +382,10 @@ export default function Navigation({
                               </div>
                               <div>
                                 <div className="font-semibold">
-                                  АРЕНДА ТЕХНИКИ
+                                  {nav.rentAndDelivery || 'АРЕНДА ТЕХНИКИ'}
                                 </div>
                                 <div className="text-sm text-gray-600">
-                                  Арендуй строительную технику
+                                  {nav.rentAndDeliveryDesc || 'Арендуй строительную технику'}
                                 </div>
                               </div>
                             </div>
@@ -388,7 +398,7 @@ export default function Navigation({
                       className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-yellow-50 rounded-lg transition-colors duration-500"
                       onClick={handleMobileMenuToggle}
                     >
-                      Портфолио
+                      {nav.portfolio || 'Портфолио'}
                     </Link>
          
                     <Link
@@ -396,15 +406,20 @@ export default function Navigation({
                       className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-yellow-50 rounded-lg transition-colors duration-500"
                       onClick={handleMobileMenuToggle}
                     >
-                      О нас
+                      {nav.about || 'О нас'}
                     </Link>
                     <Link
                       href="/contact"
                       className="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-yellow-50 rounded-lg transition-colors duration-500"
                       onClick={handleMobileMenuToggle}
                     >
-                      Связаться
+                      {nav.contact || 'Связаться'}
                     </Link>
+                    
+                    {/* Переключатель языка в мобильном меню */}
+                    <div className="px-4 py-3">
+                      <LanguageSwitcher isMobile={true} />
+                    </div>
                   </div>
                 </div>
               </div>

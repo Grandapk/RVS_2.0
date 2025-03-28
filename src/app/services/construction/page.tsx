@@ -10,11 +10,15 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import ReviewsSection from '@/components/ReviewsSection'
 import FAQSection from '@/components/FAQSection'
+import ScrollToTopButton from '@/components/ScrollToTopButton'
+import { useLanguage } from '@/context/LanguageContext'
 
 export default function ConstructionServices() {
   const [isVisible, setIsVisible] = useState(false)
   const router = useRouter()
   const [isScrolled, setIsScrolled] = useState(false)
+  const { translations } = useLanguage()
+  const services = translations.ServicesPage?.construction || {}
 
   const slides = [
     {
@@ -101,7 +105,7 @@ export default function ConstructionServices() {
               className="max-w-4xl"
             >
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-8 tracking-tight drop-shadow-lg text-left">
-                Общестроительные работы
+                {services.title || 'Общестроительные работы'}
               </h1>
               <div className="flex flex-col sm:flex-row gap-4 justify-start w-full sm:w-auto">
                 <button
@@ -109,7 +113,7 @@ export default function ConstructionServices() {
                   className="group relative px-6 sm:px-8 py-3 bg-yellow-400 text-gray-900 rounded-full hover:bg-[#1B2A3B] transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105 w-fit"
                 >
                   <span className="relative z-10 text-lg sm:text-xl font-bold group-hover:text-white transition-colors duration-300 whitespace-nowrap">
-                    ЗАКАЗАТЬ КОНСУЛЬТАЦИЮ
+                    {services.cta || 'ЗАКАЗАТЬ КОНСУЛЬТАЦИЮ'}
                   </span>
                   <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                   <div className="absolute inset-0 bg-yellow-400 transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
@@ -139,10 +143,10 @@ export default function ConstructionServices() {
               className="text-center mb-16"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Почему выбирают нас
+                {services.subtitle || 'Почему выбирают нас'}
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Мы предоставляем качественные услуги и гарантируем результат
+                {services.description || 'Мы предоставляем качественные услуги и гарантируем результат'}
               </p>
             </motion.div>
 
@@ -645,6 +649,7 @@ export default function ConstructionServices() {
         </motion.div>
       </main>
       <Footer />
+      <ScrollToTopButton />
     </div>
   )
 }

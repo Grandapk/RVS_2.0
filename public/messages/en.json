@@ -1,0 +1,136 @@
+{
+  "VideoSection": {
+    "title": "Video Presentation",
+    "description": "Get to know our work in video format",
+    "button": "Watch video"
+  },
+  "ReviewsSection": {
+    "title": "Our Clients' Reviews",
+    "subtitle": "What people say about us",
+    "viewAll": "Read all reviews"
+  },
+  "FAQSection": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Answers to questions we are often asked",
+    "viewAll": "View all questions"
+  },
+  "HomePage": {
+    "title": "Welcome to our website!",
+    "about": {
+      "title": "Building with passion, working for results",
+      "description": "We are your reliable partner in construction. Our journey is years of experience, dedication, and commitment to high quality. We build not only buildings but also reputation.",
+      "stats": {
+        "years": {
+          "value": "10+",
+          "label": "Years of experience"
+        },
+        "projects": {
+          "value": "50+",
+          "label": "Successful projects"
+        },
+        "clients": {
+          "value": "99%",
+          "label": "Happy clients"
+        }
+      }
+    },
+    "services": {
+      "title": "Our Services",
+      "construction": {
+        "title": "General Construction",
+        "description": "Our services cover all key aspects of construction, from site preparation and earthworks to the construction of buildings and structures."
+      },
+      "equipment": {
+        "title": "Construction Equipment Rental",
+        "description": "We provide reliable construction equipment for rent that is regularly maintained for various types of work."
+      },
+      "logistics": {
+        "title": "Material Delivery and Waste Removal",
+        "description": "Our services cover all key aspects of construction, from site preparation and earthworks to the construction of buildings and structures."
+      },
+      "learnMore": "Learn More"
+    },
+    "portfolio": {
+      "title": "Our Works",
+      "viewAll": "View All Works"
+    },
+    "cta": {
+      "title": "Ready to start a project?",
+      "description": "Contact us today to discuss your project and get a free consultation.",
+      "button": "Contact Us"
+    }
+  },
+  "AboutPage": {
+    "title": "Our Story",
+    "subtitle": "Every company has its own story - and ours is no exception.",
+    "founder": {
+      "name": "Roman Shahalevich",
+      "position": "Company Founder"
+    },
+    "history": {
+      "title": "How RVS was born?",
+      "part1": "My name is Roman Shahalevich, and my journey in the construction industry began long before I thought about my own business. As a student, I spent a lot of time helping my father in the family construction company. If someone had told me then that one day I would continue the family business and even open my own company, I probably wouldn't have believed it.",
+      "part2": "But life itself shows us the right path. Years of working shoulder to shoulder with my father gave me invaluable experience - both theoretical and practical. I learned not only to operate equipment or manage processes but also to understand people, find solutions in difficult situations, and ensure that clients are always satisfied with the result.",
+      "part3": "Over time, I felt ready to take a decisive step - to create my own company based on the values I learned from my father. That's how RVS was born - my 'pride' and, you could say, my 'child'.",
+      "part4": "Years of working with various clients - from large companies to individuals - have taught me an important truth: success in this business is not just about providing services or making deals. It is, first and foremost, about building trusting and long-term relationships based on respect and honesty.",
+      "part5": "Some of my first clients have over time become not just regular customers but also reliable partners, sometimes even friends. I believe that this is what distinguishes RVS - a company built not only on a solid foundation of knowledge and experience but also on sincere relationships with those for whom we work.",
+      "part6": "At RVS, we build not only buildings - we create relationships that stand the test of time."
+    },
+    "contact": "CONTACT US"
+  },
+  "ContactPage": {
+    "title": "Contact Us",
+    "subtitle": "We are ready to answer your questions",
+    "form": {
+      "name": "Your Name",
+      "email": "Email",
+      "phone": "Phone",
+      "service": {
+        "label": "Select Service",
+        "construction": "General Construction",
+        "equipment": "Equipment Rental",
+        "logistics": "Material Delivery"
+      },
+      "message": "Message",
+      "submit": "Send",
+      "success": "Message sent successfully!",
+      "error": "An error occurred. Please try again."
+    },
+    "contact": {
+      "title": "Contact Information",
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email"
+    }
+  },
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Works",
+    "contact": "Contact"
+  },
+  "Footer": {
+    "organizationNumber": "Company registration number",
+    "services": "Services",
+    "portfolio": "Our Works",
+    "reviews": "Reviews",
+    "about": "About us",
+    "address": "Estonia, Jõhvi",
+    "email": "info@example.com",
+    "contactName": "Roman Shahalevich",
+    "copyright": "© 2025 RVS Grupp OÜ. All rights reserved",
+    "navigation": {
+      "title": "Navigation"
+    },
+    "servicesSection": {
+      "title": "Services"
+    },
+    "contact": {
+      "title": "Contact",
+      "address": "Jõhvi, Estonia",
+      "phone": "+372 5555 5555",
+      "email": "info@rvs.ee"
+    }
+  }
+}

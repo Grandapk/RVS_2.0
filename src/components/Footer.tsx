@@ -1,7 +1,10 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { useLanguage } from '@/context/LanguageContext'
 
 export default function Footer() {
+  const { translations } = useLanguage();
+  const footer = translations.Footer || {};
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-4">
@@ -18,7 +21,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-gray-400 text-sm">
-              Организационный номер компании
+              {footer.organizationNumber || 'Организационный номер компании'}
             </p>
           </div>
 
@@ -28,41 +31,41 @@ export default function Footer() {
               href="/services/construction"
               className="text-gray-400 hover:text-white transition-colors"
             >
-              Услуги
+              {footer.services || 'Услуги'}
             </Link>
             <Link
               href="/#portfolio"
               className="text-gray-400 hover:text-white transition-colors"
             >
-              Наши Работы
+              {footer.portfolio || 'Наши Работы'}
             </Link>
             <Link
               href="/#reviews"
               className="text-gray-400 hover:text-white transition-colors"
             >
-              Отзывы
+              {footer.reviews || 'Отзывы'}
             </Link>
             <Link
               href="/#about"
               className="text-gray-400 hover:text-white transition-colors"
             >
-              О нас
+              {footer.about || 'О нас'}
             </Link>
           </div>
 
           {/* Контакты */}
           <div className="flex flex-col space-y-4 md:col-span-3 md:col-start-11">
             <div className="text-gray-400">
-              <p>Эстония, Йыхви</p>
-              <p>info@example.com</p>
+              <p>{footer.address || 'Эстония, Йыхви'}</p>
+              <p>{footer.email || 'info@example.com'}</p>
             </div>
             <div className="text-gray-400">
-              <p>Роман Шахалевич</p>
+              <p>{footer.contactName || 'Роман Шахалевич'}</p>
               <a
                 href="tel:+37253320419"
                 className="hover:text-white transition-colors"
               >
-                +372 53 320 419
+                {footer.contact?.phone || '+372 53 320 419'}
               </a>
             </div>
             {/* Социальные сети */}
@@ -127,7 +130,7 @@ export default function Footer() {
           </a>
           <div className="flex justify-center">
             <p className="text-gray-400 text-sm">
-              © 2025 RVS Grupp OÜ. Все права защищены
+              {footer.copyright || '© 2025 RVS Grupp OÜ. Все права защищены'}
             </p>
           </div>
         </div>

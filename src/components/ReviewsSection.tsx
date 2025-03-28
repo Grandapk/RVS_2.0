@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useLanguage } from '@/context/LanguageContext'
 
-const reviews = [
+// Дефолтные отзывы, которые будут использоваться, если переводы не найдены
+const defaultReviews = [
   {
     id: 1,
     text: 'Отличная команда профессионалов! Выполнили ремонт нашего офиса точно в срок. Особенно порадовало внимание к деталям и чистота во время работ.',
@@ -22,6 +24,12 @@ const reviews = [
 ]
 
 export default function ReviewsSection() {
+  const { translations } = useLanguage();
+  const reviewsData = translations.Reviews || {};
+  
+  // Используем переводы из файла переводов или дефолтные значения
+  const reviews = reviewsData.items || defaultReviews;
+  
   const [currentReview, setCurrentReview] = useState(0)
   const [isAutoplay, setIsAutoplay] = useState(true)
 
@@ -69,7 +77,7 @@ export default function ReviewsSection() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex items-center gap-4 mb-16">
-          <h2 className="text-4xl font-bold text-white">Отзывы</h2>
+          <h2 className="text-4xl font-bold text-white">{reviewsData.title || 'Отзывы'}</h2>
           <div className="flex-grow h-1 bg-white/30"></div>
         </div>
 
@@ -118,7 +126,7 @@ export default function ReviewsSection() {
 
           {/* Навигация */}
           <div className="flex justify-center mt-8 gap-2">
-            {reviews.map((_, index) => (
+            {reviews.map((_: any, index: number) => (
               <button
                 key={index}
                 onClick={() => {

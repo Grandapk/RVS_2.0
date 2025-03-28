@@ -3,8 +3,10 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import { useLanguage } from '@/context/LanguageContext'
 
-const faqItems = [
+// Дефолтные вопросы и ответы, которые будут использоваться, если переводы не найдены
+const defaultFaqItems = [
   {
     question: 'В каких регионах вы работаете?',
     answer:
@@ -33,6 +35,12 @@ const faqItems = [
 ]
 
 export default function FAQSection() {
+  const { translations } = useLanguage();
+  const faq = translations.FAQ || {};
+  
+  // Используем переводы из файла переводов или дефолтные значения
+  const faqItems = faq.items || defaultFaqItems;
+  
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
@@ -68,12 +76,12 @@ export default function FAQSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Часто задаваемые вопросы
+            {faq.title || 'Часто задаваемые вопросы'}
           </motion.h2>
         </div>
 
         <div className="max-w-3xl mx-auto space-y-4">
-          {faqItems.map((item, index) => (
+          {faqItems.map((item: { question: string; answer: string }, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, x: -20 }}
@@ -155,7 +163,7 @@ export default function FAQSection() {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 17 }}
               >
-                УЗНАТЬ БОЛЬШЕ
+                {faq.moreButton || 'УЗНАТЬ БОЛЬШЕ'}
               </motion.button>
             </Link>
           </motion.div>

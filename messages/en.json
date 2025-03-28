@@ -1,0 +1,253 @@
+{
+  "VideoSection": {
+    "title": "Building with Quality",
+    "subtitle": "Working with Trust",
+    "description": "Get to know our work in video format",
+    "button": "Watch video",
+    "ourWorksButton": "OUR WORKS",
+    "reviewsButton": "REVIEWS"
+  },
+  "ReviewsSection": {
+    "title": "Our Clients' Reviews",
+    "subtitle": "What people say about us",
+    "viewAll": "Read all reviews"
+  },
+  "FAQSection": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Answers to questions we are often asked",
+    "viewAll": "View all questions",
+    "learnMoreButton": "LEARN MORE"
+  },
+  "HomePage": {
+    "title": "Welcome to our website!",
+    "about": {
+      "title": "Building with passion, working for results",
+      "description": "We are your reliable partner in construction. Our journey is years of experience, dedication, and commitment to high quality. We build not only buildings but also reputation.",
+      "stats": {
+        "years": {
+          "value": "10+",
+          "label": "Years of experience"
+        },
+        "projects": {
+          "value": "50+",
+          "label": "Successful projects"
+        },
+        "clients": {
+          "value": "99%",
+          "label": "Happy clients"
+        }
+      }
+    },
+    "services": {
+      "title": "Our Services",
+      "construction": {
+        "title": "General Construction",
+        "description": "Our services cover all key aspects of construction, from site preparation and earthworks to the construction of buildings and structures."
+      },
+      "equipment": {
+        "title": "Construction Equipment Rental",
+        "description": "We provide reliable construction equipment for rent that is regularly maintained for various types of work."
+      },
+      "logistics": {
+        "title": "Material Delivery and Waste Removal",
+        "description": "Our services cover all key aspects of construction, from site preparation and earthworks to the construction of buildings and structures."
+      },
+      "learnMore": "Learn More"
+    },
+    "portfolio": {
+      "title": "Our Works",
+      "viewAll": "View All Works"
+    },
+    "cta": {
+      "title": "Ready to start a project?",
+      "description": "Contact us today to discuss your project and get a free consultation.",
+      "button": "Contact Us"
+    }
+  },
+  "AboutPage": {
+    "title": "Our Story",
+    "subtitle": "Every company has its own story - and ours is no exception.",
+    "founder": {
+      "name": "Roman Shahalevich",
+      "position": "Company Founder"
+    },
+    "history": {
+      "title": "How RVS was born?",
+      "part1": "My name is Roman Shahalevich, and my journey in the construction industry began long before I thought about my own business. As a student, I spent a lot of time helping my father in the family construction company. If someone had told me then that one day I would continue the family business and even open my own company, I probably wouldn't have believed it.",
+      "part2": "But life itself shows us the right path. Years of working shoulder to shoulder with my father gave me invaluable experience - both theoretical and practical. I learned not only to operate equipment or manage processes but also to understand people, find solutions in difficult situations, and ensure that clients are always satisfied with the result.",
+      "part3": "Over time, I felt ready to take a decisive step - to create my own company based on the values I learned from my father. That's how RVS was born - my 'pride' and, you could say, my 'child'.",
+      "part4": "Years of working with various clients - from large companies to individuals - have taught me an important truth: success in this business is not just about providing services or making deals. It is, first and foremost, about building trusting and long-term relationships based on respect and honesty.",
+      "part5": "Some of my first clients have over time become not just regular customers but also reliable partners, sometimes even friends. I believe that this is what distinguishes RVS - a company built not only on a solid foundation of knowledge and experience but also on sincere relationships with those for whom we work.",
+      "part6": "At RVS, we build not only buildings - we create relationships that stand the test of time."
+    },
+    "contact": "CONTACT US"
+  },
+  "ContactPage": {
+    "title": "Contact Us",
+    "subtitle": "We are ready to answer your questions",
+    "form": {
+      "name": "Your Name",
+      "email": "Email",
+      "phone": "Phone",
+      "service": {
+        "label": "Select Service",
+        "construction": "General Construction",
+        "equipment": "Equipment Rental",
+        "logistics": "Material Delivery"
+      },
+      "message": "Message",
+      "submit": "Send",
+      "success": "Message sent successfully!",
+      "error": "An error occurred. Please try again."
+    },
+    "contact": {
+      "title": "Contact Information",
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email"
+    }
+  },
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Works",
+    "contact": "Contact",
+    "constructionWorks": "CONSTRUCTION WORKS",
+    "constructionDesc": "Any work according to your request",
+    "rentAndDelivery": "EQUIPMENT RENTAL",
+    "rentAndDeliveryDesc": "Rent construction equipment"
+  },
+  "ServicesPage": {
+    "construction": {
+      "title": "Construction Works",
+      "subtitle": "Quality construction by professionals",
+      "description": "We offer a full range of construction services for your projects",
+      "services": {
+        "foundations": {
+          "title": "Foundation Works",
+          "description": "Quality foundations for your home"
+        },
+        "roofing": {
+          "title": "Roofing Works",
+          "description": "Reliable and quality roofs of any complexity"
+        },
+        "interior": {
+          "title": "Interior Finishing",
+          "description": "Quality interior finishing of premises"
+        },
+        "exterior": {
+          "title": "Exterior Finishing",
+          "description": "Quality exterior finishing of buildings"
+        }
+      },
+      "cta": "Order Service"
+    },
+    "equipment": {
+      "title": "Equipment Rental",
+      "subtitle": "Modern equipment for your construction projects",
+      "description": "We offer a wide range of construction equipment for rent",
+      "equipment": {
+        "excavators": {
+          "title": "Excavators",
+          "description": "Various models of excavators for earthworks"
+        },
+        "loaders": {
+          "title": "Loaders",
+          "description": "Powerful loaders for various construction tasks"
+        },
+        "trucks": {
+          "title": "Trucks",
+          "description": "Reliable trucks for transporting construction materials"
+        }
+      },
+      "cta": "Rent Equipment"
+    }
+  },
+  "Footer": {
+    "organizationNumber": "Company registration number",
+    "services": "Services",
+    "portfolio": "Our Works",
+    "reviews": "Reviews",
+    "about": "About us",
+    "address": "Estonia, Jõhvi",
+    "email": "info@example.com",
+    "contactName": "Roman Shahalevich",
+    "copyright": "© 2025 RVS Grupp OÜ. All rights reserved",
+    "navigation": {
+      "title": "Navigation"
+    },
+    "servicesSection": {
+      "title": "Services"
+    },
+    "contact": {
+      "title": "Contact",
+      "address": "Jõhvi, Estonia",
+      "phone": "+372 5555 5555",
+      "email": "info@rvs.ee"
+    }
+  },
+  "Reviews": {
+    "title": "Client Reviews",
+    "subtitle": "What our clients say about us",
+    "items": [
+      {
+        "id": 1,
+        "text": "Excellent team of professionals! They renovated our office exactly on time. I was especially pleased with the attention to detail and cleanliness during the work.",
+        "rating": 5
+      },
+      {
+        "id": 2,
+        "text": "We ordered the construction of a private house. The guys worked at the highest level - from design to delivery of the object. Everything is clear, transparent and high-quality.",
+        "rating": 5
+      },
+      {
+        "id": 3,
+        "text": "We rented equipment for earthworks from the company. The equipment is new, in excellent condition. The operators are real professionals. I recommend!",
+        "rating": 5
+      }
+    ],
+    "allReviews": "All reviews",
+    "leaveReview": "Leave a review"
+  },
+  "Portfolio": {
+    "title": "Our Works",
+    "stats": {
+      "completedProjects": {
+        "value": "50",
+        "label": "Completed projects"
+      },
+      "satisfiedClients": {
+        "value": "99",
+        "label": "Satisfied clients"
+      }
+    },
+    "description": "Our services cover all key aspects of construction, from site preparation and earthworks to the construction of buildings and structures."
+  },
+  "FAQ": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "In which regions do you work?",
+        "answer": "We provide construction services in Ida-Virumaa. If your property is outside this region, please contact us for details."
+      },
+      {
+        "question": "How to request a consultation?",
+        "answer": "You can submit a request on our website, call us at (+372) 53 320 419, or fill out the form on our website in the 'contact' section. Our specialist will contact you to discuss the details."
+      },
+      {
+        "question": "Do you help with the selection of materials?",
+        "answer": "Yes, we select optimal construction and finishing materials taking into account the budget and wishes of the client."
+      },
+      {
+        "question": "Do you work with client's materials?",
+        "answer": "Yes, if the materials meet quality and safety requirements. However, we recommend consulting with our specialists before purchasing."
+      },
+      {
+        "question": "Do you provide landscaping services?",
+        "answer": "Yes, we perform landscaping work, paving, fence installation, and other types of landscaping."
+      }
+    ],
+    "moreButton": "LEARN MORE"
+  }
+}
