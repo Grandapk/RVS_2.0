@@ -227,9 +227,45 @@
       }
     },
     "equipment": {
-      "title": "Seadmete rent",
+      "title": "Ehitusseadmete rent",
       "subtitle": "Kaasaegsed seadmed teie ehitusprojektide jaoks",
       "description": "Pakume laia valikut ehitusseadmeid rendile",
+      "ctaButton": "KÜSI KONSULTATSIOONI",
+      "reviewsButton": "VAATA ARVUSTUSI",
+      "features": {
+        "title": "Miks valida meid",
+        "subtitle": "Pakume kvaliteetset teenindust ja usaldusväärseid seadmeid",
+        "items": [
+          {
+            "title": "Kaasaegsed seadmed",
+            "description": "Kõiki seadmeid hooldatakse ja uuendatakse regulaarselt"
+          },
+          {
+            "title": "Kogenud operaatorid",
+            "description": "Professionaalsed operaatorid pika töökogemusega"
+          },
+          {
+            "title": "Paindlikud tingimused",
+            "description": "Mugavad renditingimused ja läbipaistev hinnakujundus"
+          }
+        ]
+      },
+      "infoSection": {
+        "leftBlock": {
+          "paragraph1": "Oma raskeveokite pargi puudumine võib olla tõsine väljakutse tsiviil-, tööstus- või tee-ehituses tegutsevatele ettevõtetele. Ilma ehitusseadmeteta on raske tagada materjalide õigeaegset kohaletoimetamist, ehitusjäätmete eemaldamist pärast lammutustöid või kaevandamisel eemaldatud pinnase transporti.",
+          "paragraph2": "Neile, kes tellivad seadmeid pikaks ajaks või võtavad korraga mitu masinat, on ette nähtud head allahindlused."
+        },
+        "rightBlock": {
+          "paragraph1": "Pakume oma teenuseid Ida-Virumaa piirkonnas soodsate hindadega, kus allpool loetletud teenuste nõudlus on üsna kõrge:",
+          "services": [
+            "Traktori rent",
+            "Kalluri rent",
+            "Materjalide kohaletoimetamine",
+            "Jäätmete eemaldamine"
+          ],
+          "paragraph2": "Rentides seadmeid koos juhiga ainult siis, kui vajate, säästate raha ja ei raiska ressursse oma transpordi hooldamiseks. Rendihind sisaldab juba kütust ja kogenud juhi tööd."
+        }
+      },
       "equipment": {
         "excavators": {
           "title": "Ekskavaatorid",
@@ -243,6 +279,57 @@
           "title": "Veoautod",
           "description": "Usaldusväärsed veoautod ehitusmaterjalide transportimiseks"
         }
+      },
+      "additionalServices": {
+        "items": [
+          {
+            "title": "Traktor",
+            "description": "Võimas traktor mullatöödeks ja kaubaveoks",
+            "image": "/images/equipment/traktor.png"
+          },
+          {
+            "title": "Veoauto",
+            "description": "Kaubaveok ehitusmaterjalide transportimiseks",
+            "image": "/images/equipment/truck.png"
+          }
+        ],
+        "cta": {
+          "title": "Pole seadmeid? Pole probleemi! Saage hinnapakkumine kohe.",
+          "description": "Pakume täisteenust ehitusseadmete rendiks ja erinevate tööde teostamiseks.",
+          "buttonText": "RENDI KOHE"
+        }
+      },
+      "servicesBlocks": {
+        "title": "Vabanege jäätmetest – Tellige äravedu kohe!",
+        "buttonText": "TELLI JÄÄTMETE ÄRAVEDU",
+        "altText": "Puistematerjal"
+      },
+      "materialsDelivery": {
+        "title": "Kiire kohaletoimetamine ja kvaliteetsed materjalid – Võtke meiega ühendust!",
+        "buttonText": "KORRALDA KOHALETOIMETAMINE",
+        "altText": "Ehitusmaterjalide transport"
+      },
+      "howWeWork": {
+        "title": "Kuidas Me Töötame",
+        "subtitle": "Lihtne ja selge tarneprotsess",
+        "steps": [
+          {
+            "title": "Taotlus",
+            "description": "Esitage taotlus või helistage meile"
+          },
+          {
+            "title": "Arvutus",
+            "description": "Arvutame kulu ja ajastuse"
+          },
+          {
+            "title": "Kohaletoimetamine",
+            "description": "Toimetame materjalid kohale õigeaegselt"
+          },
+          {
+            "title": "Makse",
+            "description": "Mugavad makseviisid"
+          }
+        ]
       },
       "cta": "Rendi seadmed"
     }

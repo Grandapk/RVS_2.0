@@ -186,7 +186,7 @@ export default function EquipmentPage() {
                   className="group relative px-6 sm:px-8 py-3 bg-yellow-400 text-gray-900 rounded-full hover:bg-[#1B2A3B] transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105 w-fit"
                 >
                   <span className="relative z-10 text-lg sm:text-xl font-bold group-hover:text-white transition-colors duration-300 whitespace-nowrap">
-                    {services.cta || 'ЗАКАЗАТЬ КОНСУЛЬТАЦИЮ'}
+                    {services.ctaButton || 'ЗАКАЗАТЬ КОНСУЛЬТАЦИЮ'}
                   </span>
                   <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                   <div className="absolute inset-0 bg-yellow-400 transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
@@ -196,7 +196,7 @@ export default function EquipmentPage() {
                   className="group relative px-6 sm:px-8 py-3 bg-transparent border-2 border-white text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105 w-fit"
                 >
                   <span className="relative z-10 text-lg sm:text-xl font-bold group-hover:text-gray-900 transition-colors duration-300 whitespace-nowrap">
-                    ОТЗЫВЫ
+                    {services.reviewsButton || 'ОТЗЫВЫ'}
                   </span>
                   <div className="absolute inset-0 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                   <div className="absolute inset-0 bg-transparent transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
@@ -211,20 +211,33 @@ export default function EquipmentPage() {
           <div className="container mx-auto px-4">
             <motion.div variants={variants} className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Почему выбирают нас
+                {services.features?.title || 'Почему выбирают нас'}
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Мы предоставляем качественный сервис и надежную технику
+                {services.features?.subtitle || 'Мы предоставляем качественный сервис и надежную технику'}
               </p>
             </motion.div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {[
+              {/* Определяем данные для карточек - либо из переводов, либо дефолтные */}
+              {(services.features?.items ? services.features.items : [
                 {
                   title: 'Современная техника',
-                  description:
-                    'Вся техника регулярно обслуживается и обновляется',
-                  icon: (
+                  description: 'Вся техника регулярно обслуживается и обновляется'
+                },
+                {
+                  title: 'Опытные операторы',
+                  description: 'Профессиональные операторы с большим стажем работы'
+                },
+                {
+                  title: 'Гибкие условия',
+                  description: 'Удобные условия аренды и прозрачное ценообразование'
+                }
+              ]).map((feature, index) => {
+                // Определяем иконку в зависимости от индекса
+                let icon;
+                if (index === 0) {
+                  icon = (
                     <svg
                       className="w-12 h-12 text-yellow-500"
                       fill="none"
@@ -238,13 +251,9 @@ export default function EquipmentPage() {
                         d="M13 10V3L4 14h7v7l9-11h-7z"
                       />
                     </svg>
-                  ),
-                },
-                {
-                  title: 'Опытные операторы',
-                  description:
-                    'Профессиональные операторы с большим стажем работы',
-                  icon: (
+                  );
+                } else if (index === 1) {
+                  icon = (
                     <svg
                       className="w-12 h-12 text-yellow-500"
                       fill="none"
@@ -258,13 +267,9 @@ export default function EquipmentPage() {
                         d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                       />
                     </svg>
-                  ),
-                },
-                {
-                  title: 'Гибкие условия',
-                  description:
-                    'Удобные условия аренды и прозрачное ценообразование',
-                  icon: (
+                  );
+                } else {
+                  icon = (
                     <svg
                       className="w-12 h-12 text-yellow-500"
                       fill="none"
@@ -278,25 +283,27 @@ export default function EquipmentPage() {
                         d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
                       />
                     </svg>
-                  ),
-                },
-              ].map((feature, index) => (
-                <motion.div
-                  key={index}
-                  variants={variants}
-                  custom={index}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-white rounded-2xl p-8 border border-gray-100 shadow-[0_3px_10px_rgb(0,0,0,0.1)] transform transition-all duration-500 hover:scale-[1.02] hover:shadow-xl mt-2"
-                >
-                  <div className="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mb-6">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600">{feature.description}</p>
-                </motion.div>
-              ))}
+                  );
+                }
+                
+                return (
+                  <motion.div
+                    key={index}
+                    variants={variants}
+                    custom={index}
+                    transition={{ delay: index * 0.1 }}
+                    className="bg-white rounded-2xl p-8 border border-gray-100 shadow-[0_3px_10px_rgb(0,0,0,0.1)] transform transition-all duration-500 hover:scale-[1.02] hover:shadow-xl mt-2"
+                  >
+                    <div className="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mb-6">
+                      {icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-600">{feature.description}</p>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </motion.section>
@@ -335,17 +342,10 @@ export default function EquipmentPage() {
                 </div>
                 <div className="text-white">
                   <p className="text-lg mb-8 leading-relaxed">
-                    Отсутствие собственного автопарка грузовых автомобилей с
-                    большой грузоподъемностью может стать серьезным вызовом для
-                    компаний, работающих в сфере гражданского, промышленного или
-                    дорожного строительства. Без строительной техники сложно
-                    обеспечить своевременную доставку материалов, вывоз
-                    строительного мусора после демонтажных работ или
-                    транспортировку грунта, извлеченного при рытье котлованов.
+                    {services.infoSection?.leftBlock?.paragraph1 || 'Отсутствие собственного автопарка грузовых автомобилей с большой грузоподъемностью может стать серьезным вызовом для компаний, работающих в сфере гражданского, промышленного или дорожного строительства. Без строительной техники сложно обеспечить своевременную доставку материалов, вывоз строительного мусора после демонтажных работ или транспортировку грунта, извлеченного при рытье котлованов.'}
                   </p>
                   <p className="text-lg leading-relaxed">
-                    Для тех, кто заказывает технику на долгий срок или берет
-                    несколько машин сразу, предусмотрены хорошие скидки.
+                    {services.infoSection?.leftBlock?.paragraph2 || 'Для тех, кто заказывает технику на долгий срок или берет несколько машин сразу, предусмотрены хорошие скидки.'}
                   </p>
                 </div>
               </motion.div>
@@ -360,33 +360,23 @@ export default function EquipmentPage() {
                 </div>
                 <div className="text-white md:text-gray-900">
                   <p className="text-lg mb-8 leading-relaxed">
-                    Мы предоставляем наши услуги в регионе Ида-Вирумаа по
-                    выгодным ценам где спрос на ниже перечисленные услуги
-                    достаточно высокий:
+                    {services.infoSection?.rightBlock?.paragraph1 || 'Мы предоставляем наши услуги в регионе Ида-Вирумаа по выгодным ценам где спрос на ниже перечисленные услуги достаточно высокий:'}
                   </p>
                   <ul className="text-lg space-y-3 mb-8">
-                    <li className="flex items-center gap-2">
-                      <span className="font-bold">•</span>
-                      Аренда трактора
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="font-bold">•</span>
-                      Аренда самосвала
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="font-bold">•</span>
-                      Доставка материала
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="font-bold">•</span>
-                      Вывоз мусора
-                    </li>
+                    {(services.infoSection?.rightBlock?.services || [
+                      'Аренда трактора',
+                      'Аренда самосвала',
+                      'Доставка материала',
+                      'Вывоз мусора'
+                    ]).map((service, index) => (
+                      <li key={index} className="flex items-center gap-2">
+                        <span className="font-bold">•</span>
+                        {service}
+                      </li>
+                    ))}
                   </ul>
                   <p className="text-lg leading-relaxed">
-                    Арендуя технику с водителем только тогда, когда он нужен -
-                    вы экономите деньги и не тратите ресурсы на содержание
-                    собственного транспорта. В стоимость аренды уже включены
-                    топливо и работа опытного водителя.
+                    {services.infoSection?.rightBlock?.paragraph2 || 'Арендуя технику с водителем только тогда, когда он нужен - вы экономите деньги и не тратите ресурсы на содержание собственного транспорта. В стоимость аренды уже включены топливо и работа опытного водителя.'}
                   </p>
                 </div>
               </motion.div>
@@ -400,7 +390,7 @@ export default function EquipmentPage() {
             <div className="flex flex-col lg:flex-row gap-8">
               <div className="w-full lg:w-2/3">
                 <div className="grid md:grid-cols-2 gap-8">
-                  {[
+                  {(services.additionalServices?.items || [
                     {
                       title: 'Трактор',
                       description:
@@ -443,7 +433,7 @@ export default function EquipmentPage() {
                         </svg>
                       ),
                     },
-                  ].map((item, index) => (
+                  ]).map((item, index) => (
                     <motion.div
                       key={index}
                       variants={variants}
@@ -474,19 +464,17 @@ export default function EquipmentPage() {
                   className="space-y-6 text-left"
                 >
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                    Нет техники? Не проблема! Получите расчет стоимости уже
-                    сейчас.
+                    {services.additionalServices?.cta?.title || 'Нет техники? Не проблема! Получите расчет стоимости уже сейчас.'}
                   </h2>
                   <p className="text-lg text-gray-600">
-                    Мы предоставляем полный спектр услуг по аренде строительной
-                    техники и выполнению различных видов работ.
+                    {services.additionalServices?.cta?.description || 'Мы предоставляем полный спектр услуг по аренде строительной техники и выполнению различных видов работ.'}
                   </p>
                   <button
                     onClick={() => router.push('/contact')}
                     className="group relative px-8 py-3 bg-yellow-400 text-gray-900 rounded-full hover:bg-[#1B2A3B] transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105 w-fit"
                   >
                     <span className="relative z-10 text-xl font-bold group-hover:text-white transition-colors duration-300">
-                      АРЕНДОВАТЬ
+                      {services.additionalServices?.cta?.buttonText || 'АРЕНДОВАТЬ'}
                     </span>
                     <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                     <div className="absolute inset-0 bg-yellow-400 transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
@@ -506,14 +494,14 @@ export default function EquipmentPage() {
                 className="bg-white rounded-2xl p-8 flex flex-col items-center md:items-start text-center md:text-left"
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  Избавьтесь от мусора – Закажите вывоз прямо сейчас!
+                  {services.servicesBlocks?.title || 'Избавьтесь от мусора – Закажите вывоз прямо сейчас!'}
                 </h2>
                 <button
                   onClick={() => router.push('/contact')}
                   className="group relative px-8 py-3 bg-yellow-400 text-gray-900 rounded-full hover:bg-[#1B2A3B] transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105 w-fit"
                 >
                   <span className="relative z-10 text-xl font-bold group-hover:text-white transition-colors duration-300">
-                    ЗАКАЗАТЬ ВЫВОЗ МУСОРА
+                    {services.servicesBlocks?.buttonText || 'ЗАКАЗАТЬ ВЫВОЗ МУСОРА'}
                   </span>
                   <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                   <div className="absolute inset-0 bg-yellow-400 transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
@@ -549,7 +537,7 @@ export default function EquipmentPage() {
               >
                 <Image
                   src="/images/equipment/delivery.webp"
-                  alt="Перевозка стройматериалов"
+                  alt={services.materialsDelivery?.altText || 'Перевозка стройматериалов'}
                   fill
                   className="object-cover"
                 />
@@ -560,14 +548,14 @@ export default function EquipmentPage() {
                 className="flex flex-col items-start text-left order-1 md:order-2"
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  Быстрая доставка и качественные материалы – Свяжитесь с нами!
+                  {services.materialsDelivery?.title || 'Быстрая доставка и качественные материалы – Свяжитесь с нами!'}
                 </h2>
                 <button
                   onClick={() => router.push('/contact')}
                   className="group relative px-8 py-3 bg-yellow-400 text-gray-900 rounded-full hover:bg-[#1B2A3B] transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105 w-fit self-start"
                 >
                   <span className="relative z-10 text-xl font-bold group-hover:text-white transition-colors duration-300">
-                    ОФОРМИТЬ ДОСТАВКУ
+                    {services.materialsDelivery?.buttonText || 'ОФОРМИТЬ ДОСТАВКУ'}
                   </span>
                   <div className="absolute inset-0 bg-[#1B2A3B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                   <div className="absolute inset-0 bg-yellow-400 transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
@@ -582,15 +570,15 @@ export default function EquipmentPage() {
           <div className="container mx-auto px-4">
             <motion.div variants={variants} className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Как мы работаем
+                {services.howWeWork?.title || 'Как мы работаем'}
               </h2>
               <p className="text-lg text-gray-600">
-                Простой и понятный процесс доставки
+                {services.howWeWork?.subtitle || 'Простой и понятный процесс доставки'}
               </p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
+              {(services.howWeWork?.steps || [
                 {
                   icon: (
                     <svg
@@ -673,7 +661,7 @@ export default function EquipmentPage() {
                   title: 'Оплата',
                   description: 'Удобные способы оплаты',
                 },
-              ].map((step, index) => (
+              ]).map((step, index) => (
                 <motion.div
                   key={index}
                   variants={variants}
@@ -682,7 +670,21 @@ export default function EquipmentPage() {
                   className="bg-white rounded-2xl p-8 text-center shadow-[0_3px_10px_rgb(0,0,0,0.1)] transform transition-all duration-500 hover:scale-[1.02] hover:shadow-xl"
                 >
                   <div className="w-16 h-16 mx-auto bg-yellow-100 rounded-2xl flex items-center justify-center mb-6">
-                    {step.icon}
+                    {step.icon || (
+                      <svg
+                        className="w-8 h-8 text-yellow-500"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 10V3L4 14h7v7l9-11h-7z"
+                        />
+                      </svg>
+                    )}
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4">
                     {step.title}

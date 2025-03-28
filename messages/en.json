@@ -227,9 +227,45 @@
       }
     },
     "equipment": {
-      "title": "Equipment Rental",
+      "title": "Construction Equipment Rental",
       "subtitle": "Modern equipment for your construction projects",
       "description": "We offer a wide range of construction equipment for rent",
+      "ctaButton": "REQUEST CONSULTATION",
+      "reviewsButton": "VIEW REVIEWS",
+      "features": {
+        "title": "Why Choose Us",
+        "subtitle": "We provide quality service and reliable equipment",
+        "items": [
+          {
+            "title": "Modern Equipment",
+            "description": "All equipment is regularly maintained and updated"
+          },
+          {
+            "title": "Experienced Operators",
+            "description": "Professional operators with extensive work experience"
+          },
+          {
+            "title": "Flexible Terms",
+            "description": "Convenient rental conditions and transparent pricing"
+          }
+        ]
+      },
+      "infoSection": {
+        "leftBlock": {
+          "paragraph1": "The absence of your own fleet of heavy-duty trucks can be a serious challenge for companies working in civil, industrial, or road construction. Without construction equipment, it is difficult to ensure timely delivery of materials, removal of construction waste after demolition work, or transportation of soil extracted during excavation.",
+          "paragraph2": "For those who order equipment for a long period or take several machines at once, good discounts are provided."
+        },
+        "rightBlock": {
+          "paragraph1": "We provide our services in the Ida-Virumaa region at favorable prices where the demand for the services listed below is quite high:",
+          "services": [
+            "Tractor rental",
+            "Dump truck rental",
+            "Material delivery",
+            "Waste removal"
+          ],
+          "paragraph2": "By renting equipment with a driver only when you need it, you save money and don't waste resources on maintaining your own transport. The rental price already includes fuel and the work of an experienced driver."
+        }
+      },
       "equipment": {
         "excavators": {
           "title": "Excavators",
@@ -243,6 +279,57 @@
           "title": "Trucks",
           "description": "Reliable trucks for transporting construction materials"
         }
+      },
+      "additionalServices": {
+        "items": [
+          {
+            "title": "Tractor",
+            "description": "Powerful tractor for earthworks and cargo transportation",
+            "image": "/images/equipment/traktor.png"
+          },
+          {
+            "title": "Truck",
+            "description": "Cargo vehicle for transporting construction materials",
+            "image": "/images/equipment/truck.png"
+          }
+        ],
+        "cta": {
+          "title": "No equipment? No problem! Get a cost estimate right now.",
+          "description": "We provide a full range of services for the rental of construction equipment and the performance of various types of work.",
+          "buttonText": "RENT NOW"
+        }
+      },
+      "servicesBlocks": {
+        "title": "Get rid of waste – Order removal right now!",
+        "buttonText": "ORDER WASTE REMOVAL",
+        "altText": "Bulk materials"
+      },
+      "materialsDelivery": {
+        "title": "Fast delivery and quality materials – Contact us!",
+        "buttonText": "ARRANGE DELIVERY",
+        "altText": "Transportation of construction materials"
+      },
+      "howWeWork": {
+        "title": "How We Work",
+        "subtitle": "Simple and clear delivery process",
+        "steps": [
+          {
+            "title": "Request",
+            "description": "Submit a request or call us"
+          },
+          {
+            "title": "Calculation",
+            "description": "We'll calculate the cost and timing"
+          },
+          {
+            "title": "Delivery",
+            "description": "We'll deliver materials on time"
+          },
+          {
+            "title": "Payment",
+            "description": "Convenient payment methods"
+          }
+        ]
       },
       "cta": "Rent Equipment"
     }
