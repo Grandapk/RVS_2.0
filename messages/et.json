@@ -141,7 +141,90 @@
           "description": "Kvaliteetne hoonete välisviimistlus"
         }
       },
-      "cta": "Telli teenus"
+      "cta": "Telli teenus",
+      "reviewsButton": "ARVUSTUSED",
+      "advantages": {
+        "quality": {
+          "title": "Töö kvaliteet",
+          "description": "Kasutame ainult kvaliteetseid materjale ja kaasaegseid tehnoloogiaid parima tulemuse saavutamiseks."
+        },
+        "timing": {
+          "title": "Täitmise tähtajad",
+          "description": "Järgime alati kokkulepitud tähtaegu ja teeme tööd õigel ajal."
+        },
+        "pricing": {
+          "title": "Taskukohased hinnad",
+          "description": "Pakume konkurentsivõimelisi hindu ja paindlikku allahindlussüsteemi oma klientidele."
+        }
+      },
+      "constructionAndRepair": {
+        "title": "EHITUS JA REMONT",
+        "items": [
+          "Erinevate otstarbega objektid",
+          "Profiil- ja kivikatused",
+          "Majad, korterid, kontorid ja muud elu- ja tööstushooned"
+        ]
+      },
+      "serviceCards": {
+        "foundations": {
+          "title": "VUNDAMENDID",
+          "items": [
+            "monoliitsed",
+            "plokid",
+            "fibo-plokid",
+            "vundamendi soojustamine",
+            "vundamendi hüdroisolatsioon"
+          ]
+        },
+        "facades": {
+          "title": "FASSAADID JA SEINAD",
+          "items": [
+            "kivi- ja puitkarkass",
+            "soojustamine ja krohvimine",
+            "voodrilaud",
+            "metallprofiil",
+            "fassaadiplaadid",
+            "vanade seinte remont"
+          ]
+        },
+        "roofing": {
+          "title": "KATUSETÖÖD / KATUSED",
+          "items": [
+            "sarikate paigaldamine",
+            "katuseakende paigaldamine",
+            "profiil- ja kivikatuste ehitamine",
+            "vihmaveesüsteemide paigaldamine",
+            "katusekatte paigaldamine",
+            "katuste remont"
+          ]
+        },
+        "roads": {
+          "title": "TEED JA PARKLAD",
+          "items": [
+            "asfaltkate",
+            "maanteed",
+            "parklad",
+            "metsateed",
+            "tänavakivid",
+            "aukude kõrvaldamine",
+            "väljakud",
+            "hoovide rekonstrueerimine",
+            "territooriumi laiendamine"
+          ]
+        },
+        "interior": {
+          "title": "SISEVIIMISTLUS",
+          "items": [
+            "lammutustegevus",
+            "vaheseinte ja lagede ehitamine",
+            "uksed, aknad, aknalauad",
+            "krohvimis- ja värvimistööd",
+            "igasuguse põrandakatte paigaldamine",
+            "sanitaarseadmete paigaldamine",
+            "saunade ehitamine"
+          ]
+        }
+      }
     },
     "equipment": {
       "title": "Seadmete rent",

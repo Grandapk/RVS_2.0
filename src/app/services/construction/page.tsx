@@ -123,7 +123,7 @@ export default function ConstructionServices() {
                   className="group relative px-6 sm:px-8 py-3 bg-transparent border-2 border-white text-white rounded-full hover:bg-yellow-400 transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105 w-fit"
                 >
                   <span className="relative z-10 text-lg sm:text-xl font-bold group-hover:text-gray-900 transition-colors duration-300 whitespace-nowrap">
-                    ОТЗЫВЫ
+                    {services.reviewsButton || 'ОТЗЫВЫ'}
                   </span>
                   <div className="absolute inset-0 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                   <div className="absolute inset-0 bg-transparent transform scale-x-100 group-hover:scale-x-0 transition-transform duration-300 origin-right"></div>
@@ -175,11 +175,10 @@ export default function ConstructionServices() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Качество работ
+                  {services.advantages?.quality?.title || 'Качество работ'}
                 </h3>
                 <p className="text-gray-600">
-                  Мы используем только качественные материалы и современные
-                  технологии для достижения лучшего результата.
+                  {services.advantages?.quality?.description || 'Мы используем только качественные материалы и современные технологии для достижения лучшего результата.'}
                 </p>
               </motion.div>
 
@@ -207,11 +206,10 @@ export default function ConstructionServices() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Сроки выполнения
+                  {services.advantages?.timing?.title || 'Сроки выполнения'}
                 </h3>
                 <p className="text-gray-600">
-                  Мы всегда соблюдаем оговоренные сроки и выполняем работы в
-                  установленное время.
+                  {services.advantages?.timing?.description || 'Мы всегда соблюдаем оговоренные сроки и выполняем работы в установленное время.'}
                 </p>
               </motion.div>
 
@@ -239,11 +237,10 @@ export default function ConstructionServices() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Доступные цены
+                  {services.advantages?.pricing?.title || 'Доступные цены'}
                 </h3>
                 <p className="text-gray-600">
-                  Мы предлагаем конкурентные цены и гибкую систему скидок для
-                  наших клиентов.
+                  {services.advantages?.pricing?.description || 'Мы предлагаем конкурентные цены и гибкую систему скидок для наших клиентов.'}
                 </p>
               </motion.div>
             </div>
@@ -263,15 +260,20 @@ export default function ConstructionServices() {
                 className="text-gray-900"
               >
                 <h2 className="text-4xl font-bold mb-8">
-                  СТРОИТЕЛЬСТВО И РЕМОНТ
+                  {services.constructionAndRepair?.title || 'СТРОИТЕЛЬСТВО И РЕМОНТ'}
                 </h2>
                 <ul className="space-y-4 text-xl">
-                  <li>• Объектов различного назначения</li>
-                  <li>• Профильных и черепичных крыш</li>
-                  <li>
-                    • Домов, квартир, офисов и других жилых и производственных
-                    объектов
-                  </li>
+                  {services.constructionAndRepair?.items ? (
+                    services.constructionAndRepair.items.map((item, index) => (
+                      <li key={index}>• {item}</li>
+                    ))
+                  ) : (
+                    <>
+                      <li>• Объектов различного назначения</li>
+                      <li>• Профильных и черепичных крыш</li>
+                      <li>• Домов, квартир, офисов и других жилых и производственных объектов</li>
+                    </>
+                  )}
                 </ul>
               </motion.div>
 
@@ -308,49 +310,65 @@ export default function ConstructionServices() {
                 className="bg-white p-8 rounded-2xl border-2 border-yellow-400 hover:border-yellow-500 transition-colors group min-h-[400px] flex flex-col"
               >
                 <h3 className="text-3xl font-bold text-gray-900 mb-6 shrink-0">
-                  ФУНДАМЕНТЫ
+                  {services.serviceCards?.foundations?.title || 'ФУНДАМЕНТЫ'}
                 </h3>
                 <ul className="space-y-4 text-lg text-gray-700">
-                  <motion.li
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 }}
-                    className="flex items-center group-hover:text-gray-900"
-                  >
-                    • монолитные
-                  </motion.li>
-                  <motion.li
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="flex items-center group-hover:text-gray-900"
-                  >
-                    • блочные
-                  </motion.li>
-                  <motion.li
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 }}
-                    className="flex items-center group-hover:text-gray-900"
-                  >
-                    • из фибо-блоков
-                  </motion.li>
-                  <motion.li
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.4 }}
-                    className="flex items-center group-hover:text-gray-900"
-                  >
-                    • утепление фундаментов
-                  </motion.li>
-                  <motion.li
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5 }}
-                    className="flex items-center group-hover:text-gray-900"
-                  >
-                    • гидроизоляция фундаментов
-                  </motion.li>
+                  {services.serviceCards?.foundations?.items ? (
+                    services.serviceCards.foundations.items.map((item, index) => (
+                      <motion.li
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.1 * (index + 1) }}
+                        className="flex items-center group-hover:text-gray-900"
+                      >
+                        • {item}
+                      </motion.li>
+                    ))
+                  ) : (
+                    <>
+                      <motion.li
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.1 }}
+                        className="flex items-center group-hover:text-gray-900"
+                      >
+                        • монолитные
+                      </motion.li>
+                      <motion.li
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="flex items-center group-hover:text-gray-900"
+                      >
+                        • блочные
+                      </motion.li>
+                      <motion.li
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.3 }}
+                        className="flex items-center group-hover:text-gray-900"
+                      >
+                        • из фибо-блоков
+                      </motion.li>
+                      <motion.li
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.4 }}
+                        className="flex items-center group-hover:text-gray-900"
+                      >
+                        • утепление фундаментов
+                      </motion.li>
+                      <motion.li
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.5 }}
+                        className="flex items-center group-hover:text-gray-900"
+                      >
+                        • гидроизоляция фундаментов
+                      </motion.li>
+                    </>
+                  )}
                 </ul>
               </motion.div>
 
@@ -364,57 +382,89 @@ export default function ConstructionServices() {
                 className="bg-white p-8 rounded-2xl border-2 border-yellow-400 hover:border-yellow-500 transition-colors group min-h-[400px] flex flex-col"
               >
                 <h3 className="text-3xl font-bold text-gray-900 mb-6 shrink-0">
-                  ФАСАДЫ И СТЕНЫ
+                  {services.serviceCards?.facades?.title || 'ФАСАДЫ И СТЕНЫ'}
                 </h3>
                 <ul className="space-y-4 text-lg text-gray-700">
-                  <motion.li
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 }}
-                    className="flex items-center group-hover:text-gray-900"
-                  >
-                    • каменные и деревокаркасные
-                  </motion.li>
-                  <motion.li
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="flex items-center group-hover:text-gray-900"
-                  >
-                    • утепление и штукатурка
-                  </motion.li>
-                  <motion.li
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 }}
-                    className="flex items-center group-hover:text-gray-900"
-                  >
-                    • вагонка
-                  </motion.li>
-                  <motion.li
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.4 }}
-                    className="flex items-center group-hover:text-gray-900"
-                  >
-                    • металлопрофиль
-                  </motion.li>
-                  <motion.li
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5 }}
-                    className="flex items-center group-hover:text-gray-900"
-                  >
-                    • фасадные плиты
-                  </motion.li>
-                  <motion.li
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.6 }}
-                    className="flex items-center group-hover:text-gray-900"
-                  >
-                    • ремонт старых стен
-                  </motion.li>
+                  {services.serviceCards?.facades?.items ? (
+                    services.serviceCards.facades.items.map((item, index) => (
+                      <motion.li
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.1 * (index + 1) }}
+                        className="flex items-center group-hover:text-gray-900"
+                      >
+                        • {item}
+                      </motion.li>
+                    ))
+                  ) : (
+                    <>
+                      <motion.li
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.1 }}
+                        className="flex items-center group-hover:text-gray-900"
+                      >
+                        • каменные и деревокаркасные
+                      </motion.li>
+                      <motion.li
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="flex items-center group-hover:text-gray-900"
+                      >
+                        • утепление и штукатурка
+                      </motion.li>
+                      <motion.li
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.3 }}
+                        className="flex items-center group-hover:text-gray-900"
+                      >
+                        • вагонка
+                      </motion.li>
+                      <motion.li
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.4 }}
+                        className="flex items-center group-hover:text-gray-900"
+                      >
+                        • металлопрофиль
+                      </motion.li>
+                    </>
+                  )}
+                  {services.serviceCards?.facades?.items ? (
+                    services.serviceCards.facades.items.slice(4).map((item, index) => (
+                      <motion.li
+                        key={index + 4}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.5 + (index * 0.1) }}
+                        className="flex items-center group-hover:text-gray-900"
+                      >
+                        • {item}
+                      </motion.li>
+                    ))
+                  ) : (
+                    <>
+                      <motion.li
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.5 }}
+                        className="flex items-center group-hover:text-gray-900"
+                      >
+                        • фасадные плиты
+                      </motion.li>
+                      <motion.li
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.6 }}
+                        className="flex items-center group-hover:text-gray-900"
+                      >
+                        • ремонт старых стен
+                      </motion.li>
+                    </>
+                  )}
                 </ul>
               </motion.div>
             </div>
@@ -431,50 +481,81 @@ export default function ConstructionServices() {
               <div className="grid lg:grid-cols-2 gap-4 sm:gap-8">
                 <div className="flex flex-col">
                   <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-4 sm:mb-6 break-words hyphens-auto">
-                    КРОВЕЛЬНЫЕ РАБОТЫ{' '}
-                    <span className="whitespace-nowrap">/ КРЫШИ</span>
+                    {services.serviceCards?.roofing?.title || 'КРОВЕЛЬНЫЕ РАБОТЫ / КРЫШИ'}
                   </h3>
                   <ul className="space-y-2 sm:space-y-4 text-base sm:text-lg text-gray-700">
-                    <motion.li
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.1 }}
-                      className="flex items-center group-hover:text-gray-900"
-                    >
-                      • установка стропил
-                    </motion.li>
-                    <motion.li
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.2 }}
-                      className="flex items-center group-hover:text-gray-900"
-                    >
-                      • установка мансардных окон
-                    </motion.li>
-                    <motion.li
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.3 }}
-                      className="flex items-center group-hover:text-gray-900 break-words"
-                    >
-                      • устройство профильных и черепичных крыш
-                    </motion.li>
-                    <motion.li
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.4 }}
-                      className="flex items-center group-hover:text-gray-900"
-                    >
-                      • установка ветровых ящиков
-                    </motion.li>
-                    <motion.li
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.5 }}
-                      className="flex items-center group-hover:text-gray-900"
-                    >
-                      • монтаж водосливных систем
-                    </motion.li>
+                    {services.serviceCards?.roofing?.items ? (
+                      services.serviceCards.roofing.items.slice(0, 3).map((item, index) => (
+                        <motion.li
+                          key={index}
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.1 * (index + 1) }}
+                          className="flex items-center group-hover:text-gray-900"
+                        >
+                          • {item}
+                        </motion.li>
+                      ))
+                    ) : (
+                      <>
+                        <motion.li
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.1 }}
+                          className="flex items-center group-hover:text-gray-900"
+                        >
+                          • установка стропил
+                        </motion.li>
+                        <motion.li
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.2 }}
+                          className="flex items-center group-hover:text-gray-900"
+                        >
+                          • установка мансардных окон
+                        </motion.li>
+                        <motion.li
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.3 }}
+                          className="flex items-center group-hover:text-gray-900 break-words"
+                        >
+                          • устройство профильных и черепичных крыш
+                        </motion.li>
+                      </>
+                    )}
+                    {services.serviceCards?.roofing?.items ? (
+                      services.serviceCards.roofing.items.slice(3, 5).map((item, index) => (
+                        <motion.li
+                          key={index + 3}
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.4 + 0.1 * index }}
+                          className="flex items-center group-hover:text-gray-900"
+                        >
+                          • {item}
+                        </motion.li>
+                      ))
+                    ) : (
+                      <>
+                        <motion.li
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.4 }}
+                          className="flex items-center group-hover:text-gray-900"
+                        >
+                          • установка ветровых ящиков
+                        </motion.li>
+                        <motion.li
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.5 }}
+                          className="flex items-center group-hover:text-gray-900"
+                        >
+                          • монтаж водосливных систем
+                        </motion.li>
+                      </>
+                    )}
                   </ul>
                 </div>
                 <div className="h-[200px] sm:h-[300px] mt-4 sm:mt-0">
@@ -507,32 +588,47 @@ export default function ConstructionServices() {
                 <div className="flex items-center gap-4 mb-8">
                   <div className="h-[2px] w-16 bg-white self-center"></div>
                   <h2 className="text-4xl font-bold leading-none">
-                    ДОРОГИ И ПАРКОВКИ
+                    {services.serviceCards?.roads?.title || 'ДОРОГИ И ПАРКОВКИ'}
                   </h2>
                 </div>
                 <ul className="space-y-4 text-xl pl-20">
-                  {[
-                    'асфальтное покрытие',
-                    'шоссейных дорог',
-                    'парковки',
-                    'лесные дороги',
-                    'тротуарная плитка',
-                    'устранение ям',
-                    'площади',
-                    'реконструкция дворов',
-                    'расширение территории',
-                  ].map((item, index) => (
-                    <motion.li
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex items-center space-x-2"
-                    >
-                      <span className="text-yellow-400">•</span>
-                      <span>{item}</span>
-                    </motion.li>
-                  ))}
+                  {services.serviceCards?.roads?.items ? (
+                    services.serviceCards.roads.items.map((item, index) => (
+                      <motion.li
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="flex items-center space-x-2"
+                      >
+                        <span className="text-yellow-400">•</span>
+                        <span>{item}</span>
+                      </motion.li>
+                    ))
+                  ) : (
+                    [
+                      'асфальтное покрытие',
+                      'шоссейных дорог',
+                      'парковки',
+                      'лесные дороги',
+                      'тротуарная плитка',
+                      'устранение ям',
+                      'площади',
+                      'реконструкция дворов',
+                      'расширение территории',
+                    ].map((item, index) => (
+                      <motion.li
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="flex items-center space-x-2"
+                      >
+                        <span className="text-yellow-400">•</span>
+                        <span>{item}</span>
+                      </motion.li>
+                    ))
+                  )}
                 </ul>
               </motion.div>
 
@@ -596,34 +692,61 @@ export default function ConstructionServices() {
               >
                 <div className="flex items-center gap-4 mb-4 sm:mb-8">
                   <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
-                    ВНУТРЕННЯЯ
+                    {services.serviceCards?.interior?.title ? (
+                      services.serviceCards.interior.title.split(' ')[0]
+                    ) : (
+                      'ВНУТРЕННЯЯ'
+                    )}
                   </h2>
                   <div className="h-[2px] bg-[#1B2A3B] flex-grow"></div>
                 </div>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6 sm:mb-8">
-                  ОТДЕЛКА
+                  {services.serviceCards?.interior?.title ? (
+                    services.serviceCards.interior.title.split(' ').length > 1 ? (
+                      services.serviceCards.interior.title.split(' ')[1]
+                    ) : (
+                      ''
+                    )
+                  ) : (
+                    'ОТДЕЛКА'
+                  )}
                 </h2>
                 <ul className="space-y-3 sm:space-y-4 text-base sm:text-lg md:text-xl text-gray-700">
-                  {[
-                    'демонтажные работы',
-                    'межкомнатных перегородки и потолки',
-                    'двери, окна, подоконники',
-                    'штукатурные и малярные работы',
-                    'укладка любого полового покрытия',
-                    'установка сантехоборудования',
-                    'строительство саун',
-                  ].map((item, index) => (
-                    <motion.li
-                      key={index}
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex items-center space-x-2"
-                    >
-                      <span className="text-yellow-400">•</span>
-                      <span>{item}</span>
-                    </motion.li>
-                  ))}
+                  {services.serviceCards?.interior?.items ? (
+                    services.serviceCards.interior.items.map((item, index) => (
+                      <motion.li
+                        key={index}
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="flex items-center space-x-2"
+                      >
+                        <span className="text-yellow-400">•</span>
+                        <span>{item}</span>
+                      </motion.li>
+                    ))
+                  ) : (
+                    [
+                      'демонтажные работы',
+                      'межкомнатных перегородки и потолки',
+                      'двери, окна, подоконники',
+                      'штукатурные и малярные работы',
+                      'укладка любого полового покрытия',
+                      'установка сантехоборудования',
+                      'строительство саун',
+                    ].map((item, index) => (
+                      <motion.li
+                        key={index}
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="flex items-center space-x-2"
+                      >
+                        <span className="text-yellow-400">•</span>
+                        <span>{item}</span>
+                      </motion.li>
+                    ))
+                  )}
                 </ul>
               </motion.div>
             </div>

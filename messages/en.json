@@ -141,7 +141,90 @@
           "description": "Quality exterior finishing of buildings"
         }
       },
-      "cta": "Order Service"
+      "cta": "Order Service",
+      "reviewsButton": "REVIEWS",
+      "advantages": {
+        "quality": {
+          "title": "Quality of Work",
+          "description": "We use only quality materials and modern technologies to achieve the best result."
+        },
+        "timing": {
+          "title": "Execution Time",
+          "description": "We always adhere to the agreed deadlines and perform work on time."
+        },
+        "pricing": {
+          "title": "Affordable Prices",
+          "description": "We offer competitive prices and a flexible discount system for our clients."
+        }
+      },
+      "constructionAndRepair": {
+        "title": "CONSTRUCTION AND REPAIR",
+        "items": [
+          "Objects of various purposes",
+          "Profile and tiled roofs",
+          "Houses, apartments, offices and other residential and industrial facilities"
+        ]
+      },
+      "serviceCards": {
+        "foundations": {
+          "title": "FOUNDATIONS",
+          "items": [
+            "monolithic",
+            "block",
+            "fibo-blocks",
+            "foundation insulation",
+            "foundation waterproofing"
+          ]
+        },
+        "facades": {
+          "title": "FACADES AND WALLS",
+          "items": [
+            "stone and wooden frame",
+            "insulation and plastering",
+            "clapboard",
+            "metal profile",
+            "facade panels",
+            "repair of old walls"
+          ]
+        },
+        "roofing": {
+          "title": "ROOFING WORKS / ROOFS",
+          "items": [
+            "installation of rafters",
+            "installation of dormer windows",
+            "construction of profile and tiled roofs",
+            "installation of drainage systems",
+            "installation of roofing coverings",
+            "roof repair"
+          ]
+        },
+        "roads": {
+          "title": "ROADS AND PARKING",
+          "items": [
+            "asphalt paving",
+            "highways",
+            "parking lots",
+            "forest roads",
+            "paving stones",
+            "pothole repair",
+            "squares",
+            "yard reconstruction",
+            "territory expansion"
+          ]
+        },
+        "interior": {
+          "title": "INTERIOR FINISHING",
+          "items": [
+            "demolition work",
+            "interior partitions and ceilings",
+            "doors, windows, windowsills",
+            "plastering and painting works",
+            "installation of any floor covering",
+            "installation of plumbing equipment",
+            "sauna construction"
+          ]
+        }
+      }
     },
     "equipment": {
       "title": "Equipment Rental",
